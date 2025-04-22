@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Deal Submission Form</title>
+    <style>
+        :root {
+            --primary-blue: #5d78d6;
+            --primary-purple: #6e50c4;
+            --light-blue: #eef1fa;
+            --light-purple: #f0ecf9;
+            --dark-text: #333;
+            --light-text: #666;
+            --border-color: #e0e0e0;
+            --section-bg: #ffffff;
+            --hover-color: #f5f7ff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--primary-purple);
+            font-weight: 600;
+            font-size: 32px;
+        }
+        
+        h3 {
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 8px;
+            margin-top: 25px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        
+        .form-container {
+            background-color: var(--section-bg);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .form-section {
+            background-color: var(--section-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary-blue);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+        
+        .form-section-alt {
+            border-left: 4px solid var(--primary-purple);
+        }
+        
+        .form-header {
+            background: linear-gradient(to right, var(--light-blue), var(--light-purple));
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            width: 100%;
+            gap: 15px;
+        }
+        
+        .form-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .form-field {
+            margin-bottom: 15px;
+        }
+        
+        .form-field label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: var(--dark-text);
+            font-size: 14px;
+        }
+        
+        .form-field input, .form-field select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #6e50c4; /* Changed from var(--border-color) to the purple color */
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 14px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        
+        .form-field input:focus, .form-field select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 4px rgba(14, 139, 248, 0.15);
+        }
+        
+        .invalid-input {
+            border-color: #dc3545 !important;
+            background-color: rgba(220, 53, 69, 0.05);
+        }
+        
+        .invalid-input:focus {
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15) !important;
+        }
+        
+        .radio-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 5px;
+        }
+        
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .radio-group input {
+            margin-right: 6px;
+            width: auto;
+            cursor: pointer;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-group input {
+            margin-right: 6px;
+            width: auto;
+            cursor: pointer;
+        }
+        
+        .field-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .field-group .form-field {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .notice {
+            background-color: var(--light-blue);
+            padding: 15px;
+            border-left: 4px solid var(--primary-blue);
+            margin-bottom: 25px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .attestation-area {
+            margin-top: 30px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: var(--light-purple);
+            border-radius: 8px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: flex-start;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-label input {
+            margin-right: 10px;
+            margin-top: 4px;
+        }
+        
+        /* Vehicle Information Section - Responsive Grid */
+        .vehicle-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        /* Terms Section - Responsive Design */
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .terms-full-row {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .terms-item {
+            margin-bottom: 15px;
+        }
+        
+        .terms-item label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 6px;
+            font-size: 14px;
+        }
+        
+        .terms-label {
+            font-weight: 500;
+            background-color: var(--light-purple);
+            color: var(--primary-purple);
+            padding: 6px 10px;
+            border-radius: 4px;
+        }
+        
+        .terms-total {
+            font-weight: 600;
+            background-color: var(--light-blue);
+            padding: 6px 10px;
+            border-radius: 4px;
+        }
+        
+        .terms-amount-financed {
+            font-weight: 600;
+            background-color: var(--light-purple);
+            color: var(--primary-purple);
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .currency-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #6e50c4; /* Changed from var(--border-color) to the purple color */
+            border-radius: 6px;
+            box-sizing: border-box;
+            text-align: right;
+            font-family: inherit;
+            font-size: 14px;
+        }
+        
+        .tax-rate-input {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .tax-rate-input input:first-child {
+            width: 80px;
+            text-align: right;
+        }
+        
+        .submit-btn, .add-borrower-btn {
+            background: linear-gradient(to right, var(--primary-blue), var(--primary-purple));
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .submit-btn:hover, .add-borrower-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--light-text);
+            padding: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        /* Borrower Sections Styles */
+        .borrower-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .borrower-header {
+            background: linear-gradient(to right, var(--primary-blue), var(--primary-purple));
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .add-borrower-container {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .form-col {
+                width: 100%;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .vehicle-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .terms-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tax-rate-input {
+                flex-direction: column;
+            }
+            
+            .tax-rate-input input:first-child {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Credit Application</h1>
+        
+        
+            <div class="form-section">
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-field">
+                            <label for="dealerName">Dealer Name:</label>
+                            <input type="text" id="dealerName" name="dealerName">
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-field">
+                            <label for="telephone">Tel:</label>
+                            <input type="tel" id="telephone" name="telephone">
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-field">
+                            <label for="contact">Contact:</label>
+                            <input type="text" id="contact" name="contact">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="notice">
+                <strong>IMPORTANT APPLICANT INFORMATION:</strong> Federal Law requires financial institutions to obtain sufficient information to verify your identity. You may be asked several questions and to provide one or more forms of identification to fulfill this requirement. In some instances we may use outside sources to confirm the information. The information you provide is protected by our privacy policy and federal law.
+            </div>
+            
+            <!-- Borrower 1 Container - Start -->
+            <div class="borrower-container" id="borrower1Container">
+                <div class="borrower-header">Primary Borrower</div>
+                
+                <!-- Personal Information Section -->
+                <div class="form-section form-section-alt borrower-personal-section">
+                    <h3>Personal Information</h3>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="applicant">Applicant:</label>
+                                <input type="text" id="applicant" name="borrower1_applicant">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="dob">Date of birth:</label>
+                                <input type="date" id="dob" name="borrower1_dob">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="ssn">SSN:</label>
+                                <input type="text" id="ssn" name="borrower1_ssn">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="driversLicense">Driver's License:</label>
+                                <input type="text" id="driversLicense" name="borrower1_driversLicense">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="homePhone">Home:</label>
+                                <input type="tel" id="homePhone" name="borrower1_homePhone">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="workPhone">Work:</label>
+                                <input type="tel" id="workPhone" name="borrower1_workPhone">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="cellPhone">Cell:</label>
+                                <input type="tel" id="cellPhone" name="borrower1_cellPhone">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="email">E-Mail:</label>
+                                <input type="email" id="email" name="borrower1_email">
+                            </div>
+                        </div>
+                    </div>
+                
+                <!-- Address Information Section -->
+                <div class="form-section borrower-address-section">
+                    <h3>Address Information</h3>
+                    <div class="form-row">
+                        <div class="form-col" style="flex: 2;">
+                            <div class="form-field">
+                                <label>Current address & Type:</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="borrower1_addressType" value="own"> Own</label>
+                                    <label><input type="radio" name="borrower1_addressType" value="rent"> Rent</label>
+                                    <label><input type="radio" name="borrower1_addressType" value="other"> Other</label>
+                                </div>
+                                <input type="text" id="currentAddress" name="borrower1_currentAddress" placeholder="Address" style="margin-top: 10px;">
+                            </div>
+                        </div>
+                        <div class="form-col" style="flex: 1;">
+                            <div class="form-field">
+                                <label for="landlordInfo">Landlord/Mortgage Co. & Phone:</label>
+                                <input type="text" id="landlordInfo" name="borrower1_landlordInfo">
+                            </div>
+                        </div>
+                        <div class="form-col" style="flex: 0.5;">
+                            <div class="form-field">
+                                <label for="currentAddressYears">Years:</label>
+                                <input type="number" id="currentAddressYears" name="borrower1_currentAddressYears" min="0">
+                            </div>
+                            <div class="form-field">
+                                <label for="currentAddressMonths">Months:</label>
+                                <input type="number" id="currentAddressMonths" name="borrower1_currentAddressMonths" min="0" max="11">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col" style="flex: 2;">
+                            <div class="form-field">
+                                <label for="previousAddress1">Previous address 1:</label>
+                                <input type="text" id="previousAddress1" name="borrower1_previousAddress1">
+                            </div>
+                        </div>
+                        <div class="form-col" style="flex: 0.5;">
+                            <div class="form-field">
+                                <label for="prevAddress1Years">Years:</label>
+                                <input type="number" id="prevAddress1Years" name="borrower1_prevAddress1Years" min="0">
+                            </div>
+                            <div class="form-field">
+                                <label for="prevAddress1Months">Months:</label>
+                                <input type="number" id="prevAddress1Months" name="borrower1_prevAddress1Months" min="0" max="11">
+                            </div>
+                        </div>
+                        <div class="form-col" style="flex: 2;">
+                            <div class="form-field">
+                                <label for="previousAddress2">Previous address 2:</label>
+                                <input type="text" id="previousAddress2" name="borrower1_previousAddress2">
+                            </div>
+                        </div>
+                        <div class="form-col" style="flex: 0.5;">
+                            <div class="form-field">
+                                <label for="prevAddress2Years">Years:</label>
+                                <input type="number" id="prevAddress2Years" name="borrower1_prevAddress2Years" min="0">
+                            </div>
+                            <div class="form-field">
+                                <label for="prevAddress2Months">Months:</label>
+                                <input type="number" id="prevAddress2Months" name="borrower1_prevAddress2Months" min="0" max="11">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Employment Information Section -->
+                <div class="form-section form-section-alt borrower-employment-section">
+                    <h3>Employment Information</h3>
+                    <div class="form-row">
+                        <div class="form-col" style="flex: 2;">
+                            <div class="form-field">
+                                <label for="currentEmployer">Current Employer:</label>
+                                <input type="text" id="currentEmployer" name="borrower1_currentEmployer">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="employerPhone">Phone:</label>
+                                <input type="tel" id="employerPhone" name="borrower1_employerPhone">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="title">Title:</label>
+                                <input type="text" id="title" name="borrower1_title">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col" style="flex: 2;">
+                            <div class="form-field">
+                                <label for="employerAddress">Employer Address:</label>
+                                <input type="text" id="employerAddress" name="borrower1_employerAddress">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="income">Income:</label>
+                                <input type="text" id="income" name="borrower1_income" class="currency-input">
+                            </div>
+                        </div>
+                        <div class="form-col" style="flex: 0.5;">
+                            <div class="form-field">
+                                <label for="employmentYears">Years:</label>
+                                <input type="number" id="employmentYears" name="borrower1_employmentYears" min="0">
+                            </div>
+                            <div class="form-field">
+                                <label for="employmentMonths">Months:</label>
+                                <input type="number" id="employmentMonths" name="borrower1_employmentMonths" min="0" max="11">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="otherIncome">Other Income:</label>
+                                <input type="text" id="otherIncome" name="borrower1_otherIncome" class="currency-input">
+                            </div>
+                        </div>
+                        <div class="form-col" style="flex: 2;">
+                            <div class="form-field">
+                                <label for="incomeSource">Source (Alimony, child support or separate maintenance income need not be revealed if you do not wish):</label>
+                                <input type="text" id="incomeSource" name="borrower1_incomeSource">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col" style="flex: 2;">
+                            <div class="form-field">
+                                <label for="previousEmployer1">Previous Employer 1:</label>
+                                <input type="text" id="previousEmployer1" name="borrower1_previousEmployer1">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="prevEmployer1Phone">Phone:</label>
+                                <input type="tel" id="prevEmployer1Phone" name="borrower1_prevEmployer1Phone">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="prevEmployer1Title">Title:</label>
+                                <input type="text" id="prevEmployer1Title" name="borrower1_prevEmployer1Title">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col" style="flex: 2;">
+                            <div class="form-field">
+                                <label for="prevEmployer1Address">Employer Address:</label>
+                                <input type="text" id="prevEmployer1Address" name="borrower1_prevEmployer1Address">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="prevEmployer1Income">Income:</label>
+                                <input type="text" id="prevEmployer1Income" name="borrower1_prevEmployer1Income" class="currency-input">
+                            </div>
+                        </div>
+                        <div class="form-col" style="flex: 0.5;">
+                            <div class="form-field">
+                                <label for="prevEmployment1Years">Years:</label>
+                                <input type="number" id="prevEmployment1Years" name="borrower1_prevEmployment1Years" min="0">
+                            </div>
+                            <div class="form-field">
+                                <label for="prevEmployment1Months">Months:</label>
+                                <input type="number" id="prevEmployment1Months" name="borrower1_prevEmployment1Months" min="0" max="11">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col" style="flex: 2;">
+                            <div class="form-field">
+                                <label for="previousEmployer2">Previous Employer 2:</label>
+                                <input type="text" id="previousEmployer2" name="borrower1_previousEmployer2">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="prevEmployer2Phone">Phone:</label>
+                                <input type="tel" id="prevEmployer2Phone" name="borrower1_prevEmployer2Phone">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="prevEmployer2Title">Title:</label>
+                                <input type="text" id="prevEmployer2Title" name="borrower1_prevEmployer2Title">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col" style="flex: 2;">
+                            <div class="form-field">
+                                <label for="prevEmployer2Address">Employer Address:</label>
+                                <input type="text" id="prevEmployer2Address" name="borrower1_prevEmployer2Address">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="prevEmployer2Income">Income:</label>
+                                <input type="text" id="prevEmployer2Income" name="borrower1_prevEmployer2Income" class="currency-input">
+                            </div>
+                        </div>
+                        <div class="form-col" style="flex: 0.5;">
+                            <div class="form-field">
+                                <label for="prevEmployment2Years">Years:</label>
+                                <input type="number" id="prevEmployment2Years" name="borrower1_prevEmployment2Years" min="0">
+                            </div>
+                            <div class="form-field">
+                                <label for="prevEmployment2Months">Months:</label>
+                                <input type="number" id="prevEmployment2Months" name="borrower1_prevEmployment2Months" min="0" max="11">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Financial Information Section -->
+                <div class="form-section borrower-financial-section">
+                    <h3>Financial Information</h3>
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label>Are you obliged to make Alimony, Support or Maintenance payments?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="borrower1_alimonyPayments" value="no"> No</label>
+                                    <label><input type="radio" name="borrower1_alimonyPayments" value="yes"> Yes</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col" style="flex: 2;">
+                            <div class="form-field">
+                                <label for="alimonyRecipient">If yes, to (Name & Address):</label>
+                                <input type="text" id="alimonyRecipient" name="borrower1_alimonyRecipient">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="alimonyAmount">Amt. per month $:</label>
+                                <input type="text" id="alimonyAmount" name="borrower1_alimonyAmount" class="currency-input">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col" style="flex: 2;">
+                            <div class="form-field">
+                                <label>Are you a co-maker, endorser, or guarantor on any loan or contract?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="borrower1_coMaker" value="no"> No</label>
+                                    <label><input type="radio" name="borrower1_coMaker" value="yes"> Yes</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="coMakerFor">If yes, for whom?</label>
+                                <input type="text" id="coMakerFor" name="borrower1_coMakerFor">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="coMakerToWhom">To whom?</label>
+                                <input type="text" id="coMakerToWhom" name="borrower1_coMakerToWhom">
+
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col" style="flex: 2;">
+                            <div class="form-field">
+                                <label>Are there any unsatisfied judgments against you?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="borrower1_judgments" value="no"> No</label>
+                                    <label><input type="radio" name="borrower1_judgments" value="yes"> Yes</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="judgmentToWhom">If yes, to whom owed?</label>
+                                <input type="text" id="judgmentToWhom" name="borrower1_judgmentToWhom">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="judgmentAmount">Amount $:</label>
+                                <input type="text" id="judgmentAmount" name="borrower1_judgmentAmount" class="currency-input">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col" style="flex: 2;">
+                            <div class="form-field">
+                                <label>Have you been declared bankrupt in the last 10 years?</label>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="borrower1_bankruptcy" value="no"> No</label>
+                                    <label><input type="radio" name="borrower1_bankruptcy" value="yes"> Yes</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="bankruptcyWhere">If yes, where?</label>
+                                <input type="text" id="bankruptcyWhere" name="borrower1_bankruptcyWhere">
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-field">
+                                <label for="bankruptcyYear">Year?</label>
+                                <input type="text" id="bankruptcyYear" name="borrower1_bankruptcyYear">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Borrower 1 Container - End -->
+            
+            <!-- Add Borrower Button -->
+            <div class="add-borrower-container" id="addBorrowerButtonContainer">
+                <button type="button" id="addBorrowerBtn" class="add-borrower-btn">Add Co-Borrower</button>
+            </div>
+            
+            <!-- Borrower 2 Container - Will be initially hidden and added dynamically -->
+            <div id="borrower2Container" style="display: none;"></div>
+            
+            <!-- Dealer Attestation Section -->
+            <div class="form-section form-section-alt">
+                <div class="attestation-area">
+                    <p style="font-weight: 500; color: var(--primary-purple);">DEALER ATTESTATION</p>
+                    <p>I, as an authorized representative of the dealership, certify that everything stated in this application is correct. I confirm that I have received authorization from the applicant to submit this application. The applicant understands that the Lender may check their credit and employment history and answer questions others may ask the Lender about the applicant's credit record with the Lender. The applicant also understands that they must update credit information at Lender's request if their financial condition changes.</p>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="dealerAttestation" name="dealerAttestation" required>
+                        I agree to the above statements and confirm that I am authorized to submit this application on behalf of the applicant.
+                    </label>
+                    
+                    <div class="form-field" style="margin-top: 15px;">
+                        <label for="signatureDate">Date:</label>
+                        <input type="date" id="signatureDate" name="signatureDate">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Vehicle Information Section -->
+            <div class="form-section">
+                <h3>Vehicle Information</h3>
+                <div class="vehicle-grid">
+                    <div class="form-field">
+                        <label for="vehicleYear">Year:</label>
+                        <input type="text" id="vehicleYear" name="vehicleYear">
+                    </div>
+                    <div class="form-field">
+                        <label for="vehicleMakeModel">Make & Model:</label>
+                        <input type="text" id="vehicleMakeModel" name="vehicleMakeModel">
+                    </div>
+                    <div class="form-field">
+                        <label for="vehicleTrim">Trim:</label>
+                        <input type="text" id="vehicleTrim" name="vehicleTrim">
+                    </div>
+                    <div class="form-field">
+                        <label for="vehicleMileage">Mileage:</label>
+                        <input type="text" id="vehicleMileage" name="vehicleMileage">
+                    </div>
+                    <div class="form-field">
+                        <label for="vehicleVIN">VIN:</label>
+                        <input type="text" id="vehicleVIN" name="vehicleVIN">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Terms Section -->
+            <div class="form-section form-section-alt">
+                <h3>Terms</h3>
+                <div class="terms-grid">
+                    <div class="terms-item">
+                        <label class="terms-label">a. Selling Price:</label>
+                        <input type="text" id="sellingPrice" name="sellingPrice" class="currency-input" placeholder="$0.00">
+                    </div>
+                    
+                    <div class="terms-item">
+                        <label class="terms-label">b. Warranty:</label>
+                        <input type="text" id="warranty" name="warranty" class="currency-input" placeholder="$0.00">
+                    </div>
+                    
+                    <div class="terms-item">
+                        <label class="terms-label">c. GAP:</label>
+                        <input type="text" id="gap" name="gap" class="currency-input" placeholder="$0.00">
+                    </div>
+                    
+                    <div class="terms-item">
+                        <label class="terms-label">d. Other:</label>
+                        <input type="text" id="other" name="other" class="currency-input" placeholder="$0.00">
+                    </div>
+                    
+                    <div class="terms-item">
+                        <label class="terms-label">e. Taxes:</label>
+                        <div class="tax-rate-input">
+                            <input type="text" id="taxRate" name="taxRate" placeholder="0.0%">
+                            <input type="text" id="taxes" name="taxes" class="currency-input" placeholder="$0.00" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="terms-item">
+                        <label class="terms-label">f. Doc Fees:</label>
+                        <input type="text" id="docFees" name="docFees" class="currency-input" placeholder="$0.00">
+                    </div>
+                    
+                    <div class="terms-item">
+                        <label class="terms-label">g. Title/Lien/Reg Fees:</label>
+                        <input type="text" id="titleFees" name="titleFees" class="currency-input" placeholder="$0.00">
+                    </div>
+                    
+                    <div class="terms-item">
+                        <label class="terms-total">l. Total Price: (Sum a:g)</label>
+                        <input type="text" id="totalPrice" name="totalPrice" class="currency-input" readonly>
+                    </div>
+                    
+                    <div class="terms-item">
+                        <label class="terms-label">h. Total Cash Down:</label>
+                        <input type="text" id="cashDown" name="cashDown" class="currency-input" placeholder="$0.00">
+                    </div>
+                    
+                    <div class="terms-item">
+                        <label class="terms-label">i. Trade Value:</label>
+                        <input type="text" id="tradeValue" name="tradeValue" class="currency-input" placeholder="$0.00">
+                    </div>
+                    
+                    <div class="terms-item">
+                        <label class="terms-label">j. Trade Payoff:</label>
+                        <input type="text" id="tradePayoff" name="tradePayoff" class="currency-input" placeholder="$0.00">
+                    </div>
+                    
+                    <div class="terms-item">
+                        <label class="terms-label">k. Net Trade Value:</label>
+                        <input type="text" id="netTradeValue" name="netTradeValue" class="currency-input" readonly>
+                    </div>
+                    
+                    <div class="terms-full-row">
+                        <div class="terms-item" style="flex: 1;">
+                            <label class="terms-total">m. Total Down: (Sum h:k)</label>
+                            <input type="text" id="totalDown" name="totalDown" class="currency-input" readonly>
+                        </div>
+                        
+                        <div class="terms-item" style="flex: 1;">
+                            <div class="terms-amount-financed">
+                                <span>Amount Financed (l-m):</span>
+                                <input type="text" id="amountFinanced" name="amountFinanced" class="currency-input" style="width: 150px;" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-row" style="justify-content: center; margin-top: 30px;">
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </div>
+        
+        
+        <div class="footer">
+            Form provided by pinnacleautofinance.com — brokered financing solutions portal.  | Visit www.pinnacleautofinance.com or call 786.731.8493 to learn more
+        </div>
+    </div>
+
+    <script>
+        // Document ready function
+        document.addEventListener('DOMContentLoaded', function() {
+            // Format currency inputs
+            const formatCurrency = (input) => {
+                // Remove all non-digit characters except decimal point
+                let value = input.value.replace(/[^\d.]/g, '');
+
+                // Ensure only one decimal point
+                const parts = value.split('.');
+                if (parts.length > 2) {
+                    value = parts[0] + '.' + parts.slice(1).join('');
+                }
+
+                // Limit to 2 decimal places
+                if (parts.length > 1) {
+                    value = parts[0] + '.' + parts[1].slice(0, 2);
+                }
+
+                // Format with commas for thousands
+                if (value) {
+                    const num = parseFloat(value);
+                    if (!isNaN(num)) {
+                        value = num.toLocaleString('en-US', {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2
+                        });
+                    }
+                }
+
+                // Add dollar sign
+                input.value = value ? '$' + value : '';
+            };
+
+            // Add event listeners to currency inputs
+            document.querySelectorAll('.currency-input').forEach(input => {
+                input.addEventListener('blur', function() {
+                    formatCurrency(this);
+                });
+
+                input.addEventListener('focus', function() {
+                    // Remove formatting for editing
+                    this.value = this.value.replace(/[$,]/g, '');
+                });
+            });
+
+            // Calculations for total price and amount financed
+            const calculateTotals = () => {
+                // Helper to parse currency value
+                const parseCurrency = (value) => {
+                    return parseFloat(value.replace(/[$,]/g, '')) || 0;
+                };
+
+                // Helper to parse percentage value
+                const parsePercentage = (value) => {
+                    return parseFloat(value.replace(/[%]/g, '')) / 100 || 0;
+                };
+
+                // Get values for price calculation
+                const sellingPrice = parseCurrency(document.getElementById('sellingPrice').value);
+                const warranty = parseCurrency(document.getElementById('warranty').value);
+                const gap = parseCurrency(document.getElementById('gap').value);
+                const other = parseCurrency(document.getElementById('other').value);
+                const docFees = parseCurrency(document.getElementById('docFees').value);
+                const titleFees = parseCurrency(document.getElementById('titleFees').value);
+
+                // Calculate Net Trade Value first (needed for tax calculation)
+                const tradeValue = parseCurrency(document.getElementById('tradeValue').value);
+                const tradePayoff = parseCurrency(document.getElementById('tradePayoff').value);
+                const netTradeValue = tradeValue - tradePayoff;
+                const netTradeValueInput = document.getElementById('netTradeValue');
+                netTradeValueInput.value = '$' + netTradeValue.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+
+                // Calculate taxes based on tax rate and (selling price - net trade value)
+                const taxRate = parsePercentage(document.getElementById('taxRate').value);
+                const taxableAmount = sellingPrice + warranty + gap + other;
+                const taxes = taxableAmount * taxRate;
+
+                // Update taxes field
+                const taxesInput = document.getElementById('taxes');
+                taxesInput.value = '$' + taxes.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+
+                // Calculate Total Price (Sum a:g)
+                const totalPrice = sellingPrice + warranty + gap + other + taxes + docFees + titleFees;
+                const totalPriceInput = document.getElementById('totalPrice');
+                totalPriceInput.value = '$' + totalPrice.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+
+                // Calculate Total Down (Sum h:k)
+                const cashDown = parseCurrency(document.getElementById('cashDown').value);
+                const totalDown = cashDown + netTradeValue;
+                const totalDownInput = document.getElementById('totalDown');
+                totalDownInput.value = '$' + totalDown.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+
+                // Calculate Amount Financed (l - m)
+                const amountFinanced = totalPrice - totalDown;
+                const amountFinancedInput = document.getElementById('amountFinanced');
+                amountFinancedInput.value = '$' + amountFinanced.toLocaleString('en-US', {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                });
+            };
+
+            // Format tax rate input
+            const formatTaxRate = (input) => {
+                // Remove all non-digit characters except decimal point
+                let value = input.value.replace(/[^\d.]/g, '');
+
+                // Ensure only one decimal point
+                const parts = value.split('.');
+                if (parts.length > 2) {
+                    value = parts[0] + '.' + parts.slice(1).join('');
+                }
+
+                // Add percentage sign
+                input.value = value ? value + '%' : '';
+
+                // Recalculate totals when tax rate changes
+                calculateTotals();
+            };
+
+            // Add event listener to tax rate input
+            const taxRateInput = document.getElementById('taxRate');
+            taxRateInput.addEventListener('blur', function() {
+                formatTaxRate(this);
+            });
+
+            taxRateInput.addEventListener('focus', function() {
+                // Remove formatting for editing
+                this.value = this.value.replace(/%/g, '');
+            });
+
+            // Add event listeners to all calculation inputs
+            const calculationInputs = document.querySelectorAll('.terms-grid input:not([readonly])');
+            calculationInputs.forEach(input => {
+                input.addEventListener('input', calculateTotals);
+                input.addEventListener('blur', calculateTotals);
+            });
+
+            // Initialize calculations
+            calculateTotals();
+
+            // Add Borrower functionality
+            const addBorrowerBtn = document.getElementById('addBorrowerBtn');
+            const borrower2Container = document.getElementById('borrower2Container');
+
+            addBorrowerBtn.addEventListener('click', function() {
+                // Clone the borrower sections from borrower 1
+                const personalSection = document.querySelector('.borrower-personal-section').cloneNode(true);
+                const addressSection = document.querySelector('.borrower-address-section').cloneNode(true);
+                const employmentSection = document.querySelector('.borrower-employment-section').cloneNode(true);
+                const financialSection = document.querySelector('.borrower-financial-section').cloneNode(true);
+
+                // Update the IDs, names, and labels for borrower 2
+                updateElementsForBorrower2(personalSection);
+                updateElementsForBorrower2(addressSection);
+                updateElementsForBorrower2(employmentSection);
+                updateElementsForBorrower2(financialSection);
+
+                // Create a container for borrower 2
+                borrower2Container.innerHTML = '';
+
+                // Create header
+                const header = document.createElement('div');
+                header.className = 'borrower-header';
+                header.textContent = 'Co-Borrower';
+                borrower2Container.appendChild(header);
+
+                // Append the cloned and updated sections
+                borrower2Container.appendChild(personalSection);
+                borrower2Container.appendChild(addressSection);
+                borrower2Container.appendChild(employmentSection);
+                borrower2Container.appendChild(financialSection);
+
+                // Show the borrower 2 container
+                borrower2Container.style.display = 'block';
+
+                // Hide the Add Borrower button once it's been added
+                document.getElementById('addBorrowerButtonContainer').style.display = 'none';
+
+                // Reinitialize currency formatting for new inputs
+                document.querySelectorAll('#borrower2Container .currency-input').forEach(input => {
+                    input.addEventListener('blur', function() {
+                        formatCurrency(this);
+                    });
+
+                    input.addEventListener('focus', function() {
+                        this.value = this.value.replace(/[$,]/g, '');
+                    });
+                });
+            });
+
+            // Function to update elements for borrower 2
+            function updateElementsForBorrower2(section) {
+                // Update section title
+                const title = section.querySelector('h3');
+                if (title) {
+                    title.textContent = 'Co-Borrower ' + title.textContent;
+                }
+
+                // Update form field IDs, names, and labels
+                const inputs = section.querySelectorAll('input, select, textarea');
+                inputs.forEach(input => {
+                    if (input.id) {
+                        const newId = 'borrower2_' + input.id;
+
+                        // Update associated labels
+                        const labels = section.querySelectorAll(`label[for="${input.id}"]`);
+                        labels.forEach(label => {
+                            label.setAttribute('for', newId);
+                        });
+
+                        // Update input ID
+                        input.id = newId;
+                    }
+
+                    // Update input name
+                    if (input.name && input.name.startsWith('borrower1_')) {
+                        input.name = input.name.replace('borrower1_', 'borrower2_');
+                    } else if (input.type === 'radio' && input.name) {
+                        input.name = 'borrower2_' + input.name;
+                    }
+
+                    // Clear any values
+                    if (input.type !== 'radio' && input.type !== 'checkbox') {
+                        input.value = '';
+                    } else {
+                        input.checked = false;
+                    }
+                });
+            }
+
+            // Function to validate different types of inputs
+            const validateInput = (input, type) => {
+                // Remove any previous validation styling
+                input.classList.remove('invalid-input');
+
+                // Get the parent form field to add error message
+                const formField = input.closest('.form-field');
+                if (formField) {
+                    // Remove any previous error message
+                    const existingError = formField.querySelector('.error-message');
+                    if (existingError) {
+                        existingError.remove();
+                    }
+                }
+
+                let isValid = true;
+                let errorMessage = '';
+
+                switch (type) {
+                    case 'required':
+                        // Special handling for dealerAttestation checkbox
+                        if (input.type === 'checkbox' && input.id === 'dealerAttestation') {
+                             if (!input.checked) {
+                                isValid = false;
+                                errorMessage = 'Dealer attestation is required';
+                             }
+                        } else if (!input.value.trim()) { // Original check for other inputs
+                            isValid = false;
+                            errorMessage = 'This field is required';
+                        }
+                        break;
+
+                    case 'phone':
+                        // Basic phone validation - allows various formats
+                        const phoneRegex = /^[\d\s\-\(\)\.]+$/;
+                        // Only validate if there's a value, don't make phone required implicitly
+                        if (input.value && !phoneRegex.test(input.value)) {
+                            isValid = false;
+                            errorMessage = 'Please enter a valid phone number';
+                        }
+                        break;
+
+                    case 'email':
+                        // Basic email validation
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                         // Only validate if there's a value, don't make email required implicitly
+                        if (input.value && !emailRegex.test(input.value)) {
+                            isValid = false;
+                            errorMessage = 'Please enter a valid email address';
+                        }
+                        break;
+
+                    case 'ssn':
+                        // SSN validation (XXX-XX-XXXX or just digits)
+                        const ssnValue = input.value.replace(/[\s\-]/g, '');
+                         // Only validate if there's a value, don't make SSN required implicitly
+                        if (input.value && !/^\d{9}$/.test(ssnValue)) {
+                            isValid = false;
+                            errorMessage = 'Please enter a valid SSN (XXX-XX-XXXX)';
+                        }
+                        break;
+
+                    case 'date':
+                        // Date validation - Check if required, then check validity
+                        const isDateRequired = input.hasAttribute('required'); // Check if the date field itself is marked required
+                        if (isDateRequired && !input.value) {
+                            isValid = false;
+                            errorMessage = 'Please enter a valid date';
+                        } else if (input.value && isNaN(Date.parse(input.value))) { // Check if non-empty value is a valid date
+                             isValid = false;
+                             errorMessage = 'Please enter a valid date format';
+                        }
+                        break;
+
+                    case 'currency':
+                        // Currency validation already handled by formatCurrency - check if required maybe?
+                         const isCurrencyRequired = input.hasAttribute('required');
+                         if (isCurrencyRequired && !input.value.replace(/[$,]/g,'').trim()) {
+                            isValid = false;
+                            errorMessage = 'This field is required';
+                         }
+                        break;
+                }
+
+                // If invalid, add error styling and message
+                if (!isValid) {
+                    input.classList.add('invalid-input');
+
+                    if (formField && errorMessage) {
+                        const errorElement = document.createElement('div');
+                        errorElement.className = 'error-message';
+                        errorElement.style.color = 'red';
+                        errorElement.style.fontSize = '12px';
+                        errorElement.style.marginTop = '4px';
+                        errorElement.textContent = errorMessage;
+                        // Prevent adding multiple error messages
+                        if (!formField.querySelector('.error-message')) {
+                            formField.appendChild(errorElement);
+                        }
+                    }
+                }
+
+                return isValid;
+            };
+
+            // Validate the entire form before submission (This can still run before the standard submission)
+            const validateForm = () => {
+                console.log('Validating form...'); // Debugging
+                let isValid = true;
+
+                 // --- Clear previous errors ---
+                 document.querySelectorAll('.invalid-input').forEach(el => el.classList.remove('invalid-input'));
+                 document.querySelectorAll('.error-message').forEach(el => el.remove());
+                 // ---
+
+                // Validate required fields explicitly marked as required
+                // Need to find the actual form element first
+                const formElement = document.getElementById('creditApplication');
+                if (!formElement) return false; // Should not happen
+
+                formElement.querySelectorAll('[required]').forEach(input => {
+                    console.log('Checking required:', input.name); // Debugging
+                    const fieldValid = validateInput(input, 'required');
+                    if (!fieldValid) {
+                         console.log('Invalid required field:', input.name); // Debugging
+                         isValid = false;
+                    }
+                });
+
+                // --- Add other specific validations as needed, but make them check if input has value first ---
+                // Example: Validate phone numbers ONLY if they have a value entered
+                 formElement.querySelectorAll('input[type="tel"]').forEach(input => {
+                    if (input.value.trim()) { // Only validate if not empty
+                        const fieldValid = validateInput(input, 'phone');
+                        if (!fieldValid) isValid = false;
+                    }
+                 });
+                 // Example: Validate emails ONLY if they have a value entered
+                 formElement.querySelectorAll('input[type="email"]').forEach(input => {
+                     if (input.value.trim()) { // Only validate if not empty
+                         const fieldValid = validateInput(input, 'email');
+                         if (!fieldValid) isValid = false;
+                     }
+                 });
+                 // Example: Validate SSN ONLY if they have a value entered
+                 formElement.querySelectorAll('#ssn, [id^="borrower2_ssn"]').forEach(input => {
+                     if (input.value.trim()) { // Only validate if not empty
+                         const fieldValid = validateInput(input, 'ssn');
+                         if (!fieldValid) isValid = false;
+                     }
+                 });
+                 // Example: Validate dates ONLY if they have a value entered (unless required)
+                 formElement.querySelectorAll('input[type="date"]').forEach(input => {
+                     // Required check is handled above, here check format if value exists
+                     if (input.value && !input.hasAttribute('required')) {
+                         const fieldValid = validateInput(input, 'date');
+                         if (!fieldValid) isValid = false;
+                     }
+                 });
+
+                 console.log('Form validation result:', isValid); // Debugging
+                return isValid;
+            };
+
+
+            // --- ADD A LISTENER TO THE FORM TO RUN VALIDATION BEFORE STANDARD SUBMIT ---
+            const creditAppForm = document.getElementById('creditApplication');
+            if (creditAppForm) {
+                creditAppForm.addEventListener('submit', function(event) {
+                    // Run validation
+                    const isFormValid = validateForm();
+
+                    // If validation fails, *then* prevent the default submission
+                    if (!isFormValid) {
+                        event.preventDefault(); // Stop the submission because validation failed
+
+                        // Scroll to the first invalid input
+                        const firstInvalidInput = document.querySelector('.invalid-input');
+                        if (firstInvalidInput) {
+                            firstInvalidInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            firstInvalidInput.focus();
+                        }
+                        alert('Please correct the errors highlighted in the form before submitting.');
+                    }
+                    // If isFormValid is true, this function finishes,
+                    // preventDefault() is NOT called, and the standard form submission proceeds.
+                });
+            }
+            // --- END OF NEW VALIDATION LISTENER ---
+
+
+            /* ======================================================================
+               START: The original custom submit handler is now COMMENTED OUT
+               ====================================================================== */
+            /*
+            // Form submission to database (Original custom handler - Disabled)
+            document.getElementById('creditApplication').addEventListener('submit', function(e) {
+                // e.preventDefault(); // This was preventing the default submission
+
+                // Validate the form (This validation logic is now moved above)
+                // const isValid = validateForm();
+                // ... rest of validation checking ...
+
+                // Collect form data (No longer needed here)
+                // const formData = new FormData(this);
+                // ... rest of data collection ...
+
+                // Send to server (simulated) (No longer needed here)
+                // console.log('Submitting form data to database:', jsonData);
+
+                // alert('Application submitted successfully! ...'); // No longer needed here
+            });
+            */
+            /* ======================================================================
+               END: COMMENT OUT BLOCK
+               ====================================================================== */
+
+
+        }); // End of DOMContentLoaded
+    </script>
+</body>
+</html>
