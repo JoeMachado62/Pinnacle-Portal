@@ -1,0 +1,12 @@
+dbaeumer.vscode-eslint
+esbenp.prettier-vscode
+ckolkman.vscode-postgres
+ms-azuretools.vscode-docker
+eamodio.gitlens
+humao.rest-client
+orta.vscode-jest
+msjsdiag.debugger-for-chrome
+mikestead.dotenv
+christian-kohler.path-intellisense
+formulahendry.auto-rename-tag
+christian-kohler.npm-intellisense
