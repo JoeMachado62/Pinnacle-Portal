@@ -1,0 +1,29 @@
+{
+  "collectionName": "dealer_staffs",
+  "info": {
+    "name": "dealer_staff",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false,
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "position": {
+      "type": "string"
+    },
+    "permissions": {
+      "type": "json"
+    },
+    "dealer": {
+      "model": "dealer",
+      "via": "dealer_staffs"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user"
+    }
+  }
+}

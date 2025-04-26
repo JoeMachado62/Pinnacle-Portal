@@ -1,13 +1,11 @@
 1. System Architecture Overview
 The Pinnacle Auto Finance Dealer Portal will be built using a multi-tier architecture that separates concerns while providing a scalable and maintainable system:
 1.1 Architecture Layers
-
 Presentation Layer
 
 React-based frontend for dealers and administrators
 Progressive Web App capabilities for mobile responsiveness
 Component-based design for reusability
-
 
 Application Layer
 
@@ -15,13 +13,12 @@ Strapi CMS providing API endpoints, authentication, and business logic
 Custom Strapi plugins for specific business needs
 Middleware for API Gateway functionality
 
-
 Integration Layer
 
-DealerTrack API integration services
-Webhook handlers for external notifications
-Message queue for asynchronous processing
-
+Chrome Extension for DealerTrack Integration (replacing direct DealerTrack API integration)
+Form data mapping and transformation
+Bidirectional data flow between Pinnacle Portal and DealerTrack
+Hidden embedded form page for integration processing
 
 Data Layer
 
@@ -29,19 +26,17 @@ PostgreSQL database for structured data
 Strapi Storage for document management
 Caching layer for performance optimization
 
-
-
 1.2 System Interaction Flow
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│  Dealer UI  │◄───►│ Strapi API  │◄───►│Integration  │◄───►│ DealerTrack │
-│  Admin UI   │     │ Controllers │     │  Services   │     │    APIs     │
-└─────────────┘     └─────────────┘     └─────────────┘     └─────────────┘
-                           ▲                   ▲
-                           │                   │
-                           ▼                   │
-                    ┌─────────────┐           │
-                    │ PostgreSQL  │◄──────────┘
-                    │  Database   │
+┌─────────────┐     ┌─────────────┐     ┌──────────────┐     ┌─────────────┐
+│  Dealer UI  │◄───►│ Strapi API  │◄───►│ Chrome       │◄───►│ DealerTrack │
+│  Admin UI   │     │ Controllers │     │ Extension    │     │ Embedded    │
+└─────────────┘     └─────────────┘     └──────────────┘     │ Form        │
+                           ▲                   ▲             └─────────────┘
+                           │                   │                    ▲
+                           ▼                   │                    │
+                    ┌─────────────┐           │                    │
+                    │ PostgreSQL  │◄──────────┘                    │
+                    │  Database   │◄───────────────────────────────┘
                     └─────────────┘
 2. Technical Stack
 2.1 Frontend Technologies
@@ -63,14 +58,21 @@ Server-side Language: Node.js
 Process Management: PM2
 Testing: Jest, Supertest
 
-2.3 Database
+2.3 Integration Technologies
+
+Chrome Extension: JavaScript-based browser extension
+Browser Integration: Chrome Extension API
+Data Transformation: Lodash
+Error Handling: Custom retry and logging system
+
+2.4 Database
 
 RDBMS: PostgreSQL 13+
 ORM: Strapi's built-in ORM (Bookshelf/Knex)
 Migration Tool: Knex migrations
 Backup Strategy: Automated daily backups with point-in-time recovery
 
-2.4 Infrastructure
+2.5 Infrastructure
 
 Hosting: Cloud-based (AWS, GCP, or Digital Ocean)
 Container Management: Docker and Docker Compose
@@ -101,7 +103,7 @@ sqlCREATE TABLE dealers (
   phone VARCHAR(50),
   status VARCHAR(50) NOT NULL,
   approval_date TIMESTAMP WITH TIME ZONE,
-  dealertrack_id VARCHAR(100),
+  dealertrack_dealer_id VARCHAR(100),
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
@@ -115,41 +117,37 @@ sqlCREATE TABLE dealer_staff (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
-Deals Table
-sqlCREATE TABLE deals (
+Credit Applications Table
+sqlCREATE TABLE credit_applications (
   id SERIAL PRIMARY KEY,
   dealer_id INTEGER REFERENCES dealers(id) ON DELETE CASCADE,
-  customer_id INTEGER REFERENCES customers(id),
-  vehicle_id INTEGER REFERENCES vehicles(id),
   status VARCHAR(50) NOT NULL,
-  deal_type VARCHAR(50) NOT NULL,
-  dealertrack_reference VARCHAR(100),
-  total_amount DECIMAL(12,2),
+  application_data JSONB NOT NULL,
+  vehicle_data JSONB NOT NULL,
+  financial_data JSONB NOT NULL,
   submission_date TIMESTAMP WITH TIME ZONE,
-  approval_date TIMESTAMP WITH TIME ZONE,
-  completion_date TIMESTAMP WITH TIME ZONE,
+  last_processed_date TIMESTAMP WITH TIME ZONE,
+  processing_status VARCHAR(50) DEFAULT 'pending',
+  processing_notes TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
-3.2 Supporting Tables
 Documents Table
 sqlCREATE TABLE documents (
   id SERIAL PRIMARY KEY,
-  deal_id INTEGER REFERENCES deals(id) ON DELETE CASCADE,
+  credit_application_id INTEGER REFERENCES credit_applications(id) ON DELETE CASCADE,
   name VARCHAR(255) NOT NULL,
   type VARCHAR(100) NOT NULL,
   status VARCHAR(50) NOT NULL,
   storage_path VARCHAR(255),
-  dealertrack_reference VARCHAR(100),
   thumbnail_path VARCHAR(255),
-  signing_coordinates JSONB,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 Communications Table
 sqlCREATE TABLE communications (
   id SERIAL PRIMARY KEY,
-  deal_id INTEGER REFERENCES deals(id) ON DELETE CASCADE,
+  credit_application_id INTEGER REFERENCES credit_applications(id) ON DELETE CASCADE,
   sender_id INTEGER REFERENCES users(id),
   sender_type VARCHAR(50) NOT NULL,
   message TEXT NOT NULL,
@@ -157,40 +155,28 @@ sqlCREATE TABLE communications (
   read_status BOOLEAN DEFAULT FALSE,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
-Deal History Table
-sqlCREATE TABLE deal_history (
+Application History Table
+sqlCREATE TABLE application_history (
   id SERIAL PRIMARY KEY,
-  deal_id INTEGER REFERENCES deals(id) ON DELETE CASCADE,
+  credit_application_id INTEGER REFERENCES credit_applications(id) ON DELETE CASCADE,
   user_id INTEGER REFERENCES users(id),
   action VARCHAR(100) NOT NULL,
   details JSONB,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
-DealerTrack Mappings Table
-sqlCREATE TABLE dealertrack_mappings (
+Automation Jobs Table
+sqlCREATE TABLE automation_jobs (
   id SERIAL PRIMARY KEY,
-  deal_id INTEGER REFERENCES deals(id) ON DELETE CASCADE,
-  application_id VARCHAR(100),
-  decision_status VARCHAR(50),
-  lender_references JSONB,
-  last_updated TIMESTAMP WITH TIME ZONE,
+  credit_application_id INTEGER REFERENCES credit_applications(id) ON DELETE CASCADE,
+  status VARCHAR(50) NOT NULL,
+  scheduled_time TIMESTAMP WITH TIME ZONE,
+  completed_time TIMESTAMP WITH TIME ZONE,
+  attempt_count INTEGER DEFAULT 0,
+  last_error TEXT,
+  result_log TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
-3.3 Database Indexing Strategy
-sql-- Primary search patterns
-CREATE INDEX idx_deals_dealer_id ON deals(dealer_id);
-CREATE INDEX idx_deals_status ON deals(status);
-CREATE INDEX idx_documents_deal_id ON documents(deal_id);
-CREATE INDEX idx_communications_deal_id ON communications(deal_id);
-CREATE INDEX idx_dealer_staff_dealer_id ON dealer_staff(dealer_id);
-CREATE INDEX idx_dealer_staff_user_id ON dealer_staff(user_id);
-CREATE INDEX idx_dealertrack_mappings_deal_id ON dealertrack_mappings(deal_id);
-
--- Composite indexes for common queries
-CREATE INDEX idx_deals_dealer_status ON deals(dealer_id, status);
-CREATE INDEX idx_deals_date_range ON deals(created_at);
-CREATE INDEX idx_documents_type_status ON documents(type, status);
 4. API Design
 4.1 RESTful API Endpoints
 Authentication APIs
@@ -207,135 +193,308 @@ DELETE /api/dealers/:id            # Delete dealer
 GET    /api/dealers/:id/staff      # List dealer staff
 POST   /api/dealers/:id/staff      # Add staff member
 GET    /api/dealers/:id/dashboard  # Get dashboard data
-Deal Management APIs
-GET    /api/deals                  # List deals
-POST   /api/deals                  # Create deal
-GET    /api/deals/:id              # Get deal details
-PUT    /api/deals/:id              # Update deal
-DELETE /api/deals/:id              # Delete deal
-POST   /api/deals/:id/submit       # Submit deal to DealerTrack
-GET    /api/deals/:id/status       # Get deal status
-POST   /api/deals/:id/documents    # Upload documents
-GET    /api/deals/:id/documents    # List documents
-GET    /api/deals/:id/communications # Get communication history
-POST   /api/deals/:id/communications # Add message
+Credit Application Management APIs
+GET    /api/credit-applications            # List applications
+POST   /api/credit-applications            # Create application
+GET    /api/credit-applications/:id        # Get application details
+PUT    /api/credit-applications/:id        # Update application
+DELETE /api/credit-applications/:id        # Delete application
+POST   /api/credit-applications/:id/submit # Submit for processing
+GET    /api/credit-applications/:id/status # Get processing status
+POST   /api/credit-applications/:id/documents # Upload documents
+GET    /api/credit-applications/:id/documents # List documents
+GET    /api/credit-applications/:id/communications # Get communication history
+POST   /api/credit-applications/:id/communications # Add message
 Admin APIs
-GET    /api/admin/deals            # Administrative deal list
-POST   /api/admin/deals/:id/review # Review deal
-POST   /api/admin/deals/:id/publish # Publish decision
-GET    /api/admin/dealers          # Administrative dealer list
-POST   /api/admin/dealers/:id/approve # Approve dealer
-GET    /api/admin/reports          # Get reports
-4.2 DealerTrack Integration APIs
-Credit Application APIs
-POST   /api/dealertrack/application/submit  # Submit application
-PUT    /api/dealertrack/application/update  # Update application
-GET    /api/dealertrack/application/status  # Check status
-GET    /api/dealertrack/application/decision # Get decision
-Document APIs
-POST   /api/dealertrack/documents/upload    # Upload documents
-GET    /api/dealertrack/documents/retrieve  # Retrieve documents
-GET    /api/dealertrack/documents/thumbnail # Get thumbnails
-POST   /api/dealertrack/documents/sign      # Sign documents
-Webhook Handlers
-POST   /api/webhooks/dealertrack/decision   # Decision notifications
-POST   /api/webhooks/dealertrack/document   # Document notifications
-POST   /api/webhooks/dealertrack/status     # Status updates
-5. DealerTrack API Integration
-5.1 Integration Approach
-The integration with DealerTrack will use a combination of RESTful API calls and webhook handlers to maintain bidirectional data synchronization:
-5.1.1 Data Flow to DealerTrack
+GET    /api/admin/credit-applications      # Administrative application list
+POST   /api/admin/credit-applications/:id/review # Review application
+POST   /api/admin/credit-applications/:id/process # Manually trigger processing
+GET    /api/admin/dealers                  # Administrative dealer list
+POST   /api/admin/dealers/:id/approve      # Approve dealer
+GET    /api/admin/reports                  # Get reports
+GET    /api/admin/automation-jobs          # List automation jobs
+POST   /api/admin/automation-jobs/:id/retry # Retry failed job
+5. Chrome Extension Integration Implementation
+5.1 Integration Architecture
+The Chrome Extension integration system will consist of several components:
 
-Credit applications submitted through Strapi
-Document uploads via DealerTrack Document API
-Vehicle inventory additions through DealerTrack inventory API
+Chrome Extension: Installed by dealers and finance admins to facilitate DealerTrack integration
+Hidden Embedded Form Page: A page that embeds the DealerTrack form using their embedding suite
+Form Data Mapping Layer: Transforms our application schema to match DealerTrack fields
+API Endpoints: Allow the extension to retrieve and update data in our system
+Error Handling & Retry System: Manages failures and provides visibility
 
-5.1.2 Data Flow from DealerTrack
-
-Application status updates and decisions
-Generated documents and forms
-Lender communications and stipulations
-
-5.2 Authentication Strategy
-javascript// Example authentication implementation
-const getDealerTrackToken = async () => {
-  try {
-    const response = await axios.post(
-      `${process.env.DEALERTRACK_API_URL}/auth/token`,
-      {
-        client_id: process.env.DEALERTRACK_CLIENT_ID,
-        client_secret: process.env.DEALERTRACK_CLIENT_SECRET,
-        grant_type: 'client_credentials'
-      }
-    );
-    
-    return response.data.access_token;
-  } catch (error) {
-    console.error('Failed to get DealerTrack token:', error);
-    throw new Error('Authentication with DealerTrack failed');
-  }
-};
-5.3 Webhook Implementation
-javascript// Example webhook handler for DealerTrack decisions
-module.exports = async (ctx) => {
-  try {
-    // Verify webhook authenticity
-    const signature = ctx.request.header['x-dealertrack-signature'];
-    const isValid = verifySignature(ctx.request.body, signature);
-    
-    if (!isValid) {
-      return ctx.badRequest('Invalid webhook signature');
-    }
-    
-    const { applicationId, decisionStatus, lenderData } = ctx.request.body;
-    
-    // Find corresponding deal
-    const mapping = await strapi.query('dealertrack-mapping').findOne({ applicationId });
-    
-    if (!mapping) {
-      return ctx.notFound('Application not found');
-    }
-    
-    // Store response in admin-only collection (pending review)
-    await strapi.query('pending-review').create({
-      dealId: mapping.dealId,
-      dealerId: mapping.dealerId,
-      source: 'dealertrack',
-      data: ctx.request.body,
-      status: 'pending'
-    });
-    
-    // Update application mapping status
-    await strapi.query('dealertrack-mapping').update(
-      { id: mapping.id },
-      { 
-        decisionStatus,
-        lenderReferences: lenderData,
-        lastUpdated: new Date()
-      }
-    );
-    
-    // Notify admins about new response
-    await strapi.services.notification.notifyAdmins({
-      type: 'decision',
-      dealId: mapping.dealId,
-      message: `New ${decisionStatus} decision received for deal #${mapping.dealId}`
-    });
-    
-    return ctx.send({ success: true });
-  } catch (error) {
-    console.error('Webhook handling error:', error);
-    return ctx.badRequest('Failed to process webhook');
-  }
+5.2 Integration Workflow
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│ Application │────►│ Strapi API  │────►│  Hidden     │
+│  Submitted  │     │  Endpoints  │     │  Form Page  │
+└─────────────┘     └─────────────┘     └─────────────┘
+                           │                   ▲
+                           ▼                   │
+                    ┌─────────────┐     ┌─────────────┐
+                    │   Chrome    │◄───►│ DealerTrack │
+                    │  Extension  │     │ Embedded    │
+                    └─────────────┘     │ Form        │
+                           ▲            └─────────────┘
+                           │                   ▲
+                           ▼                   │
+                    ┌─────────────┐           │
+                    │ PostgreSQL  │◄──────────┘
+                    │  Database   │
+                    └─────────────┘
+5.3 Form Field Mapping
+The system will maintain a comprehensive mapping between our database schema and DealerTrack form fields:
+javascript// Example field mapping configuration
+const fieldMapping = {
+  // Applicant Information
+  'borrower1_applicant': '#applicant',
+  'borrower1_dob': '#dob',
+  'borrower1_ssn': '#ssn',
+  'borrower1_driversLicense': '#driversLicense',
+  
+  // Contact Information
+  'borrower1_homePhone': '#homePhone',
+  'borrower1_workPhone': '#workPhone',
+  'borrower1_cellPhone': '#cellPhone',
+  'borrower1_email': '#email',
+  
+  // Address Information
+  'borrower1_currentAddress': '#currentAddress',
+  
+  // Vehicle Information
+  'vehicleYear': '#vehicleYear',
+  'vehicleMakeModel': '#vehicleMakeModel',
+  'vehicleVIN': '#vehicleVIN',
+  
+  // Financial Information
+  'sellingPrice': '#sellingPrice',
+  
+  // ... additional field mappings
 };
 5.4 Error Handling Strategy
 
-Retry mechanism for failed API calls
-Fallback polling system for missed webhooks
-Comprehensive error logging and monitoring
-Admin notification for critical failures
-Manual reconciliation tools for data discrepancies
+Comprehensive logging of all automation steps
+Screenshot capture at point of failure
+Retry mechanism with exponential backoff
+Admin notifications for persistent failures
+Manual intervention capabilities
 
+5.5 Chrome Extension Code Example
+javascript// Example Chrome Extension content script (simplified)
+// This script runs in the context of the hidden form page with the DealerTrack iframe
+
+// Field mapping configuration
+const fieldMapping = {
+  // Applicant Information
+  'borrower1_applicant': '#applicant',
+  'borrower1_dob': '#dob',
+  'borrower1_ssn': '#ssn',
+  // ... additional field mappings
+};
+
+// Listen for messages from the extension background script
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === 'fillForm') {
+    fillDealerTrackForm(message.applicationData)
+      .then(result => sendResponse({ success: true, result }))
+      .catch(error => sendResponse({ success: false, error: error.message }));
+    return true; // Indicates async response
+  } else if (message.action === 'scrapeData') {
+    scrapeDealerTrackData()
+      .then(data => sendResponse({ success: true, data }))
+      .catch(error => sendResponse({ success: false, error: error.message }));
+    return true; // Indicates async response
+  }
+});
+
+// Function to fill the DealerTrack form
+async function fillDealerTrackForm(applicationData) {
+  try {
+    // Get the iframe containing the DealerTrack form
+    const iframe = document.querySelector('iframe[src*="dealertrack.com"]');
+    if (!iframe) throw new Error('DealerTrack iframe not found');
+    
+    // Access the iframe content
+    const iframeContent = iframe.contentDocument || iframe.contentWindow.document;
+    
+    // Fill form fields based on mapping
+    for (const [fieldKey, selector] of Object.entries(fieldMapping)) {
+      const value = getNestedValue(applicationData, fieldKey);
+      if (value) {
+        const element = iframeContent.querySelector(selector);
+        if (element) {
+          element.value = value;
+          // Trigger change event to activate any listeners
+          element.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }
+    }
+    
+    // Handle multi-step form process
+    const continueButtons = iframeContent.querySelectorAll('button.continue-button');
+    if (continueButtons.length > 0) {
+      // Click through each continue button
+      for (let i = 0; i < continueButtons.length; i++) {
+        continueButtons[i].click();
+        // Wait for next page to load
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+    }
+    
+    // Submit the form
+    const submitButton = iframeContent.querySelector('button[type="submit"]');
+    if (submitButton) {
+      submitButton.click();
+      
+      // Wait for confirmation
+      return new Promise((resolve, reject) => {
+        const checkConfirmation = setInterval(() => {
+          const confirmationElement = iframeContent.querySelector('.confirmation-message');
+          if (confirmationElement) {
+            clearInterval(checkConfirmation);
+            resolve('Form submitted successfully');
+          }
+        }, 500);
+        
+        // Timeout after 30 seconds
+        setTimeout(() => {
+          clearInterval(checkConfirmation);
+          reject(new Error('Timeout waiting for form submission confirmation'));
+        }, 30000);
+      });
+    }
+    
+    return 'Form filled successfully';
+  } catch (error) {
+    console.error('Error filling DealerTrack form:', error);
+    throw error;
+  }
+}
+
+// Function to scrape data from the DealerTrack form
+async function scrapeDealerTrackData() {
+  try {
+    // Get the iframe containing the DealerTrack form
+    const iframe = document.querySelector('iframe[src*="dealertrack.com"]');
+    if (!iframe) throw new Error('DealerTrack iframe not found');
+    
+    // Access the iframe content
+    const iframeContent = iframe.contentDocument || iframe.contentWindow.document;
+    
+    // Create a reverse mapping to extract data
+    const reverseMapping = {};
+    for (const [key, selector] of Object.entries(fieldMapping)) {
+      reverseMapping[selector] = key;
+    }
+    
+    // Extract data from the form
+    const extractedData = {};
+    for (const [selector, key] of Object.entries(reverseMapping)) {
+      const element = iframeContent.querySelector(selector);
+      if (element) {
+        extractedData[key] = element.value;
+      }
+    }
+    
+    // Extract status information if available
+    const statusElement = iframeContent.querySelector('.status-indicator');
+    if (statusElement) {
+      extractedData.status = statusElement.textContent.trim();
+    }
+    
+    return extractedData;
+  } catch (error) {
+    console.error('Error scraping DealerTrack data:', error);
+    throw error;
+  }
+}
+
+// Helper function to get nested values from object
+function getNestedValue(obj, path) {
+  return path.split('.').reduce((prev, curr) => 
+    prev && prev[curr] ? prev[curr] : null, obj
+  );
+}
+
+// Background script (background.js)
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === 'processApplication') {
+    processApplication(message.applicationId)
+      .then(result => sendResponse({ success: true, result }))
+      .catch(error => sendResponse({ success: false, error: error.message }));
+    return true; // Indicates async response
+  }
+});
+
+// Function to process an application
+async function processApplication(applicationId) {
+  try {
+    // Fetch application data from our API
+    const response = await fetch(`${API_BASE_URL}/api/credit-applications/${applicationId}`);
+    if (!response.ok) throw new Error('Failed to fetch application data');
+    
+    const applicationData = await response.json();
+    
+    // Update processing status via API
+    await fetch(`${API_BASE_URL}/api/credit-applications/${applicationId}/status`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status: 'processing' })
+    });
+    
+    // Open the hidden form page in a new tab
+    const tab = await chrome.tabs.create({
+      url: `${API_BASE_URL}/hidden-form?applicationId=${applicationId}`,
+      active: false // Open in background
+    });
+    
+    // Wait for page to load
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    // Send message to content script to fill the form
+    const result = await chrome.tabs.sendMessage(tab.id, {
+      action: 'fillForm',
+      applicationData
+    });
+    
+    // Update application status based on result
+    if (result.success) {
+      await fetch(`${API_BASE_URL}/api/credit-applications/${applicationId}/status`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: 'submitted' })
+      });
+    } else {
+      await fetch(`${API_BASE_URL}/api/credit-applications/${applicationId}/status`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          status: 'error',
+          error: result.error
+        })
+      });
+    }
+    
+    // Close the tab
+    await chrome.tabs.remove(tab.id);
+    
+    return result;
+  } catch (error) {
+    console.error(`Error processing application ${applicationId}:`, error);
+    
+    // Update application status to error
+    await fetch(`${API_BASE_URL}/api/credit-applications/${applicationId}/status`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        status: 'error',
+        error: error.message
+      })
+    });
+    
+    throw error;
+  }
+}
 6. Security Architecture
 6.1 Authentication & Authorization
 
@@ -356,9 +515,7 @@ Regular security audits and penetration testing
 
 6.3 API Security
 
-OAuth 2.0 for DealerTrack API access
 API key management with rotation policy
-Request signing for webhooks
 Rate limiting to prevent abuse
 Input validation and sanitization
 CORS configuration
@@ -371,13 +528,13 @@ Regular security patching
 Data encryption for sensitive fields
 Database access logging and monitoring
 
-6.5 Secure Coding Practices
+6.5 Automation Security
 
-Static code analysis in CI/CD pipeline
-Dependency vulnerability scanning
-Regular security code reviews
-OWASP Top 10 mitigation strategies
-Secrets management using environment variables
+Credentials stored in secure environment variables
+Headless browser execution in isolated environment
+Network isolation for automation services
+Session timeout and automatic cleanup
+Limited access permissions to automation services
 
 7. Performance Optimization
 7.1 Database Optimization
@@ -404,12 +561,20 @@ Lazy loading of components
 Virtualization for large lists
 Performance monitoring and analytics
 
+7.4 Automation Performance
+
+Job queue prioritization
+Parallel processing capabilities
+Resource monitoring and scaling
+Scheduled execution during off-peak hours
+Performance metrics tracking
+
 8. Monitoring & Maintenance
 8.1 Application Monitoring
 
 Real-time error tracking and alerting
 Performance monitoring dashboard
-API integration health checks
+Automation job monitoring
 User experience monitoring
 Custom metrics for business KPIs
 
@@ -429,13 +594,13 @@ Load balancer metrics
 CDN performance
 Security monitoring
 
-8.4 Log Management
+8.4 Automation Monitoring
 
-Centralized logging system
-Log rotation and retention policies
-Log analysis for anomaly detection
-Audit logging for compliance
-Alert configuration for critical events
+Job success/failure rates
+Processing time metrics
+Error pattern analysis
+Resource utilization
+Automated alerts for systemic issues
 
 9. Deployment Strategy
 9.1 Environments
@@ -466,33 +631,78 @@ Rollback procedures
 Zero-downtime migration where possible
 
 10. Technical Challenges & Mitigations
-10.1 Integration Challenges
+10.1 Chrome Extension Integration Challenges
 
-Challenge: Complex data mapping between systems
-Mitigation: Create a flexible mapping layer with validation
-Challenge: Handling API rate limits and errors
-Mitigation: Implement retry mechanisms and queue system
-Challenge: Webhook reliability
-Mitigation: Add polling fallback system and manual sync options
+Challenge: DealerTrack form structure changes
+
+Mitigation: Regular monitoring of form structure and quick adaptation of the Chrome Extension
+
+
+Challenge: Chrome Extension distribution and updates
+
+Mitigation: Implement auto-update mechanism and clear installation instructions
+
+
+Challenge: Cross-browser compatibility
+
+Mitigation: Focus on Chrome initially, with potential for Edge compatibility (Chromium-based)
+
+
+Challenge: Handling validation errors during form submission
+
+Mitigation: Comprehensive error handling and field-specific validation in the extension
+
+
+Challenge: Session management and timeouts
+
+Mitigation: Leverage browser session management and implement timeout detection
+
+
 
 10.2 Performance Challenges
 
-Challenge: Handling large document uploads
-Mitigation: Chunked uploads with progress tracking
+Challenge: Processing large volumes of applications
+
+Mitigation: Queue-based processing with worker scaling
+
+
 Challenge: Database performance with high transaction volume
+
 Mitigation: Proper indexing, query optimization, and potential read replicas
+
+
 Challenge: UI responsiveness with complex data
+
 Mitigation: Pagination, virtualization, and optimized rendering
+
+
 
 10.3 Scaling Challenges
 
 Challenge: Handling increasing dealer count
+
 Mitigation: Horizontal scaling with load balancing
+
+
 Challenge: Database growth over time
+
 Mitigation: Partitioning and archiving strategies
+
+
 Challenge: Peak traffic handling
+
 Mitigation: Auto-scaling configuration and caching strategies
 
+
+
 11. Conclusion
-This architecture document provides a comprehensive technical blueprint for implementing the Pinnacle Auto Finance Dealer Portal. The architecture is designed with security, scalability, and maintainability as core principles. The PostgreSQL database schema, API design, and integration strategy with DealerTrack APIs form the foundation of a robust system that will support the business requirements outlined in the Design document.
-By following this architecture, the development team will be able to create a system that not only meets current needs but can also evolve to accommodate future growth and additional features.
+This revised architecture document provides a comprehensive technical blueprint for implementing the Pinnacle Auto Finance Dealer Portal using a Chrome Extension integration approach instead of direct DealerTrack API integration. The architecture is designed with security, scalability, and maintainability as core principles.
+
+By implementing our own credit application forms and using a Chrome Extension to interact with the embedded DealerTrack forms, we create a cost-effective solution that doesn't require expensive API licenses while still providing a seamless experience for dealers. The Chrome Extension approach offers several advantages over server-side automation:
+
+1. Bidirectional data flow between our system and DealerTrack
+2. Avoids CORS issues and automation blocking mechanisms
+3. Operates within the user's browser context for better performance
+4. Can handle the multi-step nature of DealerTrack forms more naturally
+
+This approach introduces the requirement for dealers to install a Chrome Extension, but offers significant benefits in terms of reliability, performance, and flexibility. The development team should focus on creating a user-friendly extension with robust error handling and clear installation instructions to ensure a smooth user experience.

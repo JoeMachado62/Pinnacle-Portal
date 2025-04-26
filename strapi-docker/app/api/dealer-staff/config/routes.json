@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/dealer-staffs",
+      "handler": "dealer-staff.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dealer-staffs/count",
+      "handler": "dealer-staff.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dealer-staffs/:id",
+      "handler": "dealer-staff.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/dealer-staffs",
+      "handler": "dealer-staff.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/dealer-staffs/:id",
+      "handler": "dealer-staff.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/dealer-staffs/:id",
+      "handler": "dealer-staff.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
