@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_borrower_employment_entries",
+  "info": {
+    "name": "EmploymentEntry",
+    "icon": "briefcase",
+    "description": "Single employment record component"
+  },
+  "options": {},
+  "attributes": {
+    "employerName": {
+      "type": "text"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "title": {
+      "type": "text"
+    },
+    "employerAddress": {
+      "type": "text"
+    },
+    "income": {
+      "type": "decimal"
+    },
+    "years": {
+      "type": "integer"
+    },
+    "months": {
+      "type": "integer"
+    }
+  }
+}

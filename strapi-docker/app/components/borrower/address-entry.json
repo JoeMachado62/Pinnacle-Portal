@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_borrower_address_entries",
+  "info": {
+    "name": "AddressEntry",
+    "icon": "home",
+    "description": "Single address record component"
+  },
+  "options": {},
+  "attributes": {
+    "address": {
+      "type": "text"
+    },
+    "addressType": {
+      "type": "enumeration",
+      "enum": [
+        "own",
+        "rent",
+        "other"
+      ]
+    },
+    "landlordInfo": {
+      "type": "text"
+    },
+    "years": {
+      "type": "integer"
+    },
+    "months": {
+      "type": "integer"
+    }
+  }
+}

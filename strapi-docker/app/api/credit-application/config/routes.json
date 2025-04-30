@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/credit-applications",
+      "handler": "credit-application.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/credit-applications/count",
+      "handler": "credit-application.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/credit-applications/:id",
+      "handler": "credit-application.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/credit-applications",
+      "handler": "credit-application.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/credit-applications/:id",
+      "handler": "credit-application.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/credit-applications/:id",
+      "handler": "credit-application.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

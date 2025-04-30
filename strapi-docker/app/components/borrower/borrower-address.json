@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_borrower_borrower_addresses",
+  "info": {
+    "name": "BorrowerAddress",
+    "icon": "address-book",
+    "description": "Borrower address information component"
+  },
+  "options": {},
+  "attributes": {
+    "current": {
+      "type": "component",
+      "repeatable": false,
+      "component": "borrower.address-entry"
+    },
+    "previous1": {
+      "type": "component",
+      "repeatable": false,
+      "component": "borrower.address-entry"
+    },
+    "previous2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "borrower.address-entry"
+    }
+  }
+}

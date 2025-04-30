@@ -1,0 +1,54 @@
+{
+  "kind": "collectionType",
+  "collectionName": "credit_applications",
+  "info": {
+    "name": "CreditApplication",
+    "description": "Credit application form data"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "dealer_name": {
+      "type": "text"
+    },
+    "dealerTelephone": {
+      "type": "string"
+    },
+    "dealerContact": {
+      "type": "text"
+    },
+    "vehicleInformation": {
+      "type": "component",
+      "repeatable": false,
+      "component": "vehicle.vehicle"
+    },
+    "termsInformation": {
+      "type": "component",
+      "repeatable": false,
+      "component": "financial.terms"
+    },
+    "borrowers": {
+      "type": "component",
+      "repeatable": true,
+      "component": "borrower.borrower-information",
+      "min": 1,
+      "max": 2
+    },
+    "dealerAttestation": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "signatureDate": {
+      "type": "date",
+      "required": true
+    },
+    "dealer": {
+      "model": "dealer"
+    }
+  }
+}

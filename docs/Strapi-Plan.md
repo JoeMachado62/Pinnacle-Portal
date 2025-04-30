@@ -29,9 +29,10 @@ Zip (Text)
 Phone (Text)
 Status (Enum: pending, approved, suspended, inactive)
 Approval Date (DateTime)
-DealerTrack Dealer ID (Text)
+PAF Dealer ID (Text)
 Relation to Dealer Staff (One-to-Many)
 Relation to Credit Applications (One-to-Many)
+
 3. Dealer Staff Content Type
 Fields:
 
@@ -39,6 +40,7 @@ Relation to Dealer (Many-to-One)
 Relation to User (One-to-One)
 Position (Text)
 Permissions (JSON)
+
 4. Credit Applications Content Type
 Based on the credit_application.html form, this will be the most complex content type with:
 

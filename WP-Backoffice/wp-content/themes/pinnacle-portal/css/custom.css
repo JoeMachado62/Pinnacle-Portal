@@ -1,0 +1,245 @@
+/**
+ * Custom CSS for Pinnacle Portal
+ */
+
+/* Footer Styles */
+.site-footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+}
+
+.site-footer h3 {
+    color: #343a40;
+}
+
+.site-footer .social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: #e9ecef;
+    border-radius: 50%;
+    color: #495057;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.site-footer .social-links a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.site-footer .footer-links {
+    margin: 0;
+    padding: 0;
+}
+
+.site-footer .footer-links li {
+    margin-bottom: 8px;
+}
+
+.site-footer .footer-links a {
+    color: #495057;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.site-footer .footer-links a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
+.site-footer .site-info {
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+.site-footer .site-info a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.site-footer .site-info a:hover {
+    text-decoration: underline;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #007bff;
+    color: #fff;
+    opacity: 0.7;
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+    opacity: 1;
+    background-color: #0056b3;
+    color: #fff;
+    text-decoration: none;
+}
+
+.back-to-top i {
+    font-size: 20px;
+}
+
+/* Dashboard Styles */
+.dashboard-overview {
+    margin-bottom: 20px;
+}
+
+.dashboard-overview h3 {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 20px;
+}
+
+/* Deal Status Styles */
+.deal-status-value {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.status-pending {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.status-approved {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-rejected {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.status-completed {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.deal-status-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+
+/* Dealer Info Styles */
+.dealer-contact-info {
+    background-color: #f8f9fa;
+    border-left: 4px solid #007bff;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.dealer-contact-info h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #007bff;
+}
+
+.dealer-contact-info p {
+    margin-bottom: 10px;
+}
+
+/* Related Deals Styles */
+.related-deals {
+    margin-top: 30px;
+}
+
+.deal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.deal-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.deal-item:last-child {
+    border-bottom: none;
+}
+
+/* Custom Post Type Admin Styles */
+.post-type-dealer .wp-list-table .column-title,
+.post-type-deal .wp-list-table .column-title {
+    width: 25%;
+}
+
+/* ACF Field Styles */
+.acf-field input[type="text"],
+.acf-field input[type="email"],
+.acf-field input[type="url"],
+.acf-field input[type="number"],
+.acf-field textarea,
+.acf-field select {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 8px;
+    width: 100%;
+}
+
+.acf-field .acf-label label {
+    font-weight: 600;
+}
+
+/* Admin Dashboard Widget */
+#pinnacle_portal_dashboard_widget .inside {
+    padding: 0 12px 12px;
+}
+
+#pinnacle_portal_dashboard_widget h3 {
+    margin: 12px 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+#pinnacle_portal_dashboard_widget p {
+    margin: 8px 0;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 782px) {
+    .dashboard-card {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 783px) {
+    .dashboard-card {
+        width: calc(50% - 20px);
+        margin-right: 20px;
+    }
+    
+    .dashboard-card:nth-child(2n) {
+        margin-right: 0;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .dashboard-card {
+        width: calc(33.333% - 20px);
+    }
+    
+    .dashboard-card:nth-child(2n) {
+        margin-right: 20px;
+    }
+    
+    .dashboard-card:nth-child(3n) {
+        margin-right: 0;
+    }
+}

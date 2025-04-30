@@ -1,0 +1,56 @@
+{
+  "collectionName": "components_financial_terms",
+  "info": {
+    "name": "Terms",
+    "icon": "money-bill-wave",
+    "description": "Financial terms component"
+  },
+  "options": {},
+  "attributes": {
+    "sellingPrice": {
+      "type": "decimal"
+    },
+    "warranty": {
+      "type": "decimal"
+    },
+    "gap": {
+      "type": "decimal"
+    },
+    "other": {
+      "type": "decimal"
+    },
+    "taxRate": {
+      "type": "decimal"
+    },
+    "taxes": {
+      "type": "decimal"
+    },
+    "docFees": {
+      "type": "decimal"
+    },
+    "titleFees": {
+      "type": "decimal"
+    },
+    "totalPrice": {
+      "type": "decimal"
+    },
+    "totalCashDown": {
+      "type": "decimal"
+    },
+    "tradeValue": {
+      "type": "decimal"
+    },
+    "tradePayoff": {
+      "type": "decimal"
+    },
+    "netTradeValue": {
+      "type": "decimal"
+    },
+    "totalDown": {
+      "type": "decimal"
+    },
+    "amountFinanced": {
+      "type": "decimal"
+    }
+  }
+}

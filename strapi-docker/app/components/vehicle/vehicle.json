@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_vehicle_vehicles",
+  "info": {
+    "name": "Vehicle",
+    "icon": "car",
+    "description": "Vehicle information component"
+  },
+  "options": {},
+  "attributes": {
+    "year": {
+      "type": "string"
+    },
+    "makeAndModel": {
+      "type": "string"
+    },
+    "trim": {
+      "type": "string"
+    },
+    "mileage": {
+      "type": "integer"
+    },
+    "vin": {
+      "type": "string"
+    }
+  }
+}

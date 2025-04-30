@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_borrower_borrower_informations",
+  "info": {
+    "name": "BorrowerInformation",
+    "icon": "id-card",
+    "description": "Complete borrower information component"
+  },
+  "options": {},
+  "attributes": {
+    "personalInformation": {
+      "type": "component",
+      "repeatable": false,
+      "component": "borrower.borrower-personal"
+    },
+    "addressInformation": {
+      "type": "component",
+      "repeatable": false,
+      "component": "borrower.borrower-address"
+    },
+    "employmentInformation": {
+      "type": "component",
+      "repeatable": false,
+      "component": "borrower.borrower-employment"
+    },
+    "financialInformation": {
+      "type": "component",
+      "repeatable": false,
+      "component": "borrower.borrower-financial"
+    }
+  }
+}

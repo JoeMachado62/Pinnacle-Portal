@@ -1,0 +1,51 @@
+{
+  "collectionName": "components_borrower_borrower_financials",
+  "info": {
+    "name": "BorrowerFinancial",
+    "icon": "money-check-alt",
+    "description": "Borrower financial information component"
+  },
+  "options": {},
+  "attributes": {
+    "alimonyPaymentsObliged": {
+      "type": "boolean",
+      "default": false
+    },
+    "alimonyRecipient": {
+      "type": "text"
+    },
+    "alimonyAmount": {
+      "type": "decimal"
+    },
+    "isCoMaker": {
+      "type": "boolean",
+      "default": false
+    },
+    "coMakerFor": {
+      "type": "text"
+    },
+    "coMakerToWhom": {
+      "type": "text"
+    },
+    "hasJudgments": {
+      "type": "boolean",
+      "default": false
+    },
+    "judgmentToWhom": {
+      "type": "text"
+    },
+    "judgmentAmount": {
+      "type": "decimal"
+    },
+    "hasBankruptcy": {
+      "type": "boolean",
+      "default": false
+    },
+    "bankruptcyWhere": {
+      "type": "text"
+    },
+    "bankruptcyYear": {
+      "type": "string"
+    }
+  }
+}

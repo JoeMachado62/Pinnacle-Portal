@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_borrower_borrower_personals",
+  "info": {
+    "name": "BorrowerPersonal",
+    "icon": "user",
+    "description": "Borrower personal information component"
+  },
+  "options": {},
+  "attributes": {
+    "applicantName": {
+      "type": "text"
+    },
+    "dateOfBirth": {
+      "type": "date"
+    },
+    "ssn": {
+      "type": "string",
+      "private": true
+    },
+    "driversLicense": {
+      "type": "string"
+    },
+    "homePhone": {
+      "type": "string"
+    },
+    "workPhone": {
+      "type": "string"
+    },
+    "cellPhone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}

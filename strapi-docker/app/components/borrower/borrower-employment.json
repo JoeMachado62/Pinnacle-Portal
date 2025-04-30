@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_borrower_borrower_employments",
+  "info": {
+    "name": "BorrowerEmployment",
+    "icon": "building",
+    "description": "Borrower employment information component"
+  },
+  "options": {},
+  "attributes": {
+    "current": {
+      "type": "component",
+      "repeatable": false,
+      "component": "borrower.employment-entry"
+    },
+    "previous1": {
+      "type": "component",
+      "repeatable": false,
+      "component": "borrower.employment-entry"
+    },
+    "previous2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "borrower.employment-entry"
+    }
+  }
+}
