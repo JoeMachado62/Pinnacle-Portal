@@ -1,0 +1,59 @@
+/* Basic PAF Styles */
+.paf-alert { padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: 4px; }
+.paf-alert-warning { color: #8a6d3b; background-color: #fcf8e3; border-color: #faebcc; }
+.paf-alert-info { color: #31708f; background-color: #d9edf7; border-color: #bce8f1; }
+.paf-alert-success { color: #3c763d; background-color: #dff0d8; border-color: #d6e9c6; }
+.paf-button, .submit-btn, .add-borrower-btn, .remove-borrower-btn {
+    background-color: #5d78d6; color: white; padding: 10px 20px; border: none;
+    border-radius: 5px; cursor: pointer; text-decoration: none; display: inline-block; margin: 5px;
+}
+.remove-borrower-btn { background-color: #d9534f; }
+.paf-button:hover, .submit-btn:hover, .add-borrower-btn:hover, .remove-borrower-btn:hover { opacity: 0.9; }
+
+.paf-dealer-dashboard h3 { margin-top: 20px; }
+.paf-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+.paf-table th, .paf-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+.paf-table th { background-color: #f2f2f2; }
+
+.paf-credit-app-form-container { max-width: 900px; margin: 20px auto; padding: 20px; background-color: #f9f9f9; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+.paf-credit-app-form-container h1, .paf-credit-app-form-container h3 { color: #333; }
+.form-section { background-color: #fff; padding: 20px; margin-bottom: 20px; border-radius: 5px; border-left: 4px solid #5d78d6; }
+.form-row { display: flex; flex-wrap: wrap; margin-left: -10px; margin-right: -10px; }
+.form-col { flex: 1; padding: 0 10px; min-width: 200px; }
+.form-field { margin-bottom: 15px; }
+.form-field label { display: block; margin-bottom: 5px; font-weight: bold; }
+.form-field input[type="text"], .form-field input[type="tel"], .form-field input[type="email"], .form-field input[type="date"], .form-field input[type="number"], .form-field select, .form-field textarea {
+    width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;
+}
+.form-field input.invalid-input { border-color: red; }
+.paf-error-message { color: red; font-size: 0.9em; margin-top: 4px; }
+.radio-group label, .checkbox-label { font-weight: normal; margin-right: 15px; }
+.hidden-section { display: none; } /* JS will manage actual hiding/showing */
+
+/* Deal Status Bar */
+.paf-status-timeline { display: flex; justify-content: space-around; margin: 20px 0; padding: 10px; background-color: #f0f0f0; border-radius: 8px; }
+.paf-timeline-stage { text-align: center; flex: 1; padding: 5px; position: relative; }
+.paf-timeline-stage .paf-timeline-icon { font-size: 24px; display: block; margin-bottom: 5px; color: #ccc; } /* Using dashicons */
+.paf-timeline-stage .paf-timeline-label { font-size: 12px; color: #777; }
+.paf-timeline-stage.completed .paf-timeline-icon { color: #777; } /* Completed but not active */
+.paf-timeline-stage.active .paf-timeline-icon { color: #5d78d6; /* Active color */ }
+.paf-timeline-stage.active .paf-timeline-label { font-weight: bold; color: #333; }
+.paf-timeline-stage.declined .paf-timeline-icon { color: #e0e0e0; /* Greyed out */ }
+.paf-timeline-stage.declined .paf-timeline-label { color: #aaa; text-decoration: line-through; }
+.paf-deal-declined-message { text-align: center; color: red; font-weight: bold; margin-top: 10px; }
+
+/* Deal Jacket View */
+.paf-deal-jacket-view .paf-grid { display: flex; gap: 20px; }
+.paf-deal-jacket-view .paf-grid-col-8 { flex: 2; }
+.paf-deal-jacket-view .paf-grid-col-4 { flex: 1; }
+.paf-deal-jacket-view .paf-section { background: #fff; padding: 15px; margin-bottom: 20px; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+.paf-button-small { padding: 5px 10px; font-size: 0.9em; }
+#fullCreditAppDetails p { margin: 5px 0; }
+
+.paf-communications-log .paf-comm-entry { border-bottom: 1px solid #eee; padding: 10px 0; }
+.paf-communications-log .paf-comm-entry:last-child { border-bottom: none; }
+#pafNewCommunicationForm textarea { width: 100%; margin-bottom: 10px; }
+
+.paf-document-list { list-style: none; padding-left: 0; }
+.paf-document-list li a { text-decoration: none; }
+.paf-document-list li a:hover { text-decoration: underline; }

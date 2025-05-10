@@ -1,4 +1,4 @@
-<?php
+s<?php
 /**
  * WordPress Signup Page
  *

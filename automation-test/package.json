@@ -1,0 +1,13 @@
+{
+  "name": "dealertrack-puppeteer-test",
+  "version": "1.0.0",
+  "description": "Test script to verify Puppeteer can interact with DealerTrack",
+  "main": "test.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "dependencies": {
+    "puppeteer": "^24.8.1",
+    "dotenv": "^16.5.0"
+  }
+}
