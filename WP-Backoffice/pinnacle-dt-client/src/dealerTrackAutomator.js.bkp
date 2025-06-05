@@ -1,0 +1,436 @@
+// src/dealerTrackAutomator.js
+const logger = require('./logger');
+const { takeScreenshot } = require('./browserManager');
+const config = require('./config');
+
+// --- Navigation Helpers ---
+async function waitForPageNavigation(page, timeout = 30000) {
+    try {
+        await page.waitForNavigation({ waitUntil: 'networkidle0', timeout });
+    } catch (e) {
+        logger.warn(`Navigation timeout or interruption: ${e.message}. Continuing if possible.`);
+    }
+}
+
+async function typeIntoField(page, selector, text, fieldName) {
+    try {
+        if (text === undefined || text === null || String(text).trim() === '') {
+            // logger.debug(`Skipping empty field: ${fieldName} (${selector})`);
+            return;
+        }
+        await page.waitForSelector(selector, { timeout: 10000 });
+        await page.type(selector, String(text), { delay: 50 }); // Small delay for human-like typing
+        // logger.debug(`Typed "${text}" into ${fieldName} (${selector})`);
+    } catch (error) {
+        logger.error(`Error typing into ${fieldName} (${selector}): ${error.message}`);
+        throw new Error(`Failed to type into ${fieldName}: ${selector}`);
+    }
+}
+
+async function clickElement(page, selector, elementName) {
+    try {
+        await page.waitForSelector(selector, { timeout: 10000 });
+        await page.click(selector);
+        // logger.debug(`Clicked ${elementName} (${selector})`);
+    } catch (error) {
+        logger.error(`Error clicking ${elementName} (${selector}): ${error.message}`);
+        throw new Error(`Failed to click ${elementName}: ${selector}`);
+    }
+}
+
+async function selectDropdownByValue(page, selector, value, fieldName) {
+    try {
+        if (value === undefined || value === null || String(value).trim() === '') {
+            // logger.debug(`Skipping empty select field: ${fieldName} (${selector})`);
+            return;
+        }
+        await page.waitForSelector(selector, { timeout: 10000 });
+        await page.select(selector, String(value));
+        // logger.debug(`Selected "${value}" for ${fieldName} (${selector})`);
+    } catch (error) {
+        logger.error(`Error selecting value for ${fieldName} (${selector}): ${error.message}`);
+        throw new Error(`Failed to select value for ${fieldName}: ${selector}`);
+    }
+}
+
+
+// --- Core Automation Functions ---
+
+/**
+ * Submits a credit application to DealerTrack.
+ * @param {import('puppeteer-core').Page} page - The Puppeteer page object.
+ * @param {object} appData - The application data from WordPress.
+ * @param {string} jobId - Identifier for logging and screenshots.
+ * @returns {Promise<{success: boolean, dtReferenceNumber?: string, errorMessage?: string}>}
+ */
+async function submitCreditApplicationToDealerTrack(page, appData, jobId) {
+    logger.info(`[Job ${jobId}] Starting credit application submission for app ID: ${appData.id}`);
+    
+    try {
+        // 0. Ensure we are on a good starting page (e.g., F&I Home)
+        const currentUrl = page.url();
+        if (!currentUrl.includes(config.puppeteer.dealertrack_fni_home_url_substring)) {
+            logger.info(`[Job ${jobId}] Not on F&I home. Navigating to ${config.puppeteer.dealertrack_fni_home_url_substring_to_navigate_to || 'https://ww2.dealertrack.app.coxautoinc.com/core/deals_or_apps/'}`);
+            // The URL might be slightly different, or it could be a base URL for the app
+            await page.goto(config.puppeteer.dealertrack_fni_home_url_substring_to_navigate_to || 'https://ww2.dealertrack.app.coxautoinc.com/core/deals_or_apps/', { waitUntil: 'networkidle0' });
+        }
+        logger.info(`[Job ${jobId}] Current page URL for submission: ${page.url()}`);
+
+
+        // 1. Navigate to start new Credit Application
+        // Selector from your notes: 'a[href^="/customer/search/"]'
+        logger.info(`[Job ${jobId}] Clicking 'Credit App' quick link...`);
+        await clickElement(page, 'a[href^="/customer/search/"]', 'Credit App Quick Link');
+        await waitForPageNavigation(page);
+        logger.info(`[Job ${jobId}] Navigated to customer search / new app start page: ${page.url()}`);
+
+        // On "Credit App Start Screen" - search to avoid duplicate apps (as per your screenshot note)
+        // This step assumes the first screen is a search. If direct entry, this can be skipped/modified.
+        // For simplicity, we'll assume for now we are proceeding to fill the form.
+        // A robust solution would perform the search for applicant name first.
+        // Let's assume we clicked through or it landed on the application type selection.
+
+        // For your provided HTML Source ("DealerTrack-Credit Application screen one view page Source.html")
+        // It seems to be a multi-step form starting with application type selection.
+        // Selectors are like: #id_applicant_form-asset_type_1 (Auto)
+        // #id_vehicle_form-condition_type_1 (New)
+        // #id_applicant_form-has_coapplicant_2 (No Co-app)
+        // #id_vehicle_form-product_type_1 (Retail)
+        // Then click "Next" button, e.g., '.btn-primary' or a more specific selector if available
+
+        logger.info(`[Job ${jobId}] Setting up application preferences (Page 1)...`);
+        // Assuming these are the defaults or derived from appData if available
+        await clickElement(page, '#id_applicant_form-asset_type_1', 'Asset Type Auto'); // Auto
+        await clickElement(page, '#id_vehicle_form-condition_type_2', 'Vehicle Condition Used'); // Used (adjust if needed)
+        
+        if (appData.co_borrower && Object.keys(appData.co_borrower).length > 0) {
+            await clickElement(page, '#id_applicant_form-has_coapplicant_1', 'Has Co-applicant Yes'); // Yes
+        } else {
+            await clickElement(page, '#id_applicant_form-has_coapplicant_2', 'Has Co-applicant No'); // No
+        }
+        await clickElement(page, '#id_vehicle_form-product_type_1', 'Product Type Retail'); // Retail
+        
+        await clickElement(page, '#btn_app_pref_submit a.btn-primary', 'Next Button on App Prefs'); // Or specific selector for this "Next"
+        await waitForPageNavigation(page);
+        logger.info(`[Job ${jobId}] Navigated to main applicant info form: ${page.url()}`);
+        await takeScreenshot(page, jobId, 'applicant_info_page');
+
+
+        // --- Applicant Information --- (Using selectors from your consolidated reference)
+        logger.info(`[Job ${jobId}] Filling Applicant Information...`);
+        const app = appData.primary_borrower.personalInformation;
+        await typeIntoField(page, '#id_applicant_form-first_name', app.applicantName.split(' ')[0], 'App First Name'); // Assuming applicantName is "First Last"
+        await typeIntoField(page, '#id_applicant_form-last_name', app.applicantName.substring(app.applicantName.indexOf(' ') + 1), 'App Last Name');
+        // await typeIntoField(page, '#id_applicant_form-middle_name', app.middleInitial, 'App Middle Initial'); // If available
+        // await selectDropdownByValue(page, '#id_applicant_form-suffix_code', app.suffix, 'App Suffix'); // If available
+        await typeIntoField(page, '#id_applicant_form-tax_id', app.ssn, 'App SSN');
+        await typeIntoField(page, '#id_applicant_form-birth_date', app.dateOfBirth, 'App DOB'); // Ensure YYYY-MM-DD or MM/DD/YYYY as expected by DT
+
+        await typeIntoField(page, '#id_applicant_form-line_1_address', appData.primary_borrower.addressInformation.current.address, 'App Address 1');
+        // await typeIntoField(page, '#id_applicant_form-line_2_address', appData.primary_borrower.addressInformation.current.address2, 'App Address 2'); // If exists
+        await typeIntoField(page, '#id_applicant_form-zip_code', appData.primary_borrower.addressInformation.current.zip, 'App Zip');
+        // City/State might auto-populate from Zip or need #id_applicant_form-city_state_dropdown
+        // For now, assume zip is enough or use direct city/state fields if available and zip doesn't populate.
+        // await selectDropdownByValue(page, '#id_applicant_form-city_state_dropdown', appData.primary_borrower.addressInformation.current.cityStateValue, 'App City/State');
+
+        await typeIntoField(page, '#id_applicant_form-primary_phone_number', app.homePhone, 'App Home Phone');
+        await typeIntoField(page, '#id_applicant_form-alternate_phone_number', app.cellPhone, 'App Mobile Phone');
+        await typeIntoField(page, '#id_applicant_form-email_address', app.email, 'App Email');
+        // await clickElement(page, '#id_applicant_form-email_not_provided', 'Email Not Provided'); // If email is not available
+
+        await selectDropdownByValue(page, '#id_applicant_form-drivers_license_us_state_code', appData.primary_borrower.personalInformation.driversLicenseState, 'App DL State'); // Assuming this field exists in your data
+        await typeIntoField(page, '#id_applicant_form-drivers_license', app.driversLicense, 'App DL Number');
+        // await selectDropdownByValue(page, '#id_applicant_form-marital_status_code', app.maritalStatus, 'App Marital Status'); // If available
+
+        // Housing & Employment for Applicant
+        const appHousing = appData.primary_borrower.addressInformation.current;
+        const appEmp = appData.primary_borrower.employmentInformation.current;
+
+        await selectDropdownByValue(page, '#id_applicant_form-housing_status_code', appHousing.addressTypeMappedToDT, 'App Housing Status'); // Map your 'own'/'rent' to DT values
+        await typeIntoField(page, '#id_applicant_form-current_address_years', String(appHousing.years), 'App Yrs at Addr');
+        await typeIntoField(page, '#id_applicant_form-current_address_months', String(appHousing.months), 'App Mos at Addr');
+        if (appHousing.addressTypeMappedToDT !== 'N') { // If not "Own Outright"
+            await typeIntoField(page, '#id_applicant_form-mortgage_payment_or_rent', String(appHousing.monthlyPayment), 'App Rent/Mortgage');
+        }
+        // TODO: Handle Previous Address based on years/months at current (your conditional logic)
+
+        await selectDropdownByValue(page, '#id_applicant_form-employment_status_code', appEmp.employmentStatusMappedToDT, 'App Emp Status');
+        await typeIntoField(page, '#id_applicant_form-organization_name', appEmp.employerName, 'App Employer');
+        await typeIntoField(page, '#id_applicant_form-current_employed_years', String(appEmp.years), 'App Yrs at Emp');
+        await typeIntoField(page, '#id_applicant_form-current_employed_months', String(appEmp.months), 'App Mos at Emp');
+        await typeIntoField(page, '#id_applicant_form-work_phone_number', appEmp.phone, 'App Work Phone');
+        await typeIntoField(page, '#id_applicant_form-occupation_name', appEmp.title, 'App Occupation');
+        await typeIntoField(page, '#id_applicant_form-salary', String(appEmp.income), 'App Salary');
+        await selectDropdownByValue(page, '#id_applicant_form-salary_type_code', appEmp.payFrequencyMappedToDT, 'App Salary Freq');
+        // TODO: Handle Previous Employment
+
+        // --- Co-Applicant Information --- (Only if appData.co_borrower exists)
+        if (appData.co_borrower && Object.keys(appData.co_borrower).length > 0) {
+            logger.info(`[Job ${jobId}] Filling Co-Applicant Information...`);
+            const coApp = appData.co_borrower.personalInformation;
+            // Selectors from your consolidated reference for co-applicant
+            await selectDropdownByValue(page, '#id_co_applicant_form-party_relationship_code', appData.co_borrower.relationshipMappedToDT, 'CoApp Relationship');
+            await typeIntoField(page, '#id_co_applicant_form-first_name', coApp.applicantName.split(' ')[0], 'CoApp First Name');
+            await typeIntoField(page, '#id_co_applicant_form-last_name', coApp.applicantName.substring(coApp.applicantName.indexOf(' ') + 1), 'CoApp Last Name');
+            await typeIntoField(page, '#id_co_applicant_form-tax_id', coApp.ssn, 'CoApp SSN');
+            await typeIntoField(page, '#id_co_applicant_form-birth_date', coApp.dateOfBirth, 'CoApp DOB');
+            
+            // Co-App Address (assuming similar logic to applicant, check for "same_address" click)
+            // await clickElement(page, '#id_co_applicant_form-same_address', 'CoApp Same Address Checkbox'); // If applicable
+            // ... then fill address if not same ...
+            await typeIntoField(page, '#id_co_applicant_form-line_1_address', appData.co_borrower.addressInformation.current.address, 'CoApp Address1');
+            await typeIntoField(page, '#id_co_applicant_form-zip_code', appData.co_borrower.addressInformation.current.zip, 'CoApp Zip');
+
+
+            await selectDropdownByValue(page, '#id_co_applicant_form-housing_status_code', appData.co_borrower.addressInformation.current.addressTypeMappedToDT, 'CoApp Housing Status');
+            await typeIntoField(page, '#id_co_applicant_form-current_address_years', String(appData.co_borrower.addressInformation.current.years), 'CoApp Yrs at Addr');
+            await typeIntoField(page, '#id_co_applicant_form-current_address_months', String(appData.co_borrower.addressInformation.current.months), 'CoApp Mos at Addr');
+            // ... more co-applicant fields ...
+        }
+
+        // --- Vehicle & Financing Details ---
+        logger.info(`[Job ${jobId}] Filling Vehicle & Financing Information...`);
+        const veh = appData.vehicle_data;
+        const fin = appData.financial_data;
+
+        // Basic YMMT selection (these are dropdowns in DT)
+        await selectDropdownByValue(page, '#id_vehicle_form-year_id', veh.year, 'Veh Year');
+        // After selecting year, make options should load. Need a small pause or wait for options.
+        await page.waitForTimeout(1000); // Crude pause, better to wait for make options to populate
+        await selectDropdownByValue(page, '#id_vehicle_form-make_id', veh.makeId, 'Veh Make'); // Assuming you have makeId
+        await page.waitForTimeout(1000);
+        await selectDropdownByValue(page, '#id_vehicle_form-model_id', veh.modelId, 'Veh Model'); // Assuming you have modelId
+        await page.waitForTimeout(1000);
+        await selectDropdownByValue(page, '#id_vehicle_form-trim_id', veh.trimId, 'Veh Trim'); // Assuming you have trimId
+
+        // Or if custom YMMT
+        // await clickElement(page, '#toggle_custom_vehicle', 'Toggle Custom Vehicle');
+        // await typeIntoField(page, '#id_vehicle_form-year_custom', veh.year, 'Veh Custom Year');
+        // ... etc. for custom make, model, trim ...
+
+        // Payment-call radio - Assuming 'No' as default from your HTML form
+        await clickElement(page, '#id_vehicle_form-payment_call_indicator_2', 'Payment Call No');
+
+        await typeIntoField(page, '#id_vehicle_form-stock_number', veh.stockNumber, 'Veh Stock Number'); // If available
+        await typeIntoField(page, '#id_vehicle_form-vin_number', veh.vin, 'Veh VIN');
+        await typeIntoField(page, '#id_vehicle_form-odometer_number', veh.mileage, 'Veh Odometer');
+
+        // Pricing & term
+        await typeIntoField(page, '#id_vehicle_form-cash_sell_price_amount', String(fin.sellingPrice), 'Sell Price');
+        await typeIntoField(page, '#id_vehicle_form-term_count', String(fin.termMonths), 'Term Months'); // Assuming fin.termMonths exists
+        await typeIntoField(page, '#id_vehicle_form-sales_tax_amount', String(fin.taxes), 'Sales Tax');
+        await typeIntoField(page, '#id_vehicle_form-title_and_license_amount', String(fin.titleFees), 'Title & License');
+        await typeIntoField(page, '#id_vehicle_form-cash_down_amount', String(fin.totalCashDown), 'Cash Down');
+        await typeIntoField(page, '#id_vehicle_form-front_end_fee_amount', String(fin.docFees), 'Front End Fees (Doc Fees)'); // Map appropriately
+        await typeIntoField(page, '#id_vehicle_form-rebate_amount', String(fin.rebates), 'Rebates'); // If you have rebates in financial_data
+        // await typeIntoField(page, '#id_vehicle_form-acquisition_fee_amount', String(fin.acquisitionFee), 'Acquisition Fee'); // If lease
+        await typeIntoField(page, '#id_vehicle_form-trade_in_value_amount', String(fin.netTradeValue), 'Net Trade'); // Net trade
+        // ... other financial fields like requested_apr_rate, invoice_amount, wholesale_amount etc. from your selector list
+
+        // --- Disclosures & Final Submit ---
+        logger.info(`[Job ${jobId}] Handling Disclosures & Submitting...`);
+        // Click appropriate disclosure based on co-applicant presence
+        if (appData.co_borrower && Object.keys(appData.co_borrower).length > 0) {
+            await clickElement(page, '#id_vehicle_form-disclosures_1', 'Reg B Joint Credit Disclosure');
+        } else {
+            await clickElement(page, '#id_vehicle_form-disclosures_2', 'Individual Credit Disclosure');
+        }
+        // await typeIntoField(page, '#id_vehicle_form-comments', appData.comments, 'Comments'); // If you have comments
+
+        await takeScreenshot(page, jobId, 'before_final_submit');
+        await clickElement(page, 'button[type="submit"].btn-primary', 'Final Submit Button'); // Your selector
+        
+        // Wait for Deal Jacket header or some confirmation element.
+        // The selector 'span.deal-number-selector' for refNo might be on the *next* page (Deal Jacket).
+        // Need to ensure navigation to that page.
+        logger.info(`[Job ${jobId}] Application submitted. Waiting for Deal Jacket page to load...`);
+        await waitForPageNavigation(page, 60000); // Longer timeout for submission processing
+        await takeScreenshot(page, jobId, 'after_final_submit_landed');
+
+        logger.info(`[Job ${jobId}] Attempting to extract DealerTrack Reference Number... Current URL: ${page.url()}`);
+        // Selector: 'span.deal-number-selector'
+        // It might be inside a specific header or section.
+        // Example selector, adjust based on actual Deal Jacket Summary HTML:
+        // This will depend on the structure of the page loaded AFTER submission.
+        // The selector you provided `span.deal-number-selector` might be correct.
+        // Let's assume it's directly available or inside a known parent.
+        // For example, if it's inside <div id="djheader_deal">...<span>DEAL # XXX</span>...</div>
+
+        let dtReferenceNumber = null;
+        try {
+            // await page.waitForSelector('#djheader_deal', { timeout: 15000 }); // Wait for deal jacket header
+            // More specific: await page.waitForSelector('YOUR_ACTUAL_SELECTOR_FOR_DEAL_NUMBER_ELEMENT', { timeout: 15000 });
+            // The selector in your notes 'span.deal-number-selector' seems plausible.
+            // If this selector is for the *text* "Deal # XXX", we might need to adjust.
+            // If it's a specific element containing just the number:
+            // const refNoElement = await page.$('span.deal-number-selector');
+            
+            // If 'span.deal-number-selector' is NOT specific enough, try to find it in a known container:
+            // Example: Extracting from Deal Jacket Summary based on "Deal" header.
+            // This is a guess based on general UI patterns, needs actual HTML to confirm.
+            await page.waitForSelector('#djheader_deal .row-fluid .span6:last-child', { timeout: 20000 });
+            dtReferenceNumber = await page.evaluate(() => {
+                const dealInfoDiv = document.querySelector('#djheader_deal');
+                if (dealInfoDiv) {
+                    // Try to find a deal number. This is very heuristic.
+                    // Look for text like "Deal # XXXXX" or just a number in a specific place.
+                    // The provided "span.deal-number-selector" is what you gave, so let's try that first.
+                    const specificSelector = dealInfoDiv.querySelector('span.deal-number-selector'); // If your selector is inside this.
+                    if (specificSelector) return specificSelector.textContent.trim();
+
+                    // Fallback: look for a pattern if the selector isn't precise
+                    const dealTextElements = dealInfoDiv.querySelectorAll('.row-fluid .span6'); // Get all spans in the deal section
+                    for (const el of dealTextElements) {
+                        const text = el.textContent;
+                        const match = text.match(/Amount:\s*\$([\d,.]+)/); // This example gets amount. You need similar for Deal #
+                        // A better pattern would be to look for something explicitly labeling the Deal #
+                        // For now, let's assume the Loan# IS the dtReferenceNumber
+                        // and it's in the second .span6 inside #djheader_deal > .row-fluid
+                        const amountElement = dealInfoDiv.querySelector('.row-fluid .span6:nth-child(2)');
+                        if (amountElement && amountElement.textContent.includes('Amount:')) { // This is not deal number yet!
+                            // We need a reliable way to get the actual Deal/Loan number.
+                            // For now, let's assume your `span.deal-number-selector` is correct and try it directly on page.
+                        }
+                    }
+                }
+                // If your selector `span.deal-number-selector` is page-global
+                const globalRefNoEl = document.querySelector('span.deal-number-selector');
+                if (globalRefNoEl) return globalRefNoEl.textContent.trim();
+
+                return null;
+            });
+
+            if (!dtReferenceNumber) {
+                // Fallback if the specific selector isn't found:
+                // Try to get the deal ID from the URL if it's structured like /deals/DEAL_ID/
+                const urlParts = page.url().split('/');
+                const dealsIndex = urlParts.indexOf('deals');
+                if (dealsIndex !== -1 && dealsIndex < urlParts.length - 1) {
+                    const potentialId = urlParts[dealsIndex + 1];
+                    if (/^\d+$/.test(potentialId)) { // Check if it's a number
+                        dtReferenceNumber = potentialId;
+                        logger.info(`[Job ${jobId}] Extracted DT Reference Number from URL: ${dtReferenceNumber}`);
+                    }
+                }
+            }
+
+
+            if (!dtReferenceNumber) {
+                logger.warn(`[Job ${jobId}] Could not automatically extract DealerTrack Reference Number. Page content might have changed or selector is incorrect. Screenshot taken.`);
+                await takeScreenshot(page, jobId, 'ref_number_extraction_failed');
+                 // Try to get ANY text from the deal header as a fallback clue
+                const dealHeaderText = await page.$eval('#djheader_deal', el => el.innerText).catch(() => "Deal header not found");
+                logger.warn(`[Job ${jobId}] Deal Header Text: ${dealHeaderText.substring(0, 200)}`);
+                // return { success: false, errorMessage: 'Failed to extract DealerTrack Reference Number after submission.' };
+                // For now, we'll proceed with a placeholder if extraction fails but the process seemed to complete.
+                // This allows manual lookup later. It's better to fail if this is critical.
+                // For now, let's consider it a success if we reached this page.
+                // It's better to fail if it's truly not found:
+                 throw new Error('Failed to extract DealerTrack Reference Number after submission. Selector: span.deal-number-selector or URL pattern not found.');
+            } else {
+                logger.info(`[Job ${jobId}] Successfully extracted DealerTrack Reference Number: ${dtReferenceNumber}`);
+            }
+        } catch (extractError) {
+            logger.error(`[Job ${jobId}] Error during DealerTrack Reference Number extraction: ${extractError.message}`);
+            await takeScreenshot(page, jobId, 'ref_number_extraction_error');
+            throw extractError; // Re-throw to mark job as failed
+        }
+
+        logger.info(`[Job ${jobId}] Credit application submission process completed for app ID: ${appData.id}. DT Ref: ${dtReferenceNumber}`);
+        return { success: true, dtReferenceNumber };
+
+    } catch (error) {
+        logger.error(`[Job ${jobId}] FAILED to submit credit application for app ID ${appData.id}: ${error.message}`);
+        await takeScreenshot(page, jobId, 'submission_error_final');
+        return { success: false, errorMessage: error.message };
+    }
+}
+
+
+/**
+ * Checks the status of an application on DealerTrack.
+ * @param {import('puppeteer-core').Page} page - The Puppeteer page object.
+ * @param {string} dtReferenceNumber - The DealerTrack reference number.
+ * @param {string} jobId - Identifier for logging.
+ * @returns {Promise<{success: boolean, dtStatusKey?: string, dtDealJacketData?: object, errorMessage?: string}>}
+ */
+async function checkApplicationStatusInDealerTrack(page, dtReferenceNumber, jobId) {
+    logger.info(`[Job ${jobId}] Checking status for DealerTrack Ref: ${dtReferenceNumber}`);
+    try {
+        // Navigate to the "Active Deals" or "App Status" page
+        // From your notes: await page.click('a[href^="/core/fni20"]'); // To view an existing deal, in left menu click “Active Deals"
+        // Then click the deal row to open its Deal Jacket.
+        // OR for status lookup: await page.click('a[href^="/decisions/credit/status/"]');
+        // await page.type('input[name="search"]', dtReferenceNumber);
+        // await page.click('button[type="submit"]');
+        // const status = await page.$eval('table.results tbody tr:first-child td.status-column', el => el.textContent.trim());
+
+        // Let's use the direct Deal Jacket navigation if possible as it gives more info.
+        // F&I Home page is ww2.dealertrack.app.coxautoinc.com/core/deals_or_apps/
+        // The link to a specific deal from the "Active Deals" list is like:
+        // /dealjackets/DEAL_JACKET_ID/deals/active/ (this is what your HTML shows for Lori Morse deal jacket summary link)
+        // However, we only have dtReferenceNumber which is the Deal ID (e.g., 310200026619847854).
+        // The Deal Jacket ID (e.g., 310200026619847852) is different.
+        // So, we probably need to search on the "Active Deals" page or use "App Status".
+
+        logger.info(`[Job ${jobId}] Navigating to App Status page.`);
+        await page.goto('https://ww2.dealertrack.app.coxautoinc.com/decisions/credit/status/', { waitUntil: 'networkidle0' });
+        await takeScreenshot(page, jobId, 'app_status_search_page');
+
+        await typeIntoField(page, 'input[name="search"]', dtReferenceNumber, 'App Status Search Input');
+        await clickElement(page, 'button[type="submit"]', 'App Status Search Button'); // Assuming a general submit button
+        await waitForPageNavigation(page);
+        await takeScreenshot(page, jobId, 'app_status_results_page');
+
+        // Extract status from results table
+        // Selector from notes: 'table.results tbody tr:first-child td.status-column'
+        let rawDtStatusText;
+        try {
+            await page.waitForSelector('table.results tbody tr:first-child td.status-column', { timeout: 10000});
+            rawDtStatusText = await page.$eval('table.results tbody tr:first-child td.status-column', el => el.textContent.trim());
+            logger.info(`[Job ${jobId}] Raw status from DealerTrack table: ${rawDtStatusText}`);
+        } catch (tableError) {
+            logger.warn(`[Job ${jobId}] Could not find status in results table. Application might not be found or page structure changed. ${tableError.message}`);
+            // Attempt to find the deal by clicking on its link if the table approach fails or to get more details.
+            // This part would be more complex as it requires finding the correct link from a list.
+            // For now, if table status fails, we assume we can't get it easily.
+            throw new Error(`Failed to find application ${dtReferenceNumber} in status table.`);
+        }
+        
+
+        // TODO: Map rawDtStatusText to your internal paf_deal status keys
+        // e.g., 'Approved' -> 'final_approval', 'Declined' -> 'deal_declined', 'Pending' -> 'processing'
+        let dtStatusKey = 'processing'; // Default
+        if (rawDtStatusText.toLowerCase().includes('approved')) {
+            dtStatusKey = 'final_approval'; // Or conditional_approval if DT distinguishes
+        } else if (rawDtStatusText.toLowerCase().includes('declined')) {
+            dtStatusKey = 'deal_declined';
+        } else if (rawDtStatusText.toLowerCase().includes('funded')) {
+            dtStatusKey = 'deal_funded';
+        } else if (rawDtStatusText.toLowerCase().includes('conditional')) {
+            dtStatusKey = 'conditional_approval';
+        }
+        // Add more mappings as needed based on actual DT statuses.
+
+        // Optionally, try to navigate to the full Deal Jacket page to scrape more data
+        // This would involve clicking a link from the status results table.
+        // For now, we only have the status from the table.
+        const dtDealJacketData = { 
+            dealerTrackReportedStatus: rawDtStatusText,
+            // Add more fields here if you scrape them from the deal jacket page
+        };
+
+        return { success: true, dtStatusKey, dtDealJacketData };
+
+    } catch (error) {
+        logger.error(`[Job ${jobId}] Error checking status for DT Ref ${dtReferenceNumber}: ${error.message}`);
+        await takeScreenshot(page, jobId, `status_check_error_${dtReferenceNumber}`);
+        return { success: false, errorMessage: error.message };
+    }
+}
+
+
+module.exports = {
+    submitCreditApplicationToDealerTrack,
+    checkApplicationStatusInDealerTrack,
+};

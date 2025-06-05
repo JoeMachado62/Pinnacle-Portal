@@ -1,0 +1,24 @@
+{
+  "wordpress_api": {
+    "base_url": "https://portal.pinnacleautofinance.com/wp-json/paf/v1",
+    "shared_secret": "YOUR_WORDPRESS_API_SHARED_SECRET_HERE"
+  },
+  "local_server": {
+    "port": 3000,
+    "wp_dispatch_api_key": "YOUR_WP_TO_LOCAL_CLIENT_API_KEY_HERE" 
+  },
+  "puppeteer": {
+    "browser_ws_endpoint": "http://localhost:9222",
+    "dealertrack_fni_home_url_substring": "ww2.dealertrack.app.coxautoinc.com/core/deals_or_apps/",
+    "screenshot_path": "./screenshots" 
+  },
+  "job_processing": {
+    "poll_interval_ms": 60000,
+    "status_check_interval_ms": 300000 
+  },
+  "logging": {
+    "level": "info",
+    "log_to_file": true,
+    "log_file_path": "./logs/client.log"
+  }
+}

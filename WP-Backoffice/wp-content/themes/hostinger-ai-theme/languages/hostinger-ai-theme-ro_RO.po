@@ -1,0 +1,516 @@
+# Copyright (C) 2024 Hostinger
+# This file is distributed under the GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: Hostinger AI theme 1.0.16\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hostinger-ai-"
+"theme\n"
+"Last-Translator: \n"
+"Language-Team: Romanian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-12-16T07:28:53+00:00\n"
+"PO-Revision-Date: 2025-02-28 08:38+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: hostinger-ai-theme\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 :(((n%100>19)||(( n%100==0)&&(n!"
+"=0)))? 2 : 1));\n"
+"X-Loco-Version: 2.7.1; wp-6.7.2"
+
+#: includes/Admin/AdminTranslations.php:10
+msgid ""
+"<span style=\"display: flex; flex-direction: column; gap: 8px;\"><h3 "
+"style=\"margin:0; font-size:16px\">Site couldn’t be created</h3> <p "
+"style=\"margin-top:0; font-size:14px; color:#727586\">That’s because of an "
+"issue on our end. Try creating your site again. </p></span>"
+msgstr ""
+"<span style=\"display: flex; flex-direction: column; gap: 8px;\"><h3 "
+"style=\"margin:0; font-size:16px\">Site-ul nu a putut fi creat</h3> <p "
+"style=\"margin-top:0; font-size:14px; color:#727586\">A apărut o problemă. "
+"Te rugăm să încerci din nou crearea site-ul. </p></span>"
+
+#: includes/Settings/Theme.php:94
+#, fuzzy
+msgid "Adjust how elements are displayed on your website:"
+msgstr "Reglați modul în care elementele sunt afișate pe site-ul dvs. web:"
+
+#: includes/Admin/AdminTranslations.php:18
+#, fuzzy
+msgid "Affiliate marketing site"
+msgstr "Site de marketing afiliat"
+
+#: includes/Admin/AdminTranslations.php:11 includes/Admin/Menu.php:21
+#: includes/Admin/Menu.php:22
+msgid "AI Website Creation"
+msgstr "Crearea site-ului cu AI"
+
+#: includes/Shortcodes/ContactForm.php:26
+msgid "An error occurred. Please try again later."
+msgstr "A apărut o eroare. Te rugăm să încerci din nou mai târziu."
+
+#. translators: %s php version
+#: functions.php:36
+msgid "Attention:"
+msgstr "Atenție:"
+
+#: includes/Admin/AdminTranslations.php:24
+msgid "Back"
+msgstr "Înapoi"
+
+#: includes/Admin/AdminTranslations.php:19
+msgid "Blog"
+msgstr "Blog"
+
+#: includes/Admin/AdminTranslations.php:13
+msgid "Brand name"
+msgstr "Numele brandului"
+
+#: includes/Admin/AdminTranslations.php:28
+msgid "Building content"
+msgstr "Se crează conținut"
+
+#: includes/Admin/AdminTranslations.php:17
+msgid "Business and services"
+msgstr "Afacere și servicii"
+
+#: includes/Admin/AdminTranslations.php:37
+msgid "Cancel"
+msgstr "Anulează"
+
+#: includes/Settings/Theme.php:110
+#, fuzzy
+msgid "Check this box to hide the header element on all pages"
+msgstr ""
+"Bifați această casetă pentru a ascunde elementul antet pe toate paginile"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Color 1 (Section backgrounds)"
+msgstr "Culoarea 1 (Fundalurile pentru secțiune)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Color 2 (Section backgrounds)"
+msgstr "Culoarea 2 (Fundalurile pentru secțiuni"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Color 3 (Button background)"
+msgstr "Culoarea 3 (Fundalul pentru buton)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Dark (Text on Light and Color 1)"
+msgstr "Închis (Text pe deschis și culoarea 1)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Grey (Form borders)"
+msgstr "Gri (Marginile formularului)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Light (Text on Color 2 and Gradient)"
+msgstr "Deschis (Text pe culoarea 2 și gradient)"
+
+#: includes/Admin/AdminTranslations.php:30
+msgid "Confirm & edit"
+msgstr "Confirmă și editează"
+
+#: includes/Builder/NavigationBuilder.php:292
+msgid "Contacts"
+msgstr "Contacte"
+
+#: includes/Admin/AdminTranslations.php:38
+msgid "Continue"
+msgstr "Continuă"
+
+#: includes/Admin/AdminTranslations.php:23
+msgid "Create"
+msgstr "Creează"
+
+#: includes/Admin/AdminTranslations.php:29
+msgid "Create again"
+msgstr "Creează din nou"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "No title"
+msgstr "Fără titlu"
+
+#: includes/Admin/AdminTranslations.php:21
+msgid "Describe your site"
+msgstr "Descrie-ți site-ul"
+
+#: includes/Admin/AdminTranslations.php:22
+msgid "Description"
+msgstr "Descriere"
+
+#: includes/Shortcodes/ContactForm.php:151
+#, fuzzy
+msgid "Details:"
+msgstr "Detalii:"
+
+#: includes/Settings/Theme.php:53
+#, fuzzy
+msgid "Display Settings"
+msgstr "Setări afișaj"
+
+#: includes/Admin/Surveys.php:35
+msgid "Do you have any comments/suggestions to improve our AI tools?"
+msgstr "Ai comentarii/sugestii pentru îmbunătățirea instrumentelor noastre AI?"
+
+#: includes/Hooks.php:79
+msgid "Edit site"
+msgstr "Editează site-ul"
+
+#: includes/Shortcodes/ContactForm.php:69
+msgid "Email"
+msgstr "Email"
+
+#: includes/Shortcodes/ContactForm.php:153
+#, fuzzy
+msgid "Email:"
+msgstr "Email:"
+
+#: includes/Admin/AdminTranslations.php:32
+msgid "Enter at least 11 characters"
+msgstr "Introdu cel puțin 11 caractere"
+
+#: includes/Admin/AdminTranslations.php:35
+msgid "Existing content will be deleted"
+msgstr "Conținutul existent va fi șters"
+
+#: includes/Admin/Templates/featured-image-metabox.php:7
+msgid "External image can be used to show featured image."
+msgstr "Imaginea externă poate fi utilizată pentru a afișa imaginea promovată."
+
+#: includes/Admin/Templates/featured-image-metabox.php:12
+msgid "External Image URL"
+msgstr "URL imagine externă"
+
+#: includes/Shortcodes/ContactForm.php:173
+#, fuzzy
+msgid "Failed to send email. Please try again later."
+msgstr ""
+"A eșuat trimiterea e-mailului. Vă rugăm să încercați din nou mai târziu."
+
+#: includes/Admin/Hooks.php:33
+msgid "Featured Image with URL"
+msgstr "Imagine promovată cu URL"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Monospace"
+msgstr "Monospace"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Serif"
+msgstr "Serif"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System"
+msgstr "System"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr "Mare"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr "Mediu"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr "Mic"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XL"
+msgstr "XL"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XXL"
+msgstr "XXL"
+
+#: includes/Admin/AdminTranslations.php:25
+msgid "Generating colors"
+msgstr "Se generează culorile"
+
+#: includes/Admin/AdminTranslations.php:27
+msgid "Generating content"
+msgstr "Se generează conținutul"
+
+#: includes/Admin/AdminTranslations.php:26
+msgid "Generating structure"
+msgstr "Se generează structura"
+
+#: includes/Admin/AdminTranslations.php:31
+msgid "Give us a minute"
+msgstr "Suntem gata imediat"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Section background gradient"
+msgstr "Fundal gradient pentru secțiune"
+
+#: includes/Admin/AdminTranslations.php:34
+msgid "Great description! Feel free to add more details"
+msgstr "Ce descriere faină! Nu ezita să adaugi mai multe detalii"
+
+#: includes/Shortcodes/ContactForm.php:149
+#, fuzzy
+msgid "Hello,"
+msgstr "Bună ziua,"
+
+#: includes/Settings/Theme.php:60
+#, fuzzy
+msgid "Hide Header"
+msgstr "Ascundeți antetul"
+
+#. Author of the theme
+#: style.css
+msgid "Hostinger"
+msgstr "Hostinger"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Hostinger AI theme"
+msgstr "Hostinger AI theme"
+
+#. Description of the theme
+#: style.css
+msgid ""
+"Hostinger AI theme built with SEO and mobile responsiveness in mind, this "
+"theme ensures optimal performance and a better online presence."
+msgstr ""
+"Hostinger AI theme, construită ținând cont de SEO și de adaptabilitatea la "
+"dispozitivele mobile, asigură o performanță optimă și o prezență online mai "
+"bună."
+
+#: includes/Admin/Surveys.php:31
+msgid ""
+"How would you rate your experience using our AI website builder to create "
+"your site? (Scale 1-10)"
+msgstr ""
+"Cum ai evalua experiența ta de utilizare a constructorului nostru AI de site-"
+"uri în procesul de creare a site-ului? (Pe o scară de la 1-10)"
+
+#. Author URI of the theme
+#: style.css
+msgid "https://hostinger.com"
+msgstr "https://hostinger.com"
+
+#: includes/Shortcodes/ContactForm.php:42
+msgid ""
+"I consent to use of provided personal data for the purpose of responding to "
+"the request as described in"
+msgstr ""
+"Sunt de acord cu utilizarea datelor cu caracter personal furnizate în scopul "
+"de a răspunde la cerere, astfel cum este descris în"
+
+#: patterns/hidden-404.php:17
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr ""
+"Se pare că nu a fost găsit nimic în această locație. Vrei să încerci o "
+"căutare?"
+
+#: includes/Admin/AdminTranslations.php:20
+#, fuzzy
+msgid "Landing"
+msgstr "Aterizare"
+
+#: includes/Admin/AdminTranslations.php:33
+msgid "Let us know more about your website to get the best result"
+msgstr ""
+"Pentru a obține cele mai bune rezultate, spune-ne mai multe despre site-ul "
+"tău web"
+
+#: includes/Builder/NavigationBuilder.php:291
+msgid "Menu"
+msgstr "Meniu"
+
+#: includes/Shortcodes/ContactForm.php:78
+msgid "Message"
+msgstr "Mesaj"
+
+#: includes/Shortcodes/ContactForm.php:154
+#, fuzzy
+msgid "Message:"
+msgstr "Mesaj:"
+
+#: includes/Shortcodes/ContactForm.php:60
+msgid "Name"
+msgstr "Nume"
+
+#: includes/Shortcodes/ContactForm.php:152
+#, fuzzy
+msgid "Name:"
+msgstr "Nume:"
+
+#: includes/Shortcodes/ContactForm.php:132
+msgid "New Contact Form Submission"
+msgstr "Trimitere nou formular de contact"
+
+#: patterns/query.php:24
+msgid "No results found."
+msgstr "Nu s-au găsit rezultate."
+
+#: includes/Shortcodes/ContactForm.php:176
+msgid "Not valid recipient email."
+msgstr "Emailul destinatarului nu este valid."
+
+#: includes/Admin/AdminTranslations.php:15
+msgid "Other"
+msgstr "Altul/a"
+
+#: patterns/hidden-404.php:13
+msgid "Page not found"
+msgstr "Pagina nu a fost găsită"
+
+#: patterns/hidden-404.php
+msgctxt "Pattern title"
+msgid "404"
+msgstr "404"
+
+#: patterns/hidden-post-meta.php
+msgctxt "Pattern title"
+msgid "Hidden post meta"
+msgstr "Postare ascunsă meta"
+
+#: patterns/query.php
+msgctxt "Pattern title"
+msgid "Query"
+msgstr "Solicitare"
+
+#: includes/Shortcodes/ContactForm.php:123
+msgid "Please agree with privacy policy."
+msgstr "Te rugăm să îți exprimi acordul față de politica de confidențialitate."
+
+#: includes/Shortcodes/ContactForm.php:128
+msgid "Please enter a valid email address."
+msgstr "Te rugăm să introduci o adresă de email validă."
+
+#: includes/Admin/AdminTranslations.php:16
+msgid "Portfolio"
+msgstr "Portofoliu"
+
+#: includes/Shortcodes/ContactForm.php:44
+msgid "Privacy Policy"
+msgstr "Politica de confidențialitate"
+
+#: includes/Rest/BuilderRoutes.php:213
+msgid "Problem building content."
+msgstr "Am întâmpinat o problemă în procesul de creare a conținutului."
+
+#: includes/Rest/BuilderRoutes.php:169
+msgid "Problem generating content."
+msgstr "Am întâmpinat o problemă în procesul de generare a conținutului."
+
+#: includes/Shortcodes/ContactForm.php:101
+msgid "Send Message"
+msgstr "Trimite mesaj"
+
+#: includes/Builder/NavigationBuilder.php:293
+msgid "Socials"
+msgstr "Social media"
+
+#: includes/Rest/BuilderRoutes.php:63
+msgid "Sorry, something wrong with data."
+msgstr "Ne pare rău, ceva nu e în regulă cu datele."
+
+#: includes/Shortcodes/ContactForm.php:171
+msgid "Successfully submitted!"
+msgstr "Trimis cu succes!"
+
+#: includes/Admin/AdminTranslations.php:12
+msgid "Tell us about your site"
+msgstr "Povestește-ne despre site-ul tău"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "Subsol"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr "Antet"
+
+#. translators: %s php version
+#: functions.php:36
+msgid ""
+"The Hostinger Easy Onboarding plugin requires minimum PHP version of <b>"
+"%s</b>. "
+msgstr ""
+"Pluginul Hostinger Easy Onboarding necesită o versiune PHP minimă de <b>"
+"%s</b>."
+
+#: includes/Settings/Theme.php:29 includes/Settings/Theme.php:30
+#: includes/Settings/Theme.php:122
+#, fuzzy
+msgid "Theme Settings"
+msgstr "Setări temă"
+
+#: includes/Admin/AdminTranslations.php:39
+msgid "This field is required"
+msgstr "Acest câmp este obligatoriu"
+
+#: includes/Admin/AdminTranslations.php:41
+msgid "This field should not be longer than 1024 symbols."
+msgstr "Acest câmp nu trebuie să depășească 1024 de simboluri."
+
+#: includes/Admin/AdminTranslations.php:40
+msgid "This field should not be longer than 255 symbols."
+msgstr "Acest câmp nu trebuie să depășească 255 de simboluri."
+
+#: includes/Admin/AdminTranslations.php:14
+msgid "Website type"
+msgstr "Tip site web"
+
+#: includes/Shortcodes/ContactForm.php:74
+msgid "What's your email?"
+msgstr "Care este adresa ta de email?"
+
+#: includes/Shortcodes/ContactForm.php:65
+msgid "What's your name?"
+msgstr "Cum te numești?"
+
+#: includes/Shortcodes/ContactForm.php:46
+msgid "which I have read. I may withdraw my consent at any time."
+msgstr "pe care am citit-o. Pot să îmi retrag acordul oricând."
+
+#: includes/Shortcodes/ContactForm.php:82
+msgid "Write your message..."
+msgstr "Scrie aici mesajul tău..."
+
+#: includes/Rest/BuilderRoutes.php:114 includes/Rest/BuilderRoutes.php:149
+#: includes/Rest/BuilderRoutes.php:197
+msgid "Wrong sequence of step execution."
+msgstr "Ordine greșită de execuție a etapelor."
+
+#. translators: %s php version
+#: functions.php:40
+msgid "You are running <b>%s</b> PHP version."
+msgstr "Utilizezi versiunea PHP <b>%s</b>."
+
+#: includes/Admin/AdminTranslations.php:36
+msgid ""
+"You have already generated content. Continuing will delete all previous "
+"content. Are you sure you want to proceed?"
+msgstr ""
+"Ai generat deja conținut. Dacă alegi să continui, tot conținutul anterior va "
+"fi șters. Ești sigur că vrei să continui?"
+
+#: includes/Shortcodes/ContactForm.php:150
+#, fuzzy
+msgid "You have received a new message through your website's contact form."
+msgstr "Ați primit un mesaj nou prin formularul de contact al site-ului dvs."

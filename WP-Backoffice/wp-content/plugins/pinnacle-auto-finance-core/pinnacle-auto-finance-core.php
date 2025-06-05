@@ -3,7 +3,8 @@
  * Plugin Name: Pinnacle Auto Finance Core
  * Description: Core functionality for the Pinnacle Auto Finance Dealer Portal.
  * Version: 1.0.0
- * Author: AI Developer
+ * Author: Joe Machado
+ * Author URI: https://www.linkedin.com/in/joemachado/
  * Text Domain: paf-core
  */
 
@@ -22,6 +23,8 @@ require_once PAF_CORE_PLUGIN_DIR . 'includes/acf-fields.php';
 require_once PAF_CORE_PLUGIN_DIR . 'includes/ultimate-member-integration.php';
 require_once PAF_CORE_PLUGIN_DIR . 'includes/frontend-forms.php';
 require_once PAF_CORE_PLUGIN_DIR . 'includes/frontend-views.php';
+require_once PAF_CORE_PLUGIN_DIR . 'includes/dashboard-partials.php';
+require_once PAF_CORE_PLUGIN_DIR . 'includes/dashboard-ajax.php';
 require_once PAF_CORE_PLUGIN_DIR . 'includes/rest-api-endpoints.php';
 require_once PAF_CORE_PLUGIN_DIR . 'includes/action-scheduler-jobs.php';
 

@@ -1,8 +1,8 @@
 Project Overview
 Pinnacle Auto Finance Dealer Portal is a comprehensive system that enables independent dealerships to access broker financing solutions. The system combines:
 
-WordPress Portal (VPS-hosted): Manages dealer accounts, loan applications, and customer data
-Local Automation Client (Dealership PC): Handles real-time interaction with DealerTrack through a native browser
+The WordPress Portal (VPS-hosted): Manages dealer accounts, loan applications, and customer data.
+The Local Automation Client (Dealership PC): Handles real-time interaction with DealerTrack through a native browser
 
 This hybrid approach leverages the strengths of both environments: centralized data management on the VPS and reliable browser automation on a local machine with authenticated DealerTrack access.
 System Architecture

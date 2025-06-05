@@ -1,0 +1,530 @@
+# Copyright (C) 2024 Hostinger
+# This file is distributed under the GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: Hostinger AI theme 1.0.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hostinger-ai-"
+"theme\n"
+"Last-Translator: \n"
+"Language-Team: Lithuanian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-09-17T07:01:03+00:00\n"
+"PO-Revision-Date: 2025-02-28 08:37+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: hostinger-ai-theme\n"
+"Language: lt_LT\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 "
+"&&(n%100<10||n%100 >= 20)? 1 : 2);\n"
+"X-Loco-Version: 2.6.11; wp-6.4.5"
+
+#: includes/Admin/AdminTranslations.php:10
+msgid ""
+"<span style=\"display: flex; flex-direction: column; gap: 8px;\"><h3 "
+"style=\"margin:0; font-size:16px\">Site couldn’t be created</h3> <p "
+"style=\"margin-top:0; font-size:14px; color:#727586\">That’s because of an "
+"issue on our end. Try creating your site again. </p></span>"
+msgstr ""
+"<span style=\"display: flex; flex-direction: column; gap: 8px;\"><h3 "
+"style=\"margin:0; font-size:16px\">Svetainės nepavyko sukurti</h3> <p "
+"style=\"margin-top:0; font-size:14px; color:#727586\">Tai susiję su mūsų "
+"problema. Pabandyk sukurti svetainę dar kartą. </p></span>"
+
+#: includes/Settings/Theme.php:94
+#, fuzzy
+msgid "Adjust how elements are displayed on your website:"
+msgstr "Nustatykite, kaip elementai rodomi jūsų svetainėje:"
+
+#: includes/Admin/AdminTranslations.php:18
+#, fuzzy
+msgid "Affiliate marketing site"
+msgstr "Partnerių rinkodaros svetainė"
+
+#: includes/Admin/AdminTranslations.php:11 includes/Admin/Menu.php:21
+#: includes/Admin/Menu.php:22
+msgid "AI Website Creation"
+msgstr "DI svetainių kūrimas"
+
+#: includes/Shortcodes/ContactForm.php:26
+#, fuzzy
+msgid "An error occurred. Please try again later."
+msgstr "Įvyko klaida. Prašome pabandyti vėliau."
+
+#. translators: %s php version
+#: functions.php:36
+msgid "Attention:"
+msgstr "Dėmesio:"
+
+#: includes/Admin/AdminTranslations.php:24
+msgid "Back"
+msgstr "Atgal"
+
+#: includes/Admin/AdminTranslations.php:19
+msgid "Blog"
+msgstr "Tinklaraštis"
+
+#: includes/Admin/AdminTranslations.php:13
+msgid "Brand name"
+msgstr "Prekės ženklo pavadinimas"
+
+#: includes/Admin/AdminTranslations.php:28
+msgid "Building content"
+msgstr "Turinio kūrimas"
+
+#: includes/Admin/AdminTranslations.php:17
+msgid "Business and services"
+msgstr "Verslas ir paslaugos"
+
+#: includes/Admin/AdminTranslations.php:37
+msgid "Cancel"
+msgstr "Atšaukti"
+
+#: includes/Settings/Theme.php:110
+#, fuzzy
+msgid "Check this box to hide the header element on all pages"
+msgstr ""
+"Pažymėkite šį langelį, jei norite paslėpti antraštės elementą visuose "
+"puslapiuose"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Color 1 (Section backgrounds)"
+msgstr "1 spalva (skyriaus fonas)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Color 2 (Section backgrounds)"
+msgstr "2 spalva (skyriaus fonas)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Color 3 (Button background)"
+msgstr "3 spalva (mygtuko fonas)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Dark (Text on Light and Color 1)"
+msgstr "Tamsus (tekstas šviesoje ir spalva 1)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Grey (Form borders)"
+msgstr "Pilka (formos ribos)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Light (Text on Color 2 and Gradient)"
+msgstr "Šviesi (2 spalvos tekstas ir perėjimas)"
+
+#: includes/Admin/AdminTranslations.php:30
+msgid "Confirm & edit"
+msgstr "Patvirtinti ir redaguoti"
+
+#: includes/Builder/NavigationBuilder.php:292
+msgid "Contacts"
+msgstr "Kontaktai"
+
+#: includes/Admin/AdminTranslations.php:38
+msgid "Continue"
+msgstr "Tęsti"
+
+#: includes/Admin/AdminTranslations.php:23
+msgid "Create"
+msgstr "Sukurti"
+
+#: includes/Admin/AdminTranslations.php:29
+msgid "Create again"
+msgstr "Sukurti iš naujo"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "No title"
+msgstr "Nėra pavadinimo"
+
+#: includes/Admin/AdminTranslations.php:21
+msgid "Describe your site"
+msgstr "Apibūdink savo svetainę"
+
+#: includes/Admin/AdminTranslations.php:22
+msgid "Description"
+msgstr "Aprašymas"
+
+#: includes/Shortcodes/ContactForm.php:151
+#, fuzzy
+msgid "Details:"
+msgstr "Išsami informacija:"
+
+#: includes/Settings/Theme.php:53
+#, fuzzy
+msgid "Display Settings"
+msgstr "Ekrano nustatymai"
+
+#: includes/Admin/Surveys.php:35
+msgid "Do you have any comments/suggestions to improve our AI tools?"
+msgstr ""
+"Ar turi pastabų ir (arba) pasiūlymų, kaip patobulinti mūsų DI įrankius?"
+
+#: includes/Hooks.php:79
+msgid "Edit site"
+msgstr "Redaguoti svetainę"
+
+#: includes/Shortcodes/ContactForm.php:69
+#, fuzzy
+msgid "Email"
+msgstr "El. paštas"
+
+#: includes/Shortcodes/ContactForm.php:153
+#, fuzzy
+msgid "Email:"
+msgstr "El. paštas:"
+
+#: includes/Admin/AdminTranslations.php:32
+msgid "Enter at least 11 characters"
+msgstr "Įvesk bent 11 simbolių"
+
+#: includes/Admin/AdminTranslations.php:35
+msgid "Existing content will be deleted"
+msgstr "Esamas turinys bus ištrintas"
+
+#: includes/Admin/Templates/featured-image-metabox.php:7
+msgid "External image can be used to show featured image."
+msgstr "Išorinis vaizdas gali būti naudojamas rodomam vaizdui rodyti."
+
+#: includes/Admin/Templates/featured-image-metabox.php:12
+msgid "External Image URL"
+msgstr "Išorinio vaizdo URL"
+
+#: includes/Shortcodes/ContactForm.php:173
+#, fuzzy
+msgid "Failed to send email. Please try again later."
+msgstr "Nepavyko išsiųsti el. laiško. Prašome pabandyti vėliau."
+
+#: includes/Admin/Hooks.php:33
+msgid "Featured Image with URL"
+msgstr "Rekomenduojamas paveikslėlis su URL"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Monospace"
+msgstr "Monospace"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Serif"
+msgstr "Serif"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System"
+msgstr "Sistema"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr "Didelis"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr "Vidutinis"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr "Mažas"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XL"
+msgstr "XL"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XXL"
+msgstr "XXL"
+
+#: includes/Admin/AdminTranslations.php:25
+msgid "Generating colors"
+msgstr "Spalvų generavimas"
+
+#: includes/Admin/AdminTranslations.php:27
+msgid "Generating content"
+msgstr "Turinio kūrimas"
+
+#: includes/Admin/AdminTranslations.php:26
+msgid "Generating structure"
+msgstr "Struktūros generavimas"
+
+#: includes/Admin/AdminTranslations.php:31
+msgid "Give us a minute"
+msgstr "Tai šiek tiek užtruks"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Section background gradient"
+msgstr "Skyriaus fono perėjimas"
+
+#: includes/Admin/AdminTranslations.php:34
+msgid "Great description! Feel free to add more details"
+msgstr "Puikus aprašymas! Nedvejodamas pridėk daugiau informacijos"
+
+#: includes/Shortcodes/ContactForm.php:149
+#, fuzzy
+msgid "Hello,"
+msgstr "Sveiki,"
+
+#: includes/Settings/Theme.php:60
+#, fuzzy
+msgid "Hide Header"
+msgstr "Paslėpti antraštę"
+
+#. Author of the theme
+#: style.css
+msgid "Hostinger"
+msgstr "Hostinger"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Hostinger AI theme"
+msgstr "Hostinger DI tema"
+
+#. Description of the theme
+#: style.css
+msgid ""
+"Hostinger AI theme built with SEO and mobile responsiveness in mind, this "
+"theme ensures optimal performance and a better online presence."
+msgstr ""
+"Hostinger DI tema, sukurta atsižvelgiant į SEO ir mobiliesiems įrenginiams "
+"pritaikytas funkcijas, užtikrina optimalų veikimą ir geresnį pasirodymą "
+"internete."
+
+#: includes/Admin/Surveys.php:31
+msgid ""
+"How would you rate your experience using our AI website builder to create "
+"your site? (Scale 1-10)"
+msgstr ""
+"Kaip įvertintum savo patirtį naudojant mūsų DI svetainių kūrimo įrankį "
+"svetainei sukurti? (skalėje nuo 1 iki 10)"
+
+#. Author URI of the theme
+#: style.css
+msgid "https://hostinger.com"
+msgstr "https://hostinger.com"
+
+#: includes/Shortcodes/ContactForm.php:42
+#, fuzzy
+msgid ""
+"I consent to use of provided personal data for the purpose of responding to "
+"the request as described in"
+msgstr ""
+"Sutinku, kad pateikti asmens duomenys būtų naudojami atsakant į prašymą, "
+"kaip aprašyta"
+
+#: patterns/hidden-404.php:17
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr "Atrodo, kad šioje vietoje nieko nerasta. Gal pabandyk atlikti paiešką?"
+
+#: includes/Admin/AdminTranslations.php:20
+#, fuzzy
+msgid "Landing"
+msgstr "Nusileidimas"
+
+#: includes/Admin/AdminTranslations.php:33
+msgid "Let us know more about your website to get the best result"
+msgstr ""
+"Suteik mums daugiau informacijos apie savo svetainę, kad gautum geriausią "
+"rezultatą"
+
+#: includes/Builder/NavigationBuilder.php:291
+msgid "Menu"
+msgstr "Meniu"
+
+#: includes/Shortcodes/ContactForm.php:78
+#, fuzzy
+msgid "Message"
+msgstr "Žinutė"
+
+#: includes/Shortcodes/ContactForm.php:154
+#, fuzzy
+msgid "Message:"
+msgstr "Pranešimas:"
+
+#: includes/Shortcodes/ContactForm.php:60
+#, fuzzy
+msgid "Name"
+msgstr "Pavadinimas"
+
+#: includes/Shortcodes/ContactForm.php:152
+#, fuzzy
+msgid "Name:"
+msgstr "Vardas ir pavardė:"
+
+#: includes/Shortcodes/ContactForm.php:132
+#, fuzzy
+msgid "New Contact Form Submission"
+msgstr "Naujos kontaktinės formos pateikimas"
+
+#: patterns/query.php:24
+msgid "No results found."
+msgstr "Rezultatų nerasta."
+
+#: includes/Shortcodes/ContactForm.php:176
+#, fuzzy
+msgid "Not valid recipient email."
+msgstr "Netinkamas gavėjo el. pašto adresas."
+
+#: includes/Admin/AdminTranslations.php:15
+msgid "Other"
+msgstr "Kita"
+
+#: patterns/hidden-404.php:13
+msgid "Page not found"
+msgstr "Puslapis nerastas"
+
+#: patterns/hidden-404.php
+msgctxt "Pattern title"
+msgid "404"
+msgstr "404"
+
+#: patterns/hidden-post-meta.php
+msgctxt "Pattern title"
+msgid "Hidden post meta"
+msgstr "Paslėptas įrašo meta"
+
+#: patterns/query.php
+msgctxt "Pattern title"
+msgid "Query"
+msgstr "Užklausa"
+
+#: includes/Shortcodes/ContactForm.php:123
+#, fuzzy
+msgid "Please agree with privacy policy."
+msgstr "Prašome sutikti su privatumo politika."
+
+#: includes/Shortcodes/ContactForm.php:128
+#, fuzzy
+msgid "Please enter a valid email address."
+msgstr "Įveskite galiojantį el. pašto adresą."
+
+#: includes/Admin/AdminTranslations.php:16
+msgid "Portfolio"
+msgstr "Portfolio"
+
+#: includes/Shortcodes/ContactForm.php:44
+#, fuzzy
+msgid "Privacy Policy"
+msgstr "Privatumo politika"
+
+#: includes/Rest/BuilderRoutes.php:213
+msgid "Problem building content."
+msgstr "Turinio kūrimo problema."
+
+#: includes/Rest/BuilderRoutes.php:169
+msgid "Problem generating content."
+msgstr "Turinio generavimo problema."
+
+#: includes/Shortcodes/ContactForm.php:101
+#, fuzzy
+msgid "Send Message"
+msgstr "Siųsti žinutę"
+
+#: includes/Builder/NavigationBuilder.php:293
+msgid "Socials"
+msgstr "Socialiniai tinklai"
+
+#: includes/Rest/BuilderRoutes.php:63
+msgid "Sorry, something wrong with data."
+msgstr "Atsiprašome, kažkas negerai su duomenimis."
+
+#: includes/Shortcodes/ContactForm.php:171
+#, fuzzy
+msgid "Successfully submitted!"
+msgstr "Sėkmingai pateikta!"
+
+#: includes/Admin/AdminTranslations.php:12
+msgid "Tell us about your site"
+msgstr "Papasakok apie savo svetainę"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "Paraštė"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr "Antraštė"
+
+#. translators: %s php version
+#: functions.php:36
+msgid ""
+"The Hostinger Easy Onboarding plugin requires minimum PHP version of <b>"
+"%s</b>. "
+msgstr ""
+"Hostinger įskiepiui Easy Onboarding reikia minimalios PHP versijos <b>%s</b>."
+
+#: includes/Settings/Theme.php:29 includes/Settings/Theme.php:30
+#: includes/Settings/Theme.php:122
+#, fuzzy
+msgid "Theme Settings"
+msgstr "Temos nustatymai"
+
+#: includes/Admin/AdminTranslations.php:39
+msgid "This field is required"
+msgstr "Šis laukas yra privalomas"
+
+#: includes/Admin/AdminTranslations.php:41
+msgid "This field should not be longer than 1024 symbols."
+msgstr "Šis laukas neturėtų būti ilgesnis nei 1 024 simboliai."
+
+#: includes/Admin/AdminTranslations.php:40
+msgid "This field should not be longer than 255 symbols."
+msgstr "Šis laukas neturėtų būti ilgesnis nei 255 simboliai."
+
+#: includes/Admin/AdminTranslations.php:14
+msgid "Website type"
+msgstr "Svetainės tipas"
+
+#: includes/Shortcodes/ContactForm.php:74
+#, fuzzy
+msgid "What's your email?"
+msgstr "Koks jūsų el. pašto adresas?"
+
+#: includes/Shortcodes/ContactForm.php:65
+#, fuzzy
+msgid "What's your name?"
+msgstr "Koks jūsų vardas?"
+
+#: includes/Shortcodes/ContactForm.php:46
+#, fuzzy
+msgid "which I have read. I may withdraw my consent at any time."
+msgstr "kurį perskaičiau. Savo sutikimą galiu bet kada atšaukti."
+
+#: includes/Shortcodes/ContactForm.php:82
+#, fuzzy
+msgid "Write your message..."
+msgstr "Parašykite žinutę..."
+
+#: includes/Rest/BuilderRoutes.php:114 includes/Rest/BuilderRoutes.php:149
+#: includes/Rest/BuilderRoutes.php:197
+msgid "Wrong sequence of step execution."
+msgstr "Netinkama žingsnių vykdymo seka."
+
+#. translators: %s php version
+#: functions.php:40
+msgid "You are running <b>%s</b> PHP version."
+msgstr "Naudoji <b>%s</b> PHP versiją."
+
+#: includes/Admin/AdminTranslations.php:36
+msgid ""
+"You have already generated content. Continuing will delete all previous "
+"content. Are you sure you want to proceed?"
+msgstr ""
+"Jau sukūrei turinį. Tęsiant bus ištrintas visas ankstesnis turinys. Ar "
+"tikrai nori tęsti?"
+
+#: includes/Shortcodes/ContactForm.php:150
+#, fuzzy
+msgid "You have received a new message through your website's contact form."
+msgstr "Gavote naują pranešimą per savo svetainės kontaktų formą."

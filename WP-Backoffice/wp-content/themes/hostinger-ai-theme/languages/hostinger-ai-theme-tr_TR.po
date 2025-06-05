@@ -1,0 +1,527 @@
+# Copyright (C) 2024 Hostinger
+# This file is distributed under the GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: Hostinger AI theme 1.0.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hostinger-ai-"
+"theme\n"
+"Last-Translator: Merve Özcan - mrvzcn(@)outlook.com\n"
+"Language-Team: Turkish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-09-17T07:01:03+00:00\n"
+"PO-Revision-Date: 2025-02-28 08:39+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: hostinger-ai-theme\n"
+"Language: tr_TR\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Loco-Version: 2.6.11; wp-6.4.5"
+
+#: includes/Admin/AdminTranslations.php:10
+msgid ""
+"<span style=\"display: flex; flex-direction: column; gap: 8px;\"><h3 "
+"style=\"margin:0; font-size:16px\">Site couldn’t be created</h3> <p "
+"style=\"margin-top:0; font-size:14px; color:#727586\">That’s because of an "
+"issue on our end. Try creating your site again. </p></span>"
+msgstr ""
+"<span style=\"display: flex; flex-direction: column; gap: 8px;\"><h3 "
+"style=\"margin:0; font-size:16px\">Site oluşturulamadı</h3> <p "
+"style=\"margin-top:0; font-size:14px; color:#727586\">Bu bizim tarafımızdaki "
+"bir sorundan kaynaklanıyor. Sitenizi tekrar oluşturmayı deneyin. </p></span>"
+
+#: includes/Settings/Theme.php:94
+#, fuzzy
+msgid "Adjust how elements are displayed on your website:"
+msgstr "Web sitenizde öğelerin nasıl görüntüleneceğini ayarlayın:"
+
+#: includes/Admin/AdminTranslations.php:18
+#, fuzzy
+msgid "Affiliate marketing site"
+msgstr "Satış ortaklığı sitesi"
+
+#: includes/Admin/AdminTranslations.php:11 includes/Admin/Menu.php:21
+#: includes/Admin/Menu.php:22
+msgid "AI Website Creation"
+msgstr "Yapay Zeka Site Oluşturma"
+
+#: includes/Shortcodes/ContactForm.php:26
+#, fuzzy
+msgid "An error occurred. Please try again later."
+msgstr "Bir hata oluştu. Lütfen daha sonra tekrar deneyin."
+
+#. translators: %s php version
+#: functions.php:36
+msgid "Attention:"
+msgstr "Dikkat:"
+
+#: includes/Admin/AdminTranslations.php:24
+msgid "Back"
+msgstr "Geri"
+
+#: includes/Admin/AdminTranslations.php:19
+msgid "Blog"
+msgstr "Blog"
+
+#: includes/Admin/AdminTranslations.php:13
+msgid "Brand name"
+msgstr "Marka adı"
+
+#: includes/Admin/AdminTranslations.php:28
+msgid "Building content"
+msgstr "İçerik oluşturma"
+
+#: includes/Admin/AdminTranslations.php:17
+msgid "Business and services"
+msgstr "İş ve hizmetler"
+
+#: includes/Admin/AdminTranslations.php:37
+msgid "Cancel"
+msgstr "İptal"
+
+#: includes/Settings/Theme.php:110
+#, fuzzy
+msgid "Check this box to hide the header element on all pages"
+msgstr "Tüm sayfalarda başlık öğesini gizlemek için bu kutuyu işaretleyin"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Color 1 (Section backgrounds)"
+msgstr "Renk 1 (Bölüm arka planları)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Color 2 (Section backgrounds)"
+msgstr "Renk 2 (Bölüm arka planları)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Color 3 (Button background)"
+msgstr "Renk 3 (Düğme arka planı)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Dark (Text on Light and Color 1)"
+msgstr "Koyu (Açık ve Renkli Metin 1)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Grey (Form borders)"
+msgstr "Gri (Form sınırları)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Light (Text on Color 2 and Gradient)"
+msgstr "Işık (Renk 2 ve Degrade Üzerinde Metin)"
+
+#: includes/Admin/AdminTranslations.php:30
+msgid "Confirm & edit"
+msgstr "Onayla ve Düzenle"
+
+#: includes/Builder/NavigationBuilder.php:292
+msgid "Contacts"
+msgstr "İletişim"
+
+#: includes/Admin/AdminTranslations.php:38
+msgid "Continue"
+msgstr "Devam et"
+
+#: includes/Admin/AdminTranslations.php:23
+msgid "Create"
+msgstr "Oluştur"
+
+#: includes/Admin/AdminTranslations.php:29
+msgid "Create again"
+msgstr "Yeniden oluştur"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "No title"
+msgstr "Başlık yok"
+
+#: includes/Admin/AdminTranslations.php:21
+msgid "Describe your site"
+msgstr "Sitenizi tanımlayın"
+
+#: includes/Admin/AdminTranslations.php:22
+msgid "Description"
+msgstr "Açıklama"
+
+#: includes/Shortcodes/ContactForm.php:151
+#, fuzzy
+msgid "Details:"
+msgstr "Detaylar:"
+
+#: includes/Settings/Theme.php:53
+#, fuzzy
+msgid "Display Settings"
+msgstr "Ekran Ayarları"
+
+#: includes/Admin/Surveys.php:35
+msgid "Do you have any comments/suggestions to improve our AI tools?"
+msgstr ""
+"Yapay zeka araçlarımızı geliştirmek için herhangi bir yorumunuz/öneriniz var "
+"mı?"
+
+#: includes/Hooks.php:79
+msgid "Edit site"
+msgstr "Siteyi düzenle"
+
+#: includes/Shortcodes/ContactForm.php:69
+#, fuzzy
+msgid "Email"
+msgstr "E-posta"
+
+#: includes/Shortcodes/ContactForm.php:153
+#, fuzzy
+msgid "Email:"
+msgstr "E-posta:"
+
+#: includes/Admin/AdminTranslations.php:32
+msgid "Enter at least 11 characters"
+msgstr "En az 11 karakter girin"
+
+#: includes/Admin/AdminTranslations.php:35
+msgid "Existing content will be deleted"
+msgstr "Mevcut içerik silinecek"
+
+#: includes/Admin/Templates/featured-image-metabox.php:7
+msgid "External image can be used to show featured image."
+msgstr "Öne çıkan görseli göstermek için harici görsel kullanılabilir."
+
+#: includes/Admin/Templates/featured-image-metabox.php:12
+msgid "External Image URL"
+msgstr "Harici Görsel URL'si"
+
+#: includes/Shortcodes/ContactForm.php:173
+#, fuzzy
+msgid "Failed to send email. Please try again later."
+msgstr "E-posta gönderilemedi. Lütfen daha sonra tekrar deneyin."
+
+#: includes/Admin/Hooks.php:33
+msgid "Featured Image with URL"
+msgstr "URL ile Öne Çıkan Görsel"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Monospace"
+msgstr "Monospace"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Serif"
+msgstr "Serif"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System"
+msgstr "Sistem"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr "Büyük"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr "Orta"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr "Küçük"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XL"
+msgstr "XL"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XXL"
+msgstr "XXL"
+
+#: includes/Admin/AdminTranslations.php:25
+msgid "Generating colors"
+msgstr "Renk üretme"
+
+#: includes/Admin/AdminTranslations.php:27
+msgid "Generating content"
+msgstr "İçerik oluşturma"
+
+#: includes/Admin/AdminTranslations.php:26
+msgid "Generating structure"
+msgstr "Yapı oluşturma"
+
+#: includes/Admin/AdminTranslations.php:31
+msgid "Give us a minute"
+msgstr "Bize bir dakika verin"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Section background gradient"
+msgstr "Bölüm arka plan gradyanı"
+
+#: includes/Admin/AdminTranslations.php:34
+msgid "Great description! Feel free to add more details"
+msgstr "Harika bir açıklama! Daha fazla ayrıntı eklemekten çekinmeyin"
+
+#: includes/Shortcodes/ContactForm.php:149
+#, fuzzy
+msgid "Hello,"
+msgstr "Merhaba,"
+
+#: includes/Settings/Theme.php:60
+#, fuzzy
+msgid "Hide Header"
+msgstr "Başlığı Gizle"
+
+#. Author of the theme
+#: style.css
+msgid "Hostinger"
+msgstr "Hostinger"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Hostinger AI theme"
+msgstr "Hostinger AI teması"
+
+#. Description of the theme
+#: style.css
+msgid ""
+"Hostinger AI theme built with SEO and mobile responsiveness in mind, this "
+"theme ensures optimal performance and a better online presence."
+msgstr ""
+"SEO ve mobil duyarlılık göz önünde bulundurularak oluşturulan Hostinger AI "
+"teması, optimum performans ve daha iyi bir çevrimiçi varlık sağlar."
+
+#: includes/Admin/Surveys.php:31
+msgid ""
+"How would you rate your experience using our AI website builder to create "
+"your site? (Scale 1-10)"
+msgstr ""
+"Sitenizi oluşturmak için YZ site kurucu deneyiminizi nasıl "
+"değerlendirirsiniz? (Ölçek 1-10)"
+
+#. Author URI of the theme
+#: style.css
+msgid "https://hostinger.com"
+msgstr "https://hostinger.com"
+
+#: includes/Shortcodes/ContactForm.php:42
+#, fuzzy
+msgid ""
+"I consent to use of provided personal data for the purpose of responding to "
+"the request as described in"
+msgstr ""
+"Sağlanan kişisel verilerin, aşağıda açıklandığı şekilde talebe yanıt vermek "
+"amacıyla kullanılmasına izin veriyorum"
+
+#: patterns/hidden-404.php:17
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr ""
+"Bu konumda hiçbir şey bulunamamış gibi görünüyor. Belki bir arama yapmayı "
+"denersiniz?"
+
+#: includes/Admin/AdminTranslations.php:20
+#, fuzzy
+msgid "Landing"
+msgstr "İniş"
+
+#: includes/Admin/AdminTranslations.php:33
+msgid "Let us know more about your website to get the best result"
+msgstr "En iyi sonucu almak için web siteniz hakkında daha fazla bilgi verelim"
+
+#: includes/Builder/NavigationBuilder.php:291
+msgid "Menu"
+msgstr "Menü"
+
+#: includes/Shortcodes/ContactForm.php:78
+#, fuzzy
+msgid "Message"
+msgstr "Mesaj"
+
+#: includes/Shortcodes/ContactForm.php:154
+#, fuzzy
+msgid "Message:"
+msgstr "Mesaj:"
+
+#: includes/Shortcodes/ContactForm.php:60
+#, fuzzy
+msgid "Name"
+msgstr "İsim"
+
+#: includes/Shortcodes/ContactForm.php:152
+#, fuzzy
+msgid "Name:"
+msgstr "İsim:"
+
+#: includes/Shortcodes/ContactForm.php:132
+#, fuzzy
+msgid "New Contact Form Submission"
+msgstr "Yeni İletişim Formu Gönderimi"
+
+#: patterns/query.php:24
+msgid "No results found."
+msgstr "Sonuç bulunamadı."
+
+#: includes/Shortcodes/ContactForm.php:176
+#, fuzzy
+msgid "Not valid recipient email."
+msgstr "Geçerli alıcı e-postası değil."
+
+#: includes/Admin/AdminTranslations.php:15
+msgid "Other"
+msgstr "Diğer"
+
+#: patterns/hidden-404.php:13
+msgid "Page not found"
+msgstr "Sayfa bulunamadı"
+
+#: patterns/hidden-404.php
+msgctxt "Pattern title"
+msgid "404"
+msgstr "404"
+
+#: patterns/hidden-post-meta.php
+msgctxt "Pattern title"
+msgid "Hidden post meta"
+msgstr "Gizli gönderi meta"
+
+#: patterns/query.php
+msgctxt "Pattern title"
+msgid "Query"
+msgstr "Sorgu"
+
+#: includes/Shortcodes/ContactForm.php:123
+#, fuzzy
+msgid "Please agree with privacy policy."
+msgstr "Lütfen gizlilik politikasını kabul edin."
+
+#: includes/Shortcodes/ContactForm.php:128
+#, fuzzy
+msgid "Please enter a valid email address."
+msgstr "Lütfen geçerli bir e-posta adresi girin."
+
+#: includes/Admin/AdminTranslations.php:16
+msgid "Portfolio"
+msgstr "Portföy"
+
+#: includes/Shortcodes/ContactForm.php:44
+#, fuzzy
+msgid "Privacy Policy"
+msgstr "Gizlilik Politikası"
+
+#: includes/Rest/BuilderRoutes.php:213
+msgid "Problem building content."
+msgstr "İçerik oluşturmada sorun."
+
+#: includes/Rest/BuilderRoutes.php:169
+msgid "Problem generating content."
+msgstr "İçerik üretme sorunu."
+
+#: includes/Shortcodes/ContactForm.php:101
+#, fuzzy
+msgid "Send Message"
+msgstr "Mesaj Gönder"
+
+#: includes/Builder/NavigationBuilder.php:293
+msgid "Socials"
+msgstr "Sosyal Medya"
+
+#: includes/Rest/BuilderRoutes.php:63
+msgid "Sorry, something wrong with data."
+msgstr "Üzgünüm, verilerde bir sorun var."
+
+#: includes/Shortcodes/ContactForm.php:171
+#, fuzzy
+msgid "Successfully submitted!"
+msgstr "Başarıyla teslim edildi!"
+
+#: includes/Admin/AdminTranslations.php:12
+msgid "Tell us about your site"
+msgstr "Bize sitenizden bahsedin"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "Altbilgi"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr "Başlık"
+
+#. translators: %s php version
+#: functions.php:36
+msgid ""
+"The Hostinger Easy Onboarding plugin requires minimum PHP version of <b>"
+"%s</b>. "
+msgstr ""
+"Hostinger Easy Onboarding eklentisi minimum <b>%s</b> PHP sürümü gerektirir."
+
+#: includes/Settings/Theme.php:29 includes/Settings/Theme.php:30
+#: includes/Settings/Theme.php:122
+#, fuzzy
+msgid "Theme Settings"
+msgstr "Tema Ayarları"
+
+#: includes/Admin/AdminTranslations.php:39
+msgid "This field is required"
+msgstr "Bu alan zorunludur"
+
+#: includes/Admin/AdminTranslations.php:41
+msgid "This field should not be longer than 1024 symbols."
+msgstr "Bu alan 1024 sembolden daha uzun olamaz."
+
+#: includes/Admin/AdminTranslations.php:40
+msgid "This field should not be longer than 255 symbols."
+msgstr "Bu alan 255 sembolden daha uzun olamaz."
+
+#: includes/Admin/AdminTranslations.php:14
+msgid "Website type"
+msgstr "Web sitesi türü"
+
+#: includes/Shortcodes/ContactForm.php:74
+#, fuzzy
+msgid "What's your email?"
+msgstr "E-posta adresiniz nedir?"
+
+#: includes/Shortcodes/ContactForm.php:65
+#, fuzzy
+msgid "What's your name?"
+msgstr "Adın ne senin?"
+
+#: includes/Shortcodes/ContactForm.php:46
+#, fuzzy
+msgid "which I have read. I may withdraw my consent at any time."
+msgstr "ki bunu okudum. Onayımı istediğim zaman geri çekebilirim."
+
+#: includes/Shortcodes/ContactForm.php:82
+#, fuzzy
+msgid "Write your message..."
+msgstr "Mesajınızı yazın..."
+
+#: includes/Rest/BuilderRoutes.php:114 includes/Rest/BuilderRoutes.php:149
+#: includes/Rest/BuilderRoutes.php:197
+msgid "Wrong sequence of step execution."
+msgstr "Yanlış adım yürütme sırası."
+
+#. translators: %s php version
+#: functions.php:40
+msgid "You are running <b>%s</b> PHP version."
+msgstr "<b>%s</b> PHP sürümünü çalıştırıyorsunuz."
+
+#: includes/Admin/AdminTranslations.php:36
+msgid ""
+"You have already generated content. Continuing will delete all previous "
+"content. Are you sure you want to proceed?"
+msgstr ""
+"Zaten içerik oluşturdunuz. Devam etmek önceki tüm içeriği silecektir. Devam "
+"etmek istediğinizden emin misiniz?"
+
+#: includes/Shortcodes/ContactForm.php:150
+#, fuzzy
+msgid "You have received a new message through your website's contact form."
+msgstr "Web sitenizin iletişim formu aracılığıyla yeni bir mesaj aldınız."

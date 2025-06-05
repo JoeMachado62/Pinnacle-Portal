@@ -1,0 +1,528 @@
+# Copyright (C) 2024 Hostinger
+# This file is distributed under the GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: Hostinger AI theme 1.0.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hostinger-ai-"
+"theme\n"
+"Last-Translator: Julia\n"
+"Language-Team: Ukrainian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-09-17T07:01:03+00:00\n"
+"PO-Revision-Date: 2025-02-28 08:39+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: hostinger-ai-theme\n"
+"Language: uk\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10 >= 2 && "
+"n%10<=4 &&(n%100<10||n%100 >= 20)? 1 : 2);\n"
+"X-Loco-Version: 2.6.11; wp-6.4.5"
+
+#: includes/Admin/AdminTranslations.php:10
+msgid ""
+"<span style=\"display: flex; flex-direction: column; gap: 8px;\"><h3 "
+"style=\"margin:0; font-size:16px\">Site couldn’t be created</h3> <p "
+"style=\"margin-top:0; font-size:14px; color:#727586\">That’s because of an "
+"issue on our end. Try creating your site again. </p></span>"
+msgstr ""
+"<span style=\"display: flex; flex-direction: column; gap: 8px;\"><h3 "
+"style=\"margin:0; font-size:16px\">Не вдалося створити сайт</h3> <p "
+"style=\"margin-top:0; font-size:14px; color:#727586\">Це сталося через "
+"проблему на нашому боці. Спробуйте створити сайт ще раз. </p></span></span>"
+"</p></span"
+
+#: includes/Settings/Theme.php:94
+#, fuzzy
+msgid "Adjust how elements are displayed on your website:"
+msgstr "Налаштуйте відображення елементів на вашому сайті:"
+
+#: includes/Admin/AdminTranslations.php:18
+#, fuzzy
+msgid "Affiliate marketing site"
+msgstr "Сайт партнерського маркетингу"
+
+#: includes/Admin/AdminTranslations.php:11 includes/Admin/Menu.php:21
+#: includes/Admin/Menu.php:22
+msgid "AI Website Creation"
+msgstr "Створення сайту зі штучним інтелектом"
+
+#: includes/Shortcodes/ContactForm.php:26
+#, fuzzy
+msgid "An error occurred. Please try again later."
+msgstr "Виникла помилка. Будь ласка, спробуйте пізніше."
+
+#. translators: %s php version
+#: functions.php:36
+msgid "Attention:"
+msgstr "Увага:"
+
+#: includes/Admin/AdminTranslations.php:24
+msgid "Back"
+msgstr "Назад"
+
+#: includes/Admin/AdminTranslations.php:19
+msgid "Blog"
+msgstr "Блог"
+
+#: includes/Admin/AdminTranslations.php:13
+msgid "Brand name"
+msgstr "Назва бренду"
+
+#: includes/Admin/AdminTranslations.php:28
+msgid "Building content"
+msgstr "Вміст будівлі"
+
+#: includes/Admin/AdminTranslations.php:17
+msgid "Business and services"
+msgstr "Бізнес та послуги"
+
+#: includes/Admin/AdminTranslations.php:37
+msgid "Cancel"
+msgstr "Скасувати"
+
+#: includes/Settings/Theme.php:110
+#, fuzzy
+msgid "Check this box to hide the header element on all pages"
+msgstr ""
+"Встановіть цей прапорець, щоб приховати елемент заголовка на всіх сторінках"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Color 1 (Section backgrounds)"
+msgstr "Колір 1 (фон розділу)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Color 2 (Section backgrounds)"
+msgstr "Колір 2 (фони секцій)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Color 3 (Button background)"
+msgstr "Колір 3 (фон кнопки)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Dark (Text on Light and Color 1)"
+msgstr "Темний (текст на світлі та кольорі 1)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Grey (Form borders)"
+msgstr "Сірий (межі форми)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Light (Text on Color 2 and Gradient)"
+msgstr "Світло (текст на кольорі 2 і градієнт)"
+
+#: includes/Admin/AdminTranslations.php:30
+msgid "Confirm & edit"
+msgstr "Підтвердити та відредагувати"
+
+#: includes/Builder/NavigationBuilder.php:292
+msgid "Contacts"
+msgstr "Контакти"
+
+#: includes/Admin/AdminTranslations.php:38
+msgid "Continue"
+msgstr "Продовжуйте"
+
+#: includes/Admin/AdminTranslations.php:23
+msgid "Create"
+msgstr "Створити"
+
+#: includes/Admin/AdminTranslations.php:29
+msgid "Create again"
+msgstr "Створити знову"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "No title"
+msgstr "Без назви"
+
+#: includes/Admin/AdminTranslations.php:21
+msgid "Describe your site"
+msgstr "Опишіть свій сайт"
+
+#: includes/Admin/AdminTranslations.php:22
+msgid "Description"
+msgstr "Опис"
+
+#: includes/Shortcodes/ContactForm.php:151
+#, fuzzy
+msgid "Details:"
+msgstr "Деталі:"
+
+#: includes/Settings/Theme.php:53
+#, fuzzy
+msgid "Display Settings"
+msgstr "Налаштування дисплея"
+
+#: includes/Admin/Surveys.php:35
+msgid "Do you have any comments/suggestions to improve our AI tools?"
+msgstr "Чи є у вас коментарі/пропозиції щодо покращення наших інструментів ШІ?"
+
+#: includes/Hooks.php:79
+msgid "Edit site"
+msgstr "Редагувати сайт"
+
+#: includes/Shortcodes/ContactForm.php:69
+#, fuzzy
+msgid "Email"
+msgstr "Електронна пошта"
+
+#: includes/Shortcodes/ContactForm.php:153
+#, fuzzy
+msgid "Email:"
+msgstr "Електронна пошта:"
+
+#: includes/Admin/AdminTranslations.php:32
+msgid "Enter at least 11 characters"
+msgstr "Введіть щонайменше 11 символів"
+
+#: includes/Admin/AdminTranslations.php:35
+msgid "Existing content will be deleted"
+msgstr "Існуючий контент буде видалено"
+
+#: includes/Admin/Templates/featured-image-metabox.php:7
+msgid "External image can be used to show featured image."
+msgstr ""
+"Зовнішнє зображення може бути використане для показу основного зображення."
+
+#: includes/Admin/Templates/featured-image-metabox.php:12
+msgid "External Image URL"
+msgstr "URL-адреса зовнішнього зображення"
+
+#: includes/Shortcodes/ContactForm.php:173
+#, fuzzy
+msgid "Failed to send email. Please try again later."
+msgstr "Не вдалося відправити імейл. Будь ласка, спробуйте пізніше."
+
+#: includes/Admin/Hooks.php:33
+msgid "Featured Image with URL"
+msgstr "Зображення з URL-адресою"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Monospace"
+msgstr "Монопростір"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Serif"
+msgstr "Засечка"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System"
+msgstr "Система"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr "Великий"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr "Середній"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr "Малий"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XL"
+msgstr "XL"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XXL"
+msgstr "XXL"
+
+#: includes/Admin/AdminTranslations.php:25
+msgid "Generating colors"
+msgstr "Генерування кольорів"
+
+#: includes/Admin/AdminTranslations.php:27
+msgid "Generating content"
+msgstr "Створення контенту"
+
+#: includes/Admin/AdminTranslations.php:26
+msgid "Generating structure"
+msgstr "Генеруюча структура"
+
+#: includes/Admin/AdminTranslations.php:31
+msgid "Give us a minute"
+msgstr "Дайте нам хвилинку"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Section background gradient"
+msgstr "Градієнт фону секції"
+
+#: includes/Admin/AdminTranslations.php:34
+msgid "Great description! Feel free to add more details"
+msgstr "Чудовий опис! Не соромтеся додавати більше деталей"
+
+#: includes/Shortcodes/ContactForm.php:149
+#, fuzzy
+msgid "Hello,"
+msgstr "Привіт,"
+
+#: includes/Settings/Theme.php:60
+#, fuzzy
+msgid "Hide Header"
+msgstr "Приховати заголовок"
+
+#. Author of the theme
+#: style.css
+msgid "Hostinger"
+msgstr "Хостінгер"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Hostinger AI theme"
+msgstr "Тема штучного інтелекту Hostinger"
+
+#. Description of the theme
+#: style.css
+msgid ""
+"Hostinger AI theme built with SEO and mobile responsiveness in mind, this "
+"theme ensures optimal performance and a better online presence."
+msgstr ""
+"Тема Hostinger AI, створена з урахуванням SEO та мобільної адаптивності, "
+"забезпечує оптимальну продуктивність і кращу присутність в Інтернеті."
+
+#: includes/Admin/Surveys.php:31
+msgid ""
+"How would you rate your experience using our AI website builder to create "
+"your site? (Scale 1-10)"
+msgstr ""
+"Як ви оцінюєте свій досвід використання нашого конструктора сайтів ШІ (за "
+"шкалою від 1 до 10)?"
+
+#. Author URI of the theme
+#: style.css
+msgid "https://hostinger.com"
+msgstr "https://hostinger.com"
+
+#: includes/Shortcodes/ContactForm.php:42
+#, fuzzy
+msgid ""
+"I consent to use of provided personal data for the purpose of responding to "
+"the request as described in"
+msgstr ""
+"Я даю згоду на використання наданих персональних даних з метою надання "
+"відповіді на запит, як описано в"
+
+#: patterns/hidden-404.php:17
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr "Схоже, за цією адресою нічого не знайдено. Може, спробувати пошукати?"
+
+#: includes/Admin/AdminTranslations.php:20
+#, fuzzy
+msgid "Landing"
+msgstr "Посадка"
+
+#: includes/Admin/AdminTranslations.php:33
+msgid "Let us know more about your website to get the best result"
+msgstr ""
+"Дайте нам більше інформації про ваш сайт, щоб отримати найкращий результат"
+
+#: includes/Builder/NavigationBuilder.php:291
+msgid "Menu"
+msgstr "Меню"
+
+#: includes/Shortcodes/ContactForm.php:78
+#, fuzzy
+msgid "Message"
+msgstr "Повідомлення"
+
+#: includes/Shortcodes/ContactForm.php:154
+#, fuzzy
+msgid "Message:"
+msgstr "Повідомлення:"
+
+#: includes/Shortcodes/ContactForm.php:60
+#, fuzzy
+msgid "Name"
+msgstr "Ім'я"
+
+#: includes/Shortcodes/ContactForm.php:152
+#, fuzzy
+msgid "Name:"
+msgstr "Ім'я:"
+
+#: includes/Shortcodes/ContactForm.php:132
+#, fuzzy
+msgid "New Contact Form Submission"
+msgstr "Надсилання нової контактної форми"
+
+#: patterns/query.php:24
+msgid "No results found."
+msgstr "Результатів не знайдено."
+
+#: includes/Shortcodes/ContactForm.php:176
+#, fuzzy
+msgid "Not valid recipient email."
+msgstr "Недійсний email одержувача."
+
+#: includes/Admin/AdminTranslations.php:15
+msgid "Other"
+msgstr "Інше"
+
+#: patterns/hidden-404.php:13
+msgid "Page not found"
+msgstr "Сторінку не знайдено"
+
+#: patterns/hidden-404.php
+msgctxt "Pattern title"
+msgid "404"
+msgstr "404"
+
+#: patterns/hidden-post-meta.php
+msgctxt "Pattern title"
+msgid "Hidden post meta"
+msgstr "Прихована мета-мета повідомлення"
+
+#: patterns/query.php
+msgctxt "Pattern title"
+msgid "Query"
+msgstr "Запит"
+
+#: includes/Shortcodes/ContactForm.php:123
+#, fuzzy
+msgid "Please agree with privacy policy."
+msgstr "Будь ласка, погодьтеся з політикою конфіденційності."
+
+#: includes/Shortcodes/ContactForm.php:128
+#, fuzzy
+msgid "Please enter a valid email address."
+msgstr "Будь ласка, введіть дійсну адресу електронної пошти."
+
+#: includes/Admin/AdminTranslations.php:16
+msgid "Portfolio"
+msgstr "Портфоліо"
+
+#: includes/Shortcodes/ContactForm.php:44
+#, fuzzy
+msgid "Privacy Policy"
+msgstr "Політика конфіденційності"
+
+#: includes/Rest/BuilderRoutes.php:213
+msgid "Problem building content."
+msgstr "Створення контенту для вирішення проблем."
+
+#: includes/Rest/BuilderRoutes.php:169
+msgid "Problem generating content."
+msgstr "Проблема зі створенням контенту."
+
+#: includes/Shortcodes/ContactForm.php:101
+#, fuzzy
+msgid "Send Message"
+msgstr "Надіслати повідомлення"
+
+#: includes/Builder/NavigationBuilder.php:293
+msgid "Socials"
+msgstr "Соціальні мережі"
+
+#: includes/Rest/BuilderRoutes.php:63
+msgid "Sorry, something wrong with data."
+msgstr "Вибачте, щось не так з даними."
+
+#: includes/Shortcodes/ContactForm.php:171
+#, fuzzy
+msgid "Successfully submitted!"
+msgstr "Успішно подано!"
+
+#: includes/Admin/AdminTranslations.php:12
+msgid "Tell us about your site"
+msgstr "Розкажіть нам про ваш сайт"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "Нижній колонтитул"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr "Заголовок"
+
+#. translators: %s php version
+#: functions.php:36
+msgid ""
+"The Hostinger Easy Onboarding plugin requires minimum PHP version of <b>"
+"%s</b>. "
+msgstr ""
+"Плагін Hostinger Easy Onboarding потребує мінімальної версії PHP <b>%s</b>."
+
+#: includes/Settings/Theme.php:29 includes/Settings/Theme.php:30
+#: includes/Settings/Theme.php:122
+#, fuzzy
+msgid "Theme Settings"
+msgstr "Налаштування теми"
+
+#: includes/Admin/AdminTranslations.php:39
+msgid "This field is required"
+msgstr "Це поле є обов'язковим"
+
+#: includes/Admin/AdminTranslations.php:41
+msgid "This field should not be longer than 1024 symbols."
+msgstr "Довжина цього поля не має перевищувати 1024 символів."
+
+#: includes/Admin/AdminTranslations.php:40
+msgid "This field should not be longer than 255 symbols."
+msgstr "Довжина цього поля не повинна перевищувати 255 символів."
+
+#: includes/Admin/AdminTranslations.php:14
+msgid "Website type"
+msgstr "Тип сайту"
+
+#: includes/Shortcodes/ContactForm.php:74
+#, fuzzy
+msgid "What's your email?"
+msgstr "Яка ваша електронна пошта?"
+
+#: includes/Shortcodes/ContactForm.php:65
+#, fuzzy
+msgid "What's your name?"
+msgstr "Як тебе звати?"
+
+#: includes/Shortcodes/ContactForm.php:46
+#, fuzzy
+msgid "which I have read. I may withdraw my consent at any time."
+msgstr "які я прочитав. Я можу відкликати свою згоду в будь-який час."
+
+#: includes/Shortcodes/ContactForm.php:82
+#, fuzzy
+msgid "Write your message..."
+msgstr "Напишіть своє повідомлення..."
+
+#: includes/Rest/BuilderRoutes.php:114 includes/Rest/BuilderRoutes.php:149
+#: includes/Rest/BuilderRoutes.php:197
+msgid "Wrong sequence of step execution."
+msgstr "Неправильна послідовність виконання кроків."
+
+#. translators: %s php version
+#: functions.php:40
+msgid "You are running <b>%s</b> PHP version."
+msgstr "У вас запущено <b>%s</b> версію PHP."
+
+#: includes/Admin/AdminTranslations.php:36
+msgid ""
+"You have already generated content. Continuing will delete all previous "
+"content. Are you sure you want to proceed?"
+msgstr ""
+"Ви вже створили вміст. Продовження видалить весь попередній вміст. Ви "
+"впевнені, що хочете продовжити?"
+
+#: includes/Shortcodes/ContactForm.php:150
+#, fuzzy
+msgid "You have received a new message through your website's contact form."
+msgstr "Ви отримали нове повідомлення через контактну форму на вашому сайті."

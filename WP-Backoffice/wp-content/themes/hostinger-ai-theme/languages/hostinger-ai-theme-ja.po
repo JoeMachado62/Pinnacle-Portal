@@ -1,0 +1,589 @@
+# Copyright (C) 2024 Hostinger
+# This file is distributed under the GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: Hostinger AI theme 1.0.12\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hostinger-ai-"
+"theme\n"
+"Last-Translator: \n"
+"Language-Team: Japanese\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-11-18T09:12:04+00:00\n"
+"PO-Revision-Date: 2025-02-28 08:37+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: hostinger-ai-theme\n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Loco-Version: 2.6.11; wp-6.4.5"
+
+#: includes/Admin/AdminTranslations.php:10
+#, fuzzy
+msgid ""
+"<span style=\"display: flex; flex-direction: column; gap: 8px;\"><h3 "
+"style=\"margin:0; font-size:16px\">Site couldn’t be created</h3> <p "
+"style=\"margin-top:0; font-size:14px; color:#727586\">That’s because of an "
+"issue on our end. Try creating your site again. </p></span>"
+msgstr ""
+"<span style=\"display: flex; flex-direction: column; gap: 8px;\"><h3 "
+"style=\"margin:0;font-size:16px\">サイトを作成できませんでした</h3> <p style=\"margin-top:"
+"0; font-size:14px; color:#727586\">これは私たちの側の問題です。もう一度サイトを作成してみてください。</p>"
+"</span"
+
+#: includes/Settings/Theme.php:94
+#, fuzzy
+msgid "Adjust how elements are displayed on your website:"
+msgstr "ウェブサイト上の要素の表示方法を調整します："
+
+#: includes/Admin/AdminTranslations.php:18
+#, fuzzy
+msgid "Affiliate marketing site"
+msgstr "アフィリエイト・マーケティング・サイト"
+
+#: includes/Admin/AdminTranslations.php:11 includes/Admin/Menu.php:21
+#: includes/Admin/Menu.php:22
+#, fuzzy
+msgid "AI Website Creation"
+msgstr "AIウェブサイト制作"
+
+#: includes/Shortcodes/ContactForm.php:26
+#, fuzzy
+msgid "An error occurred. Please try again later."
+msgstr "エラーが発生しました。後でもう一度お試しください。"
+
+#. translators: %s php version
+#: functions.php:36
+#, fuzzy
+msgid "Attention:"
+msgstr "注目してほしい："
+
+#: includes/Admin/AdminTranslations.php:24
+#, fuzzy
+msgid "Back"
+msgstr "バック"
+
+#: includes/Admin/AdminTranslations.php:19
+#, fuzzy
+msgid "Blog"
+msgstr "ブログ"
+
+#: includes/Admin/AdminTranslations.php:13
+#, fuzzy
+msgid "Brand name"
+msgstr "ブランド名"
+
+#: includes/Admin/AdminTranslations.php:28
+#, fuzzy
+msgid "Building content"
+msgstr "コンテンツ構築"
+
+#: includes/Admin/AdminTranslations.php:17
+#, fuzzy
+msgid "Business and services"
+msgstr "ビジネスとサービス"
+
+#: includes/Admin/AdminTranslations.php:37
+#, fuzzy
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: includes/Settings/Theme.php:110
+#, fuzzy
+msgid "Check this box to hide the header element on all pages"
+msgstr "すべてのページでヘッダー要素を非表示にするには、このボックスをチェックしてください。"
+
+#: theme.json
+#, fuzzy
+msgctxt "Color name"
+msgid "Color 1 (Section backgrounds)"
+msgstr "カラー1（セクションの背景）"
+
+#: theme.json
+#, fuzzy
+msgctxt "Color name"
+msgid "Color 2 (Section backgrounds)"
+msgstr "カラー2（セクションの背景）"
+
+#: theme.json
+#, fuzzy
+msgctxt "Color name"
+msgid "Color 3 (Button background)"
+msgstr "カラー3（ボタン背景）"
+
+#: theme.json
+#, fuzzy
+msgctxt "Color name"
+msgid "Dark (Text on Light and Color 1)"
+msgstr "ダーク（ライトとカラー1にテキスト）"
+
+#: theme.json
+#, fuzzy
+msgctxt "Color name"
+msgid "Grey (Form borders)"
+msgstr "グレー（フォーム・ボーダー）"
+
+#: theme.json
+#, fuzzy
+msgctxt "Color name"
+msgid "Light (Text on Color 2 and Gradient)"
+msgstr "ライト（カラー2とグラデーションのテキスト）"
+
+#: includes/Admin/AdminTranslations.php:30
+#, fuzzy
+msgid "Confirm & edit"
+msgstr "確認と編集"
+
+#: includes/Builder/NavigationBuilder.php:292
+#, fuzzy
+msgid "Contacts"
+msgstr "連絡先"
+
+#: includes/Admin/AdminTranslations.php:38
+#, fuzzy
+msgid "Continue"
+msgstr "続ける"
+
+#: includes/Admin/AdminTranslations.php:23
+#, fuzzy
+msgid "Create"
+msgstr "作成"
+
+#: includes/Admin/AdminTranslations.php:29
+#, fuzzy
+msgid "Create again"
+msgstr "もう一度作る"
+
+#: theme.json
+#, fuzzy
+msgctxt "Custom template name"
+msgid "No title"
+msgstr "タイトルなし"
+
+#: includes/Admin/AdminTranslations.php:21
+#, fuzzy
+msgid "Describe your site"
+msgstr "サイトについて"
+
+#: includes/Admin/AdminTranslations.php:22
+#, fuzzy
+msgid "Description"
+msgstr "説明"
+
+#: includes/Shortcodes/ContactForm.php:151
+#, fuzzy
+msgid "Details:"
+msgstr "詳細はこちら："
+
+#: includes/Settings/Theme.php:53
+#, fuzzy
+msgid "Display Settings"
+msgstr "ディスプレイ設定"
+
+#: includes/Admin/Surveys.php:35
+#, fuzzy
+msgid "Do you have any comments/suggestions to improve our AI tools?"
+msgstr "私たちのAIツールを改善するためのコメントや提案はありますか？"
+
+#: includes/Hooks.php:79
+#, fuzzy
+msgid "Edit site"
+msgstr "サイト編集"
+
+#: includes/Shortcodes/ContactForm.php:69
+#, fuzzy
+msgid "Email"
+msgstr "電子メール"
+
+#: includes/Shortcodes/ContactForm.php:153
+#, fuzzy
+msgid "Email:"
+msgstr "Eメール"
+
+#: includes/Admin/AdminTranslations.php:32
+#, fuzzy
+msgid "Enter at least 11 characters"
+msgstr "少なくとも11文字を入力"
+
+#: includes/Admin/AdminTranslations.php:35
+#, fuzzy
+msgid "Existing content will be deleted"
+msgstr "既存のコンテンツは削除される"
+
+#: includes/Admin/Templates/featured-image-metabox.php:7
+#, fuzzy
+msgid "External image can be used to show featured image."
+msgstr "外部画像は、特集画像を表示するために使用することができます。"
+
+#: includes/Admin/Templates/featured-image-metabox.php:12
+#, fuzzy
+msgid "External Image URL"
+msgstr "外部画像URL"
+
+#: includes/Shortcodes/ContactForm.php:173
+#, fuzzy
+msgid "Failed to send email. Please try again later."
+msgstr "メールの送信に失敗しました。後でもう一度お試しください。"
+
+#: includes/Admin/Hooks.php:33
+#, fuzzy
+msgid "Featured Image with URL"
+msgstr "注目画像（URL付き"
+
+#: theme.json
+#, fuzzy
+msgctxt "Font family name"
+msgid "Monospace"
+msgstr "モノスペース"
+
+#: theme.json
+#, fuzzy
+msgctxt "Font family name"
+msgid "Serif"
+msgstr "セリフ"
+
+#: theme.json
+#, fuzzy
+msgctxt "Font family name"
+msgid "System"
+msgstr "システム"
+
+#: theme.json
+#, fuzzy
+msgctxt "Font size name"
+msgid "Large"
+msgstr "大型"
+
+#: theme.json
+#, fuzzy
+msgctxt "Font size name"
+msgid "Medium"
+msgstr "ミディアム"
+
+#: theme.json
+#, fuzzy
+msgctxt "Font size name"
+msgid "Small"
+msgstr "小さい"
+
+#: theme.json
+#, fuzzy
+msgctxt "Font size name"
+msgid "XL"
+msgstr "XL"
+
+#: theme.json
+#, fuzzy
+msgctxt "Font size name"
+msgid "XXL"
+msgstr "XXL"
+
+#: includes/Admin/AdminTranslations.php:25
+#, fuzzy
+msgid "Generating colors"
+msgstr "色の生成"
+
+#: includes/Admin/AdminTranslations.php:27
+#, fuzzy
+msgid "Generating content"
+msgstr "コンテンツの生成"
+
+#: includes/Admin/AdminTranslations.php:26
+#, fuzzy
+msgid "Generating structure"
+msgstr "構造の生成"
+
+#: includes/Admin/AdminTranslations.php:31
+#, fuzzy
+msgid "Give us a minute"
+msgstr "少し時間をください"
+
+#: theme.json
+#, fuzzy
+msgctxt "Gradient name"
+msgid "Section background gradient"
+msgstr "セクション背景グラデーション"
+
+#: includes/Admin/AdminTranslations.php:34
+#, fuzzy
+msgid "Great description! Feel free to add more details"
+msgstr "素晴らしい説明だ！自由に詳細を追加してください"
+
+#: includes/Shortcodes/ContactForm.php:149
+#, fuzzy
+msgid "Hello,"
+msgstr "こんにちは、"
+
+#: includes/Settings/Theme.php:60
+#, fuzzy
+msgid "Hide Header"
+msgstr "ヘッダーを隠す"
+
+#. Author of the theme
+#: style.css
+#, fuzzy
+msgid "Hostinger"
+msgstr "ホスティンガー"
+
+#. Theme Name of the theme
+#: style.css
+#, fuzzy
+msgid "Hostinger AI theme"
+msgstr "ホスティンガーのAIテーマ"
+
+#. Description of the theme
+#: style.css
+#, fuzzy
+msgid ""
+"Hostinger AI theme built with SEO and mobile responsiveness in mind, this "
+"theme ensures optimal performance and a better online presence."
+msgstr ""
+"SEOとモバイル対応を念頭に置いて構築されたHostingerのAIテーマは、最適なパフォーマンスとより良いオンラインプレゼンスを保証します。"
+
+#: includes/Admin/Surveys.php:31
+#, fuzzy
+msgid ""
+"How would you rate your experience using our AI website builder to create "
+"your site? (Scale 1-10)"
+msgstr "当社のAIウェブサイトビルダーを使用してサイトを作成した経験をどのように評価しますか？ (スケール1-10)"
+
+#. Author URI of the theme
+#: style.css
+#, fuzzy
+msgid "https://hostinger.com"
+msgstr "https://hostinger.com"
+
+#: includes/Shortcodes/ContactForm.php:42
+#, fuzzy
+msgid ""
+"I consent to use of provided personal data for the purpose of responding to "
+"the request as described in"
+msgstr "私は、提供された個人情報が、下記の請求に対応する目的で利用されることに同意します。"
+
+#: patterns/hidden-404.php:17
+#, fuzzy
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr "この場所では何も見つからなかったようだ。検索してみる？"
+
+#: includes/Admin/AdminTranslations.php:20
+#, fuzzy
+msgid "Landing"
+msgstr "着陸"
+
+#: includes/Admin/AdminTranslations.php:33
+#, fuzzy
+msgid "Let us know more about your website to get the best result"
+msgstr "最良の結果を得るために、あなたのウェブサイトについて詳しくお知らせください。"
+
+#: includes/Builder/NavigationBuilder.php:291
+#, fuzzy
+msgid "Menu"
+msgstr "メニュー"
+
+#: includes/Shortcodes/ContactForm.php:78
+#, fuzzy
+msgid "Message"
+msgstr "メッセージ"
+
+#: includes/Shortcodes/ContactForm.php:154
+#, fuzzy
+msgid "Message:"
+msgstr "メッセージ"
+
+#: includes/Shortcodes/ContactForm.php:60
+#, fuzzy
+msgid "Name"
+msgstr "名称"
+
+#: includes/Shortcodes/ContactForm.php:152
+#, fuzzy
+msgid "Name:"
+msgstr "名前"
+
+#: includes/Shortcodes/ContactForm.php:132
+#, fuzzy
+msgid "New Contact Form Submission"
+msgstr "新しいお問い合わせフォーム"
+
+#: patterns/query.php:24
+#, fuzzy
+msgid "No results found."
+msgstr "結果は見つからなかった。"
+
+#: includes/Shortcodes/ContactForm.php:176
+#, fuzzy
+msgid "Not valid recipient email."
+msgstr "有効な受信者の電子メールではありません。"
+
+#: includes/Admin/AdminTranslations.php:15
+#, fuzzy
+msgid "Other"
+msgstr "その他"
+
+#: patterns/hidden-404.php:13
+#, fuzzy
+msgid "Page not found"
+msgstr "ページが見つかりません"
+
+#: patterns/hidden-404.php
+#, fuzzy
+msgctxt "Pattern title"
+msgid "404"
+msgstr "404"
+
+#: patterns/hidden-post-meta.php
+#, fuzzy
+msgctxt "Pattern title"
+msgid "Hidden post meta"
+msgstr "隠し投稿メタ"
+
+#: patterns/query.php
+#, fuzzy
+msgctxt "Pattern title"
+msgid "Query"
+msgstr "クエリー"
+
+#: includes/Shortcodes/ContactForm.php:123
+#, fuzzy
+msgid "Please agree with privacy policy."
+msgstr "プライバシーポリシーに同意してください。"
+
+#: includes/Shortcodes/ContactForm.php:128
+#, fuzzy
+msgid "Please enter a valid email address."
+msgstr "有効なEメールアドレスを入力してください。"
+
+#: includes/Admin/AdminTranslations.php:16
+#, fuzzy
+msgid "Portfolio"
+msgstr "ポートフォリオ"
+
+#: includes/Shortcodes/ContactForm.php:44
+#, fuzzy
+msgid "Privacy Policy"
+msgstr "プライバシーポリシー"
+
+#: includes/Rest/BuilderRoutes.php:213
+#, fuzzy
+msgid "Problem building content."
+msgstr "コンテンツ作りの問題。"
+
+#: includes/Rest/BuilderRoutes.php:169
+#, fuzzy
+msgid "Problem generating content."
+msgstr "コンテンツ生成の問題。"
+
+#: includes/Shortcodes/ContactForm.php:101
+#, fuzzy
+msgid "Send Message"
+msgstr "メッセージを送る"
+
+#: includes/Builder/NavigationBuilder.php:293
+#, fuzzy
+msgid "Socials"
+msgstr "ソーシャル"
+
+#: includes/Rest/BuilderRoutes.php:63
+#, fuzzy
+msgid "Sorry, something wrong with data."
+msgstr "申し訳ないが、データがおかしい。"
+
+#: includes/Shortcodes/ContactForm.php:171
+#, fuzzy
+msgid "Successfully submitted!"
+msgstr "提出に成功！"
+
+#: includes/Admin/AdminTranslations.php:12
+#, fuzzy
+msgid "Tell us about your site"
+msgstr "あなたのサイトについて教えてください"
+
+#: theme.json
+#, fuzzy
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "フッター"
+
+#: theme.json
+#, fuzzy
+msgctxt "Template part name"
+msgid "Header"
+msgstr "ヘッダー"
+
+#. translators: %s php version
+#: functions.php:36
+#, fuzzy
+msgid ""
+"The Hostinger Easy Onboarding plugin requires minimum PHP version of <b>"
+"%s</b>. "
+msgstr "Hostinger Easy Onboardingプラグインは、最低<b>%s</b>のPHPバージョンを必要とします。"
+
+#: includes/Settings/Theme.php:29 includes/Settings/Theme.php:30
+#: includes/Settings/Theme.php:122
+#, fuzzy
+msgid "Theme Settings"
+msgstr "テーマ設定"
+
+#: includes/Admin/AdminTranslations.php:39
+#, fuzzy
+msgid "This field is required"
+msgstr "このフィールドは必須です。"
+
+#: includes/Admin/AdminTranslations.php:41
+#, fuzzy
+msgid "This field should not be longer than 1024 symbols."
+msgstr "このフィールドは1024シンボルを超えてはならない。"
+
+#: includes/Admin/AdminTranslations.php:40
+#, fuzzy
+msgid "This field should not be longer than 255 symbols."
+msgstr "このフィールドは255シンボルを超えてはならない。"
+
+#: includes/Admin/AdminTranslations.php:14
+#, fuzzy
+msgid "Website type"
+msgstr "ウェブサイトの種類"
+
+#: includes/Shortcodes/ContactForm.php:74
+#, fuzzy
+msgid "What's your email?"
+msgstr "Eメールは？"
+
+#: includes/Shortcodes/ContactForm.php:65
+#, fuzzy
+msgid "What's your name?"
+msgstr "お名前は？"
+
+#: includes/Shortcodes/ContactForm.php:46
+#, fuzzy
+msgid "which I have read. I may withdraw my consent at any time."
+msgstr "を読みました。私はいつでも同意を撤回することができます。"
+
+#: includes/Shortcodes/ContactForm.php:82
+#, fuzzy
+msgid "Write your message..."
+msgstr "メッセージを書く"
+
+#: includes/Rest/BuilderRoutes.php:114 includes/Rest/BuilderRoutes.php:149
+#: includes/Rest/BuilderRoutes.php:197
+#, fuzzy
+msgid "Wrong sequence of step execution."
+msgstr "ステップの実行順序が正しくない。"
+
+#. translators: %s php version
+#: functions.php:40
+#, fuzzy
+msgid "You are running <b>%s</b> PHP version."
+msgstr "PHP のバージョンは <b>%s</b> です。"
+
+#: includes/Admin/AdminTranslations.php:36
+#, fuzzy
+msgid ""
+"You have already generated content. Continuing will delete all previous "
+"content. Are you sure you want to proceed?"
+msgstr "あなたはすでにコンテンツを作成しました。続行すると、以前のコンテンツはすべて削除されます。本当に続けますか？"
+
+#: includes/Shortcodes/ContactForm.php:150
+#, fuzzy
+msgid "You have received a new message through your website's contact form."
+msgstr "あなたのウェブサイトのコンタクトフォームに新しいメッセージが届きました。"

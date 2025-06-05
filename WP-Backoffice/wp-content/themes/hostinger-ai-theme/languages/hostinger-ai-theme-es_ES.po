@@ -1,0 +1,533 @@
+# Copyright (C) 2024 Hostinger
+# This file is distributed under the GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: Hostinger AI theme 1.0.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hostinger-ai-"
+"theme\n"
+"Last-Translator: \n"
+"Language-Team: Spanish (Spain)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-09-17T07:01:03+00:00\n"
+"PO-Revision-Date: 2025-02-28 08:38+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: hostinger-ai-theme\n"
+"Language: es_ES\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Loco-Version: 2.6.11; wp-6.4.5"
+
+#: includes/Admin/AdminTranslations.php:10
+msgid ""
+"<span style=\"display: flex; flex-direction: column; gap: 8px;\"><h3 "
+"style=\"margin:0; font-size:16px\">Site couldn’t be created</h3> <p "
+"style=\"margin-top:0; font-size:14px; color:#727586\">That’s because of an "
+"issue on our end. Try creating your site again. </p></span>"
+msgstr ""
+"<span style=\"display: flex; flex-direction: column; gap: 8px;\"><h3 "
+"style=\"margin:0; font-size:16px\">No se ha podido crear el sitio web</h3> "
+"<p style=\"margin-top:0; font-size:14px; color:#727586\">Esto se debe a un "
+"problema nuestro. Intenta crear tu sitio web de nuevo. </p></span>"
+
+#: includes/Settings/Theme.php:94
+#, fuzzy
+msgid "Adjust how elements are displayed on your website:"
+msgstr "Ajuste cómo se muestran los elementos en su sitio web:"
+
+#: includes/Admin/AdminTranslations.php:18
+#, fuzzy
+msgid "Affiliate marketing site"
+msgstr "Sitio de marketing de afiliación"
+
+#: includes/Admin/AdminTranslations.php:11 includes/Admin/Menu.php:21
+#: includes/Admin/Menu.php:22
+msgid "AI Website Creation"
+msgstr "Creación de sitios web con IA"
+
+#: includes/Shortcodes/ContactForm.php:26
+#, fuzzy
+msgid "An error occurred. Please try again later."
+msgstr "Se ha producido un error. Vuelva a intentarlo más tarde."
+
+#. translators: %s php version
+#: functions.php:36
+msgid "Attention:"
+msgstr "Atención:"
+
+#: includes/Admin/AdminTranslations.php:24
+msgid "Back"
+msgstr "Volver"
+
+#: includes/Admin/AdminTranslations.php:19
+msgid "Blog"
+msgstr "Blog"
+
+#: includes/Admin/AdminTranslations.php:13
+msgid "Brand name"
+msgstr "Marca"
+
+#: includes/Admin/AdminTranslations.php:28
+msgid "Building content"
+msgstr "Creando contenido"
+
+#: includes/Admin/AdminTranslations.php:17
+msgid "Business and services"
+msgstr "Empresas y servicios"
+
+#: includes/Admin/AdminTranslations.php:37
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: includes/Settings/Theme.php:110
+#, fuzzy
+msgid "Check this box to hide the header element on all pages"
+msgstr ""
+"Marque esta casilla para ocultar el elemento de cabecera en todas las páginas"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Color 1 (Section backgrounds)"
+msgstr "Color 1 (Sección fondos)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Color 2 (Section backgrounds)"
+msgstr "Color 2 (Sección fondos)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Color 3 (Button background)"
+msgstr "Color 3 (Sección fondos)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Dark (Text on Light and Color 1)"
+msgstr "Oscuro (Texto en claro y color 1)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Grey (Form borders)"
+msgstr "Gris (bordes del formulario)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Light (Text on Color 2 and Gradient)"
+msgstr "Claro (Texto en color 2 y degradado)"
+
+#: includes/Admin/AdminTranslations.php:30
+msgid "Confirm & edit"
+msgstr "Confirmar y editar"
+
+#: includes/Builder/NavigationBuilder.php:292
+msgid "Contacts"
+msgstr "Contactos"
+
+#: includes/Admin/AdminTranslations.php:38
+msgid "Continue"
+msgstr "Continuar"
+
+#: includes/Admin/AdminTranslations.php:23
+msgid "Create"
+msgstr "Crear"
+
+#: includes/Admin/AdminTranslations.php:29
+msgid "Create again"
+msgstr "Crear de nuevo"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "No title"
+msgstr "Sin título"
+
+#: includes/Admin/AdminTranslations.php:21
+msgid "Describe your site"
+msgstr "Describe tu sitio web"
+
+#: includes/Admin/AdminTranslations.php:22
+msgid "Description"
+msgstr "Descripción"
+
+#: includes/Shortcodes/ContactForm.php:151
+#, fuzzy
+msgid "Details:"
+msgstr "Detalles:"
+
+#: includes/Settings/Theme.php:53
+#, fuzzy
+msgid "Display Settings"
+msgstr "Ajustes de pantalla"
+
+#: includes/Admin/Surveys.php:35
+msgid "Do you have any comments/suggestions to improve our AI tools?"
+msgstr ""
+"¿Tiene algún comentario o sugerencia para mejorar nuestras herramientas con "
+"IA?"
+
+#: includes/Hooks.php:79
+msgid "Edit site"
+msgstr "Editar sitio web"
+
+#: includes/Shortcodes/ContactForm.php:69
+#, fuzzy
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: includes/Shortcodes/ContactForm.php:153
+#, fuzzy
+msgid "Email:"
+msgstr "Correo electrónico:"
+
+#: includes/Admin/AdminTranslations.php:32
+msgid "Enter at least 11 characters"
+msgstr "Introduce al menos 11 caracteres"
+
+#: includes/Admin/AdminTranslations.php:35
+msgid "Existing content will be deleted"
+msgstr "Se eliminará el contenido existente"
+
+#: includes/Admin/Templates/featured-image-metabox.php:7
+msgid "External image can be used to show featured image."
+msgstr "La imagen externa se puede usar para mostrar la imagen destacada."
+
+#: includes/Admin/Templates/featured-image-metabox.php:12
+msgid "External Image URL"
+msgstr "URL de imagen externa"
+
+#: includes/Shortcodes/ContactForm.php:173
+#, fuzzy
+msgid "Failed to send email. Please try again later."
+msgstr ""
+"No se ha podido enviar el correo electrónico. Vuelva a intentarlo más tarde."
+
+#: includes/Admin/Hooks.php:33
+msgid "Featured Image with URL"
+msgstr "Imagen destacada con URL"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Monospace"
+msgstr "Monospace"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Serif"
+msgstr "Serif"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System"
+msgstr "Sistema"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr "Grande"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr "Medio"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr "Pequeño"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XL"
+msgstr "XL"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XXL"
+msgstr "XXL"
+
+#: includes/Admin/AdminTranslations.php:25
+msgid "Generating colors"
+msgstr "Generando colores"
+
+#: includes/Admin/AdminTranslations.php:27
+msgid "Generating content"
+msgstr "Generando cotenido"
+
+#: includes/Admin/AdminTranslations.php:26
+msgid "Generating structure"
+msgstr "Generando estructura"
+
+#: includes/Admin/AdminTranslations.php:31
+msgid "Give us a minute"
+msgstr "Danos un minuto"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Section background gradient"
+msgstr "Sección de degradado de fondo"
+
+#: includes/Admin/AdminTranslations.php:34
+msgid "Great description! Feel free to add more details"
+msgstr "¡Gran descripción! No dudes en añadir más detalles"
+
+#: includes/Shortcodes/ContactForm.php:149
+#, fuzzy
+msgid "Hello,"
+msgstr "Hola,"
+
+#: includes/Settings/Theme.php:60
+#, fuzzy
+msgid "Hide Header"
+msgstr "Ocultar cabecera"
+
+#. Author of the theme
+#: style.css
+msgid "Hostinger"
+msgstr "Hostinger"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Hostinger AI theme"
+msgstr "Tema de Hostinger con IA"
+
+#. Description of the theme
+#: style.css
+msgid ""
+"Hostinger AI theme built with SEO and mobile responsiveness in mind, this "
+"theme ensures optimal performance and a better online presence."
+msgstr ""
+"El tema de Hostinger con IA, creado teniendo en cuenta la optimización para "
+"motores de búsqueda (SEO) y la capacidad de respuesta en dispositivos "
+"móviles, garantiza un rendimiento óptimo y una mejor presencia en Internet."
+
+#: includes/Admin/Surveys.php:31
+msgid ""
+"How would you rate your experience using our AI website builder to create "
+"your site? (Scale 1-10)"
+msgstr ""
+"¿Cómo calificarías tu experiencia al usar nuestro Creador de sitios web con "
+"IA para crear tu sitio web? (Escala 1-10)"
+
+#. Author URI of the theme
+#: style.css
+msgid "https://hostinger.com"
+msgstr "https://hostinger.es"
+
+#: includes/Shortcodes/ContactForm.php:42
+#, fuzzy
+msgid ""
+"I consent to use of provided personal data for the purpose of responding to "
+"the request as described in"
+msgstr ""
+"Autorizo el uso de los datos personales facilitados con el fin de responder "
+"a la solicitud según lo descrito en"
+
+#: patterns/hidden-404.php:17
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr ""
+"Parece que no se ha encontrado nada en este lugar. ¿Tal vez quisieras "
+"intentar una búsqueda?"
+
+#: includes/Admin/AdminTranslations.php:20
+#, fuzzy
+msgid "Landing"
+msgstr "Aterrizaje"
+
+#: includes/Admin/AdminTranslations.php:33
+msgid "Let us know more about your website to get the best result"
+msgstr "Haznos saber más de tu sitio web para que obtengas el mejor resultado"
+
+#: includes/Builder/NavigationBuilder.php:291
+msgid "Menu"
+msgstr "Menú"
+
+#: includes/Shortcodes/ContactForm.php:78
+#, fuzzy
+msgid "Message"
+msgstr "Mensaje"
+
+#: includes/Shortcodes/ContactForm.php:154
+#, fuzzy
+msgid "Message:"
+msgstr "Mensaje:"
+
+#: includes/Shortcodes/ContactForm.php:60
+#, fuzzy
+msgid "Name"
+msgstr "Nombre"
+
+#: includes/Shortcodes/ContactForm.php:152
+#, fuzzy
+msgid "Name:"
+msgstr "Nombre:"
+
+#: includes/Shortcodes/ContactForm.php:132
+#, fuzzy
+msgid "New Contact Form Submission"
+msgstr "Nuevo formulario de contacto"
+
+#: patterns/query.php:24
+msgid "No results found."
+msgstr "No se han encontrado resultados."
+
+#: includes/Shortcodes/ContactForm.php:176
+#, fuzzy
+msgid "Not valid recipient email."
+msgstr "Correo electrónico del destinatario no válido."
+
+#: includes/Admin/AdminTranslations.php:15
+msgid "Other"
+msgstr "Otros"
+
+#: patterns/hidden-404.php:13
+msgid "Page not found"
+msgstr "No se encontró la página"
+
+#: patterns/hidden-404.php
+msgctxt "Pattern title"
+msgid "404"
+msgstr "404"
+
+#: patterns/hidden-post-meta.php
+msgctxt "Pattern title"
+msgid "Hidden post meta"
+msgstr "Post meta oculto"
+
+#: patterns/query.php
+msgctxt "Pattern title"
+msgid "Query"
+msgstr "Consulta"
+
+#: includes/Shortcodes/ContactForm.php:123
+#, fuzzy
+msgid "Please agree with privacy policy."
+msgstr "Por favor, acepte la política de privacidad."
+
+#: includes/Shortcodes/ContactForm.php:128
+#, fuzzy
+msgid "Please enter a valid email address."
+msgstr "Introduzca una dirección de correo electrónico válida."
+
+#: includes/Admin/AdminTranslations.php:16
+msgid "Portfolio"
+msgstr "Portafolio"
+
+#: includes/Shortcodes/ContactForm.php:44
+#, fuzzy
+msgid "Privacy Policy"
+msgstr "Política de privacidad"
+
+#: includes/Rest/BuilderRoutes.php:213
+msgid "Problem building content."
+msgstr "Hay un problema creando el contenido."
+
+#: includes/Rest/BuilderRoutes.php:169
+msgid "Problem generating content."
+msgstr "Hay un problema generando el contenido."
+
+#: includes/Shortcodes/ContactForm.php:101
+#, fuzzy
+msgid "Send Message"
+msgstr "Enviar mensaje"
+
+#: includes/Builder/NavigationBuilder.php:293
+msgid "Socials"
+msgstr "Sociales"
+
+#: includes/Rest/BuilderRoutes.php:63
+msgid "Sorry, something wrong with data."
+msgstr "Lo sentimos, algo está mal con los datos."
+
+#: includes/Shortcodes/ContactForm.php:171
+#, fuzzy
+msgid "Successfully submitted!"
+msgstr "¡Enviado con éxito!"
+
+#: includes/Admin/AdminTranslations.php:12
+msgid "Tell us about your site"
+msgstr "Háblanos de tu sitio web"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "Pie de página"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr "Cabecera"
+
+#. translators: %s php version
+#: functions.php:36
+msgid ""
+"The Hostinger Easy Onboarding plugin requires minimum PHP version of <b>"
+"%s</b>. "
+msgstr ""
+"El plugin Hostinger Easy Onboarding requiere una versión mínima de PHP de <b>"
+"%s</b>."
+
+#: includes/Settings/Theme.php:29 includes/Settings/Theme.php:30
+#: includes/Settings/Theme.php:122
+#, fuzzy
+msgid "Theme Settings"
+msgstr "Configuración del tema"
+
+#: includes/Admin/AdminTranslations.php:39
+msgid "This field is required"
+msgstr "Este campo es obligatorio"
+
+#: includes/Admin/AdminTranslations.php:41
+msgid "This field should not be longer than 1024 symbols."
+msgstr "Este campo no debe tener más de 1024 símbolos."
+
+#: includes/Admin/AdminTranslations.php:40
+msgid "This field should not be longer than 255 symbols."
+msgstr "Este campo no debe tener más de 255 símbolos."
+
+#: includes/Admin/AdminTranslations.php:14
+msgid "Website type"
+msgstr "Tipo de sitio web"
+
+#: includes/Shortcodes/ContactForm.php:74
+#, fuzzy
+msgid "What's your email?"
+msgstr "¿Cuál es tu correo electrónico?"
+
+#: includes/Shortcodes/ContactForm.php:65
+#, fuzzy
+msgid "What's your name?"
+msgstr "¿Cómo te llamas?"
+
+#: includes/Shortcodes/ContactForm.php:46
+#, fuzzy
+msgid "which I have read. I may withdraw my consent at any time."
+msgstr "que he leído. Puedo retirar mi consentimiento en cualquier momento."
+
+#: includes/Shortcodes/ContactForm.php:82
+#, fuzzy
+msgid "Write your message..."
+msgstr "Escribe tu mensaje..."
+
+#: includes/Rest/BuilderRoutes.php:114 includes/Rest/BuilderRoutes.php:149
+#: includes/Rest/BuilderRoutes.php:197
+msgid "Wrong sequence of step execution."
+msgstr "Secuencia incorrecta de ejecución de pasos."
+
+#. translators: %s php version
+#: functions.php:40
+msgid "You are running <b>%s</b> PHP version."
+msgstr "Estás ejecutando la versión <b>%s</b> de PHP."
+
+#: includes/Admin/AdminTranslations.php:36
+msgid ""
+"You have already generated content. Continuing will delete all previous "
+"content. Are you sure you want to proceed?"
+msgstr ""
+"Ya has generado contenido. Continuar borrará todo el contenido anterior. "
+"¿Realmente quieres continuar?"
+
+#: includes/Shortcodes/ContactForm.php:150
+#, fuzzy
+msgid "You have received a new message through your website's contact form."
+msgstr ""
+"Ha recibido un nuevo mensaje a través del formulario de contacto de su sitio "
+"web."

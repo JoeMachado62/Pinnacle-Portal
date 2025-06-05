@@ -1,0 +1,79 @@
+0000.005 () Opened log file at time: Wed, 30 Apr 2025 17:52:14 +0000 on http://portal.pinnacleautofinance.com
+0000.005 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.25.5 WP: 6.8 PHP: 8.3.6 (fpm-fcgi, Linux srv800206 6.8.0-58-generic #60-Ubuntu SMP PREEMPT_DYNAMIC Fri Mar 14 18:29:48 UTC 2025 x86_64) MySQL: 8.0.41-0ubuntu0.24.04.1 (max packet size=67108864) WPLANG: en_US Server: nginx/1.24.0 safe_mode: 0 max_execution_time: 900 memory_limit: 512M (used: 5.2M | 8M) multisite: N openssl: OpenSSL 3.0.13 30 Jan 2024 mcrypt: N LANG:  WP Proxy: disabled ZipArchive::addFile: Y
+0000.005 () Free space on disk containing Updraft's temporary directory: 86493.1 MB
+0000.027 () Restore setup, now closing connection and starting restore over AJAX.
+0000.003 () Opened log file at time: Wed, 30 Apr 2025 17:52:14 +0000 on http://portal.pinnacleautofinance.com
+0000.003 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.25.5 WP: 6.8 PHP: 8.3.6 (fpm-fcgi, Linux srv800206 6.8.0-58-generic #60-Ubuntu SMP PREEMPT_DYNAMIC Fri Mar 14 18:29:48 UTC 2025 x86_64) MySQL: 8.0.41-0ubuntu0.24.04.1 (max packet size=67108864) WPLANG: en_US Server: nginx/1.24.0 safe_mode: 0 max_execution_time: 900 memory_limit: 512M (used: 2.8M | 8M) multisite: N openssl: OpenSSL 3.0.13 30 Jan 2024 mcrypt: N LANG:  WP Proxy: disabled ZipArchive::addFile: Y
+0000.003 () Free space on disk containing Updraft's temporary directory: 86493.1 MB
+0000.004 () Ensuring WP_Filesystem is setup for a restore
+0000.004 () WP_Filesystem is setup and ready for a restore
+0000.007 () Restore job started. Entities to restore: plugins, themes, uploads, mu-plugins, others. Restore options: {"updraft_encryptionphrase":"","updraft_restorer_wpcore_includewpconfig":false,"updraft_incremental_restore_point":-1}
+0000.008 () PHP event: code E_WARNING: mkdir(): File exists (line 558, wp-admin/includes/class-wp-filesystem-direct.php)
+0000.008 () Will not delete any archives after unpacking them, because there was no cloud storage for this backup
+0000.010 () Entity: mu-plugins
+0000.010 () restore_backup(backup_file=backup_2025-04-27-2155_Pinnacle_Credit_Services_77052841f8bd-mu-plugins.zip, type=mu-plugins, info=a:2:{s:4:"path";s:61:"/var/www/portal.pinnacleautofinance.com/wp-content/mu-plugins";s:11:"description";s:16:"Must-use plugins";}, last_one=)
+0000.010 () Unpacking backup... (backup_2025-04-27-2155_Pinnacle_Credit_Services_77052841f8bd-mu-plugins.zip, 0 MB)
+0000.012 () Unzipping backup_2025-04-27-2155_Pinnacle_Credit_Services_77052841f8bd-mu-plugins.zip to /var/www/portal.pinnacleautofinance.com/wp-content/upgrade/2478e1c5/ using UpdraftPlus_ZipArchive, starting index 0
+0000.015 () Unzip progress: 2 out of 2 files (3.4 KB, mu-plugins/hostinger-auto-updates.php)
+0000.015 () Moving old data: filesystem method / updraft_dir is potentially possible
+0000.015 () Moving old data: can potentially use wp_filesystem method / -old
+0000.015 () Moving old data out of the way...
+0000.015 () Moving unpacked backup into place...
+0000.015 () Destination directory did not exist, but was successfully created (/var/www/portal.pinnacleautofinance.com/wp-content/mu-plugins/)
+0000.016 () Cleaning up rubbish...
+0000.019 () Entity: plugins
+0000.019 () restore_backup(backup_file=backup_2025-04-27-2155_Pinnacle_Credit_Services_77052841f8bd-plugins.zip, type=plugins, info=a:3:{s:4:"path";s:58:"/var/www/portal.pinnacleautofinance.com/wp-content/plugins";s:11:"description";s:7:"Plugins";s:20:"singular_description";s:6:"Plugin";}, last_one=)
+0000.019 () Unpacking backup... (backup_2025-04-27-2155_Pinnacle_Credit_Services_77052841f8bd-plugins.zip, 54.1 MB)
+0000.019 () Unzipping backup_2025-04-27-2155_Pinnacle_Credit_Services_77052841f8bd-plugins.zip to /var/www/portal.pinnacleautofinance.com/wp-content/upgrade/20b69a9a/ using UpdraftPlus_ZipArchive, starting index 0
+0000.206 () Unzip progress: 1939 out of 13036 files (720 B, plugins/elementor/assets/css/widget-text-editor-rtl.min.css)
+0000.340 () Unzip progress: 2940 out of 13036 files (20.2 MB, plugins/elementor/assets/js/app.min.js)
+0000.483 () Unzip progress: 3941 out of 13036 files (47 MB, plugins/elementor/app/modules/import-export/runners/export/templates.php)
+0000.607 () Unzip progress: 4942 out of 13036 files (70.4 MB, plugins/wp-mail-smtp/assets/images/reports/icon-note.png)
+0000.708 () Unzip progress: 5943 out of 13036 files (84.3 MB, plugins/updraftplus/vendor/guzzle/guzzle/src/Guzzle/Http/QueryString.php)
+0000.795 () Unzip progress: 6944 out of 13036 files (96.8 MB, plugins/litespeed-cache/lib/css_js_min/minify/data/js/keywords_reserved.txt)
+0000.903 () Unzip progress: 7945 out of 13036 files (115.8 MB, plugins/wpforms-lite/assets/images/admin-flyout-menu/sullie-default.svg)
+0000.986 () Unzip progress: 8946 out of 13036 files (127.5 MB, plugins/wpforms-lite/vendor_prefixed/stripe/stripe-php/lib/Service/TestHelpers/TestHelpersServiceFactory.php)
+0001.052 () Unzip progress: 9947 out of 13036 files (131.2 MB, plugins/hostinger-ai-assistant/vendor/nesbot/carbon/src/Carbon/Lang/lzh_TW.php)
+0001.131 () Unzip progress: 10948 out of 13036 files (135.2 MB, plugins/hostinger-ai-assistant/vendor/league/commonmark/src/Extension/Footnote/Node/FootnoteContainer.php)
+0001.218 () Unzip progress: 11949 out of 13036 files (144.1 MB, plugins/insert-headers-and-footers/includes/execute/class-wpcode-snippet-execute-html.php)
+0001.330 () Unzip progress: 12950 out of 13036 files (160.5 MB, plugins/ultimate-member/assets/libs/jquery-form/jquery-form.min.js)
+0001.338 () Unzip progress: 13036 out of 13036 files (161 MB, plugins/ultimate-member/assets/libs/pickadate/picker.time.js)
+0001.341 () Moving old data: filesystem method / updraft_dir is potentially possible
+0001.341 () Moving old data: can potentially use wp_filesystem method / -old
+0001.341 () Moving old data out of the way...
+0001.400 () Top-level entities being moved: index.php, akismet, better-search-replace, hello.php, updraftplus, classic-editor, custom-post-type-ui, advanced-custom-fields
+0001.401 () Moving unpacked backup into place...
+0001.800 () Top-level entities being moved: index.php, litespeed-cache, wpforms-lite, ultimate-member, insert-headers-and-footers, hostinger-ai-assistant, hostinger-easy-onboarding, wp-mail-smtp, updraftplus, html-forms, hostinger, elementor, html-forms-premium, redirect-redirection
+0001.804 () Cleaning up rubbish...
+0001.809 () Entity: themes
+0001.809 () restore_backup(backup_file=backup_2025-04-27-2155_Pinnacle_Credit_Services_77052841f8bd-themes.zip, type=themes, info=a:3:{s:4:"path";s:57:"/var/www/portal.pinnacleautofinance.com/wp-content/themes";s:11:"description";s:6:"Themes";s:20:"singular_description";s:5:"Theme";}, last_one=)
+0001.809 () Unpacking backup... (backup_2025-04-27-2155_Pinnacle_Credit_Services_77052841f8bd-themes.zip, 15.5 MB)
+0001.809 () Unzipping backup_2025-04-27-2155_Pinnacle_Credit_Services_77052841f8bd-themes.zip to /var/www/portal.pinnacleautofinance.com/wp-content/upgrade/a146cea5/ using UpdraftPlus_ZipArchive, starting index 0
+0001.930 () Unzip progress: 995 out of 995 files (20.3 MB, themes/hello-elementor/vendor/composer/ClassLoader.php)
+0001.930 () Moving old data: filesystem method / updraft_dir is potentially possible
+0001.930 () Moving old data: can potentially use wp_filesystem method / -old
+0001.930 () Moving old data out of the way...
+0001.943 () Top-level entities being moved: index.php, twentytwentythree, twentytwentyfive, pinnacle-portal, twentytwentyfour
+0001.943 () Moving unpacked backup into place...
+0001.973 () Top-level entities being moved: index.php, hostinger-ai-theme, twentytwentythree, twentytwentyfive, twentytwentyfour, hello-elementor
+0001.974 () Cleaning up rubbish...
+0001.979 () Entity: uploads
+0001.979 () restore_backup(backup_file=backup_2025-04-27-2155_Pinnacle_Credit_Services_77052841f8bd-uploads.zip, type=uploads, info=a:2:{s:4:"path";s:58:"/var/www/portal.pinnacleautofinance.com/wp-content/uploads";s:11:"description";s:7:"Uploads";}, last_one=)
+0001.979 () Unpacking backup... (backup_2025-04-27-2155_Pinnacle_Credit_Services_77052841f8bd-uploads.zip, 83.6 MB)
+0001.979 () Unzipping backup_2025-04-27-2155_Pinnacle_Credit_Services_77052841f8bd-uploads.zip to /var/www/portal.pinnacleautofinance.com/wp-content/upgrade/77af517f/ using UpdraftPlus_ZipArchive, starting index 0
+0002.151 () Unzip progress: 229 out of 229 files (85.5 MB, uploads/2025/03/PCS-Dashboard-1-1-e1743025889130.png)
+0002.151 () Moving old data: filesystem method / updraft_dir is potentially possible
+0002.151 () Moving old data: can potentially use wp_filesystem method / -old
+0002.151 () Moving old data out of the way...
+0002.152 () Moving unpacked backup into place...
+0002.159 () Cleaning up rubbish...
+0002.163 () Entity: others
+0002.163 () restore_backup(backup_file=backup_2025-04-27-2155_Pinnacle_Credit_Services_77052841f8bd-others.zip, type=others, info=a:2:{s:4:"path";s:50:"/var/www/portal.pinnacleautofinance.com/wp-content";s:11:"description";s:6:"Others";}, last_one=1)
+0002.163 () Unpacking backup... (backup_2025-04-27-2155_Pinnacle_Credit_Services_77052841f8bd-others.zip, 0 MB)
+0002.163 () Unzipping backup_2025-04-27-2155_Pinnacle_Credit_Services_77052841f8bd-others.zip to /var/www/portal.pinnacleautofinance.com/wp-content/upgrade/c6ba4b10/ using UpdraftPlus_ZipArchive, starting index 0
+0002.165 () Unzip progress: 7 out of 7 files (2.3 KB, .litespeed_conf.dat)
+0002.166 () Cleaning up rubbish...
+0002.172 () Plugin path better-search-replace/better-search-replace.php not found: de-activating.
+0002.175 () Elementor's CSS directory exists, and will be emptied (so that it will be automatically regenerated)
+0002.177 () Restore successful!
+0002.177 () Restore successful

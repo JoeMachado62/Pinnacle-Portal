@@ -1,0 +1,494 @@
+# Copyright (C) 2024 Hostinger
+# This file is distributed under the GPLv3.
+msgid ""
+msgstr ""
+"Project-Id-Version: Hostinger AI theme 1.0.7\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hostinger-ai-"
+"theme\n"
+"Last-Translator: \n"
+"Language-Team: Thai\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-10-09T10:32:13+00:00\n"
+"PO-Revision-Date: 2025-02-28 08:38+0000\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Domain: hostinger-ai-theme\n"
+"Language: th\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Loco-Version: 2.6.11; wp-6.4.5"
+
+#: includes/Admin/AdminTranslations.php:10
+msgid ""
+"<span style=\"display: flex; flex-direction: column; gap: 8px;\"><h3 "
+"style=\"margin:0; font-size:16px\">Site couldn’t be created</h3> <p "
+"style=\"margin-top:0; font-size:14px; color:#727586\">That’s because of an "
+"issue on our end. Try creating your site again. </p></span>"
+msgstr ""
+"<span style=\"display: flex; flex-direction: column; gap: 8px;\"><h3 "
+"style=\"margin:0; font-size:16px\">ไม่สามารถสร้างเว็บไซต์ได้</h3> <p "
+"style=\"margin-top:0; font-size:14px; color:#727586\">"
+"อาจเป็นเพราะปัญหาที่เกิดขึ้นจากทางเรา โปรดลองสร้างไซต์ของคุณใหม่อีกครั้ง </p>"
+"</span>"
+
+#: includes/Settings/Theme.php:94
+msgid "Adjust how elements are displayed on your website:"
+msgstr ""
+
+#: includes/Admin/AdminTranslations.php:18
+msgid "Affiliate marketing site"
+msgstr ""
+
+#: includes/Admin/AdminTranslations.php:11 includes/Admin/Menu.php:21
+#: includes/Admin/Menu.php:22
+msgid "AI Website Creation"
+msgstr "การสร้างเว็บไซต์ด้วย AI"
+
+#: includes/Shortcodes/ContactForm.php:26
+msgid "An error occurred. Please try again later."
+msgstr ""
+
+#. translators: %s php version
+#: functions.php:36
+msgid "Attention:"
+msgstr "ข้อควรระวัง:"
+
+#: includes/Admin/AdminTranslations.php:24
+msgid "Back"
+msgstr ""
+
+#: includes/Admin/AdminTranslations.php:19
+msgid "Blog"
+msgstr ""
+
+#: includes/Admin/AdminTranslations.php:13
+msgid "Brand name"
+msgstr "ชื่อแบรนด์"
+
+#: includes/Admin/AdminTranslations.php:28
+msgid "Building content"
+msgstr "การสร้างเนื้อหา"
+
+#: includes/Admin/AdminTranslations.php:17
+msgid "Business and services"
+msgstr "ธุรกิจและบริการ"
+
+#: includes/Admin/AdminTranslations.php:37
+msgid "Cancel"
+msgstr "ยกเลิก"
+
+#: includes/Settings/Theme.php:110
+msgid "Check this box to hide the header element on all pages"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Color 1 (Section backgrounds)"
+msgstr "สีที่ 1 (ส่วนพื้นหลัง)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Color 2 (Section backgrounds)"
+msgstr "สีที่ 2 (ส่วนพื้นหลัง)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Color 3 (Button background)"
+msgstr "สีที่ 3 (พื้นหลังปุ่ม)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Dark (Text on Light and Color 1)"
+msgstr "สีเข้ม (ข้อความบนแสงและสี 1)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Grey (Form borders)"
+msgstr "สีเทา (ขอบแบบฟอร์ม)"
+
+#: theme.json
+msgctxt "Color name"
+msgid "Light (Text on Color 2 and Gradient)"
+msgstr "สีอ่อน (ข้อความบนสี 2 และการไล่ระดับสี)"
+
+#: includes/Admin/AdminTranslations.php:30
+msgid "Confirm & edit"
+msgstr "ยืนยัน & แก้ไข"
+
+#: includes/Builder/NavigationBuilder.php:292
+msgid "Contacts"
+msgstr "ติดต่อ"
+
+#: includes/Admin/AdminTranslations.php:38
+msgid "Continue"
+msgstr "ดำเนินการต่อ"
+
+#: includes/Admin/AdminTranslations.php:23
+msgid "Create"
+msgstr "สร้าง"
+
+#: includes/Admin/AdminTranslations.php:29
+msgid "Create again"
+msgstr "สร้างอีกครั้ง"
+
+#: theme.json
+msgctxt "Custom template name"
+msgid "No title"
+msgstr "ไม่มีชื่อเรื่อง"
+
+#: includes/Admin/AdminTranslations.php:21
+msgid "Describe your site"
+msgstr "อธิบายเว็บไซต์ของคุณ"
+
+#: includes/Admin/AdminTranslations.php:22
+msgid "Description"
+msgstr "คำอธิบาย"
+
+#: includes/Shortcodes/ContactForm.php:151
+msgid "Details:"
+msgstr ""
+
+#: includes/Settings/Theme.php:53
+msgid "Display Settings"
+msgstr ""
+
+#: includes/Admin/Surveys.php:35
+msgid "Do you have any comments/suggestions to improve our AI tools?"
+msgstr "คุณมีความคิดเห็น/ข้อเสนอแนะเพื่อปรับปรุงเครื่องมือ AI ของเราหรือไม่?"
+
+#: includes/Hooks.php:79
+msgid "Edit site"
+msgstr "แก้ไขเว็บไซต์"
+
+#: includes/Shortcodes/ContactForm.php:69
+msgid "Email"
+msgstr ""
+
+#: includes/Shortcodes/ContactForm.php:153
+msgid "Email:"
+msgstr ""
+
+#: includes/Admin/AdminTranslations.php:32
+msgid "Enter at least 11 characters"
+msgstr "ป้อนอย่างน้อย 11 ตัวอักษร"
+
+#: includes/Admin/AdminTranslations.php:35
+msgid "Existing content will be deleted"
+msgstr "เนื้อหาที่มีอยู่จะถูกลบออก"
+
+#: includes/Admin/Templates/featured-image-metabox.php:7
+msgid "External image can be used to show featured image."
+msgstr ""
+
+#: includes/Admin/Templates/featured-image-metabox.php:12
+msgid "External Image URL"
+msgstr ""
+
+#: includes/Shortcodes/ContactForm.php:173
+msgid "Failed to send email. Please try again later."
+msgstr ""
+
+#: includes/Admin/Hooks.php:33
+msgid "Featured Image with URL"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Monospace"
+msgstr "พื้นที่เดียว"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Serif"
+msgstr "Serif"
+
+#: theme.json
+msgctxt "Font family name"
+msgid "System"
+msgstr "ระบบ"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr "ขนาดใหญ่"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr "ขนาดกลาง"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr "ขนาดเล็ก"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XL"
+msgstr "XL"
+
+#: theme.json
+msgctxt "Font size name"
+msgid "XXL"
+msgstr "XXL"
+
+#: includes/Admin/AdminTranslations.php:25
+msgid "Generating colors"
+msgstr "กำลังสร้างสี"
+
+#: includes/Admin/AdminTranslations.php:27
+msgid "Generating content"
+msgstr "กำลังสร้างเนื้อหา"
+
+#: includes/Admin/AdminTranslations.php:26
+msgid "Generating structure"
+msgstr "กำลังสร้างโครงสร้าง"
+
+#: includes/Admin/AdminTranslations.php:31
+msgid "Give us a minute"
+msgstr "ให้เวลาเราสักครู่"
+
+#: theme.json
+msgctxt "Gradient name"
+msgid "Section background gradient"
+msgstr "การไล่เฉดสีส่วนพื้นหลัง"
+
+#: includes/Admin/AdminTranslations.php:34
+msgid "Great description! Feel free to add more details"
+msgstr "คำอธิบายยอดเยี่ยม! คุณสามารถเพิ่มรายละเอียดเพิ่มเติมได้"
+
+#: includes/Shortcodes/ContactForm.php:149
+msgid "Hello,"
+msgstr ""
+
+#: includes/Settings/Theme.php:60
+msgid "Hide Header"
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "Hostinger"
+msgstr "Hostinger"
+
+#. Theme Name of the theme
+#: style.css
+msgid "Hostinger AI theme"
+msgstr "ธีม AI ของ Hostinger"
+
+#. Description of the theme
+#: style.css
+msgid ""
+"Hostinger AI theme built with SEO and mobile responsiveness in mind, this "
+"theme ensures optimal performance and a better online presence."
+msgstr ""
+"ธีม Hostinger AI ถูกสร้างขึ้นมาโดยคำนึงถึง SEO "
+"และการปรับตามอุปกรณ์เคลื่อนที่ "
+"ธีมนี้ช่วยให้มีประสิทธิภาพเหมาะสมที่สุดและการมีตัวตนออนไลน์ที่ดีขึ้น"
+
+#: includes/Admin/Surveys.php:31
+msgid ""
+"How would you rate your experience using our AI website builder to create "
+"your site? (Scale 1-10)"
+msgstr ""
+"คุณจะให้คะแนนประสบการณ์การใช้โปรแกรมสร้างเว็บไซต์ AI "
+"ของเราในการสร้างเว็บไซต์ของคุณเท่าไหร่ (ระดับ 1-10)"
+
+#. Author URI of the theme
+#: style.css
+msgid "https://hostinger.com"
+msgstr "https://hostinger.com"
+
+#: includes/Shortcodes/ContactForm.php:42
+msgid ""
+"I consent to use of provided personal data for the purpose of responding to "
+"the request as described in"
+msgstr ""
+
+#: patterns/hidden-404.php:17
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr "ดูเหมือนว่าจะไม่พบอะไรตรงนี้ ลองค้นหาดูไหม?"
+
+#: includes/Admin/AdminTranslations.php:20
+msgid "Landing"
+msgstr ""
+
+#: includes/Admin/AdminTranslations.php:33
+msgid "Let us know more about your website to get the best result"
+msgstr ""
+"แจ้งให้เราทราบข้อมูลเพิ่มเติมเกี่ยวกับเว็บไซต์ของคุณเพื่อให้ได้ผลลัพธ์ที่ดีที่สุด"
+
+#: includes/Builder/NavigationBuilder.php:291
+msgid "Menu"
+msgstr "เมนู"
+
+#: includes/Shortcodes/ContactForm.php:78
+msgid "Message"
+msgstr ""
+
+#: includes/Shortcodes/ContactForm.php:154
+msgid "Message:"
+msgstr ""
+
+#: includes/Shortcodes/ContactForm.php:60
+msgid "Name"
+msgstr ""
+
+#: includes/Shortcodes/ContactForm.php:152
+msgid "Name:"
+msgstr ""
+
+#: includes/Shortcodes/ContactForm.php:132
+msgid "New Contact Form Submission"
+msgstr ""
+
+#: patterns/query.php:24
+msgid "No results found."
+msgstr "ไม่พบผลการค้นหา"
+
+#: includes/Shortcodes/ContactForm.php:176
+msgid "Not valid recipient email."
+msgstr ""
+
+#: includes/Admin/AdminTranslations.php:15
+msgid "Other"
+msgstr "อื่นๆ"
+
+#: patterns/hidden-404.php:13
+msgid "Page not found"
+msgstr "ไม่พบหน้าเพจ"
+
+#: patterns/hidden-404.php
+msgctxt "Pattern title"
+msgid "404"
+msgstr "404"
+
+#: patterns/hidden-post-meta.php
+msgctxt "Pattern title"
+msgid "Hidden post meta"
+msgstr "เมตาโพสต์ที่ซ่อนอยู่"
+
+#: patterns/query.php
+msgctxt "Pattern title"
+msgid "Query"
+msgstr "สอบถาม"
+
+#: includes/Shortcodes/ContactForm.php:123
+msgid "Please agree with privacy policy."
+msgstr ""
+
+#: includes/Shortcodes/ContactForm.php:128
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: includes/Admin/AdminTranslations.php:16
+msgid "Portfolio"
+msgstr "ผลงาน"
+
+#: includes/Shortcodes/ContactForm.php:44
+msgid "Privacy Policy"
+msgstr ""
+
+#: includes/Rest/BuilderRoutes.php:213
+msgid "Problem building content."
+msgstr "ปัญหาในการสร้างเนื้อหา"
+
+#: includes/Rest/BuilderRoutes.php:169
+msgid "Problem generating content."
+msgstr "เกิดปัญหาในการสร้างเนื้อหา"
+
+#: includes/Shortcodes/ContactForm.php:101
+msgid "Send Message"
+msgstr ""
+
+#: includes/Builder/NavigationBuilder.php:293
+msgid "Socials"
+msgstr "โซเชียล"
+
+#: includes/Rest/BuilderRoutes.php:63
+msgid "Sorry, something wrong with data."
+msgstr "ขออภัย มีข้อผิดพลาดบางอย่างกับข้อมูล"
+
+#: includes/Shortcodes/ContactForm.php:171
+msgid "Successfully submitted!"
+msgstr ""
+
+#: includes/Admin/AdminTranslations.php:12
+msgid "Tell us about your site"
+msgstr "แจ้งเราเกี่ยวกับเว็บไซต์ของคุณ"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "ส่วนท้าย"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr "ส่วนหัว"
+
+#. translators: %s php version
+#: functions.php:36
+msgid ""
+"The Hostinger Easy Onboarding plugin requires minimum PHP version of <b>"
+"%s</b>. "
+msgstr ""
+"ปลั๊กอิน Hostinger Easy Onboarding ต้องใช้ PHP เวอร์ชันขั้นต่ำ <b>%s</b>"
+
+#: includes/Settings/Theme.php:29 includes/Settings/Theme.php:30
+#: includes/Settings/Theme.php:122
+msgid "Theme Settings"
+msgstr ""
+
+#: includes/Admin/AdminTranslations.php:39
+msgid "This field is required"
+msgstr "ต้องระบุข้อมูลในช่องนี้"
+
+#: includes/Admin/AdminTranslations.php:41
+msgid "This field should not be longer than 1024 symbols."
+msgstr ""
+
+#: includes/Admin/AdminTranslations.php:40
+msgid "This field should not be longer than 255 symbols."
+msgstr "ช่องนี้ไม่ควรมีความยาวเกิน 255 สัญลักษณ์"
+
+#: includes/Admin/AdminTranslations.php:14
+msgid "Website type"
+msgstr "ประเภทของเว็บไซต์"
+
+#: includes/Shortcodes/ContactForm.php:74
+msgid "What's your email?"
+msgstr ""
+
+#: includes/Shortcodes/ContactForm.php:65
+msgid "What's your name?"
+msgstr ""
+
+#: includes/Shortcodes/ContactForm.php:46
+msgid "which I have read. I may withdraw my consent at any time."
+msgstr ""
+
+#: includes/Shortcodes/ContactForm.php:82
+msgid "Write your message..."
+msgstr ""
+
+#: includes/Rest/BuilderRoutes.php:114 includes/Rest/BuilderRoutes.php:149
+#: includes/Rest/BuilderRoutes.php:197
+msgid "Wrong sequence of step execution."
+msgstr "ลำดับขั้นตอนการดำเนินการไม่ถูกต้อง"
+
+#. translators: %s php version
+#: functions.php:40
+msgid "You are running <b>%s</b> PHP version."
+msgstr "คุณกำลังใช้งาน PHP เวอร์ชัน <b>%s</b>"
+
+#: includes/Admin/AdminTranslations.php:36
+msgid ""
+"You have already generated content. Continuing will delete all previous "
+"content. Are you sure you want to proceed?"
+msgstr ""
+"คุณได้สร้างเนื้อหาแล้ว หากดำเนินการต่อ เนื้อหาทั้งหมดก่อนหน้านี้จะถูกลบ "
+"คุณแน่ใจหรือไม่ว่าต้องการดำเนินการต่อ"
+
+#: includes/Shortcodes/ContactForm.php:150
+msgid "You have received a new message through your website's contact form."
+msgstr ""

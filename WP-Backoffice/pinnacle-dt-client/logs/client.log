@@ -1,0 +1,2 @@
+2025-05-15 21:18:39 [App] error: Failed to take screenshot: Page.captureScreenshot timed out. Increase the 'protocolTimeout' setting in launch/connect calls for a higher timeout if needed.
+2025-05-15 21:57:32 [App] error: Failed to take screenshot: Page.captureScreenshot timed out. Increase the 'protocolTimeout' setting in launch/connect calls for a higher timeout if needed.
