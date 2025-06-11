@@ -1,0 +1,112 @@
+<!DOCTYPE html><html><head><title>PAF Dashboard Test</title><style>body { font-family: Arial, sans-serif; margin: 20px; } .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; } .success { background: #d4edda; border-color: #c3e6cb; } .error { background: #f8d7da; border-color: #f5c6cb; } .warning { background: #fff3cd; border-color: #ffeaa7; }</style></head><body><h1>Pinnacle Auto Finance Dashboard Diagnostic Test</h1><div class='test-section'><h2>Test 1: Plugin Status</h2><div class='success'>✓ Pinnacle Auto Finance Core plugin is active</div></div><div class='test-section'><h2>Test 2: Shortcode Registration</h2><div class='success'>✓ 'paf_dealer_dashboard' shortcode is registered</div></div><div class='test-section'><h2>Test 3: Required Functions</h2><div class='success'>✓ Function 'paf_render_dealer_dashboard' exists</div><div class='success'>✓ Function 'paf_render_dashboard_account_manager_section' exists</div><div class='success'>✓ Function 'paf_render_dashboard_prequal_image_section' exists</div><div class='success'>✓ Function 'paf_render_dashboard_pipeline_section' exists</div><div class='success'>✓ Function 'paf_render_advertising_sidebar' exists</div><div class='success'>✓ Function 'paf_get_current_user_dealer_id' exists</div><div class='success'>✓ Function 'paf_get_deal_status_label' exists</div></div><div class='test-section'><h2>Test 4: User Authentication Test</h2><div class='success'>✓ Simulating login as user: ezautobuying (ID: 22)</div><div class='success'>✓ User has 'paf_view_dealer_dashboard' capability</div><div class='success'>✓ User has associated dealer CPT (ID: 250)</div><div class='warning'>ℹ Dealer status: approved</div></div><div class='test-section'><h2>Test 5: Shortcode Execution</h2><div class='success'>✓ User is logged in, testing shortcode...</div><div class='success'>✓ Shortcode executed successfully</div><div style='margin-top: 10px;'><strong>Shortcode Output Preview:</strong></div><div style='border: 1px solid #ccc; padding: 10px; max-height: 200px; overflow-y: auto; font-size: 12px;'><pre>    &lt;div class=&quot;paf-dashboard-container&quot;&gt;
+        &lt;div class=&quot;paf-dashboard-grid&quot;&gt;
+            &lt;div class=&quot;paf-dashboard-left-column&quot;&gt;
+                    &lt;div class=&quot;paf-advertising-sidebar&quot;&gt;
+        &lt;h3 class=&quot;paf-sidebar-title&quot;&gt;Featured Inventory&lt;/h3&gt;
+        &lt;div class=&quot;paf-ads-container&quot;&gt;
+                            &lt;div class=&quot;paf-ad-card&quot;&gt;
+                    &lt;div class=&quot;paf-ad-image&quot;&gt;
+                        &lt;img src=&quot;https://via.placeholder.com/200x150/0073AA/FFFFFF?text=Acura+ILX&quot; alt=...</pre></div></div><div class='test-section'><h2>Test 6: Asset Files</h2><div class='success'>✓ CSS file exists (16920 bytes)</div><div class='success'>✓ JavaScript file exists (8880 bytes)</div></div><div class='test-section'><h2>Test 7: Database Checks</h2><div class='success'>ℹ Found 3 dealer CPT records</div><div class='success'>ℹ Found 3 approved dealers</div></div><h2>Summary</h2><p>This diagnostic test checks the key components of the PAF dashboard system. If any tests show errors, those issues need to be resolved for the dashboard to work properly.</p><h2>Full Dashboard Render Test</h2><div style='border: 2px solid #007cba; padding: 20px; margin: 20px 0;'>    <div class="paf-dashboard-container">
+        <div class="paf-dashboard-grid">
+            <div class="paf-dashboard-left-column">
+                    <div class="paf-advertising-sidebar">
+        <h3 class="paf-sidebar-title">Featured Inventory</h3>
+        <div class="paf-ads-container">
+                            <div class="paf-ad-card">
+                    <div class="paf-ad-image">
+                        <img src="https://via.placeholder.com/200x150/0073AA/FFFFFF?text=Acura+ILX" alt="CERTIFIED USED 2.4L 2021 ACURA ILX...">
+                        <div class="paf-ad-badge">FEATURED CLASSIFIED</div>
+                    </div>
+                    
+                    <div class="paf-ad-content">
+                        <h4 class="paf-ad-title">CERTIFIED USED 2.4L 2021 ACURA ILX...</h4>
+                        <p class="paf-ad-description">2.4L ● 2021 ● Manual</p>
+                        <div class="paf-ad-button">$12,000</div>
+                    </div>
+                </div>
+                            <div class="paf-ad-card">
+                    <div class="paf-ad-image">
+                        <img src="https://via.placeholder.com/200x150/DC3545/FFFFFF?text=Kia+Sportage" alt="USED 2.0L 2020 KIA SPORTAGE">
+                        <div class="paf-ad-badge">SPECIAL</div>
+                    </div>
+                    
+                    <div class="paf-ad-content">
+                        <h4 class="paf-ad-title">USED 2.0L 2020 KIA SPORTAGE</h4>
+                        <p class="paf-ad-description">2.0L ● 2020 ● Automatic</p>
+                        <div class="paf-ad-button">$24,000</div>
+                    </div>
+                </div>
+                            <div class="paf-ad-card">
+                    <div class="paf-ad-image">
+                        <img src="https://via.placeholder.com/200x150/28A745/FFFFFF?text=Tesla+Roadster" alt="NEW ELECTRICAL 2022 TESLA ROADSTER...">
+                        <div class="paf-ad-badge">NEW</div>
+                    </div>
+                    
+                    <div class="paf-ad-content">
+                        <h4 class="paf-ad-title">NEW ELECTRICAL 2022 TESLA ROADSTER...</h4>
+                        <p class="paf-ad-description">Electrical ● 2022 ● Automatic</p>
+                        <div class="paf-ad-button">$120,000</div>
+                    </div>
+                </div>
+                    </div>
+    </div>
+                </div>
+
+            <div class="paf-dashboard-center-column">
+                    <div class="paf-dashboard-account-manager-section">
+        <div class="paf-account-manager-image">
+            <img src="http://portal.pinnacleautofinance.com/wp-content/plugins/pinnacle-auto-finance-core/assets/images/jc-lopez-placeholder.png" alt="J.C. Lopez">
+        </div>
+        <div class="paf-account-manager-details">
+            <h4>J.C. Lopez</h4>
+            <p class="paf-rep-title">Broker Finance Sales</p>
+            <ul class="paf-rep-contact-info">
+                <li><span class="dashicons dashicons-email-alt"></span> <a href="mailto:financeriskbroker@gmail.com">financeriskbroker@gmail.com</a></li>                <li><span class="dashicons dashicons-phone"></span> (786) 731-8493</li>                <li><span class="dashicons dashicons-location"></span> Miami, Florida</li>                <li><span class="dashicons dashicons-admin-home"></span> 345 Washington Street, Stoughton, MA 02072</li>            </ul>
+        </div>
+    </div>
+                    
+                    <div class="paf-dashboard-prequal-section">
+        <div class="paf-prequal-card">
+            <h3>Get pre-qualified in minutes</h3>
+            <p>Financing is easier than ever</p>
+            <a href="https://portal.pinnacleautofinance.com/submit-new-deal/" class="paf-submit-deal-btn">SUBMIT NEW DEAL</a>
+            
+            <div class="paf-prequal-image-wrapper">
+                <img src="https://portal.pinnacleautofinance.com/wp-content/uploads/2025/03/Submit-Deal.png" alt="Get pre-qualified in minutes. Financing is easier than ever. Submit New Deal." class="paf-prequal-image">
+            </div>
+        </div>
+    </div>
+                </div>
+
+            <div class="paf-dashboard-right-column">
+                    <div class="paf-dashboard-pipeline-section">
+        <div class="paf-pipeline-header">
+            <h3>Deals Pipeline</h3>
+            <!-- Add filters or search here if needed in future -->
+        </div>
+        <div class="paf-pipeline-table-container">
+            <table class="paf-table paf-deals-pipeline-table">
+                <thead>
+                    <tr>
+                        <th data-sort="client_name">Client Name <span class="paf-sort-icon"></span></th>
+                        <th data-sort="start_date">Start Date <span class="paf-sort-icon"></span></th>
+                        <th data-sort="status">Status <span class="paf-sort-icon"></span></th>
+                        <th data-sort="next_action">Next Action <span class="paf-sort-icon"></span></th>
+                        <th data-sort="vin">Vin# <span class="paf-sort-icon"></span></th>
+                        <th data-sort="loan_num">Loan# <span class="paf-sort-icon"></span></th>
+                        <th>Message Logs</th>
+                        <th>Last Message Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                                            <tr>
+                            <td colspan="8" class="paf-no-deals-found">No active deals found. <a href="https://portal.pinnacleautofinance.com/submit-new-deal/">Submit a New Deal</a></td>
+                        </tr>
+                                    </tbody>
+            </table>
+        </div>
+    </div>
+                </div>
+        </div>
+    </div>
+    </div></body></html>

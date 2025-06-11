@@ -157,7 +157,7 @@ function paf_render_dashboard_profile_section($dealer_cpt_id, $current_user) {
  * Renders the "Get Pre-qualified" image section.
  */
 function paf_render_dashboard_prequal_image_section() {
-    // Image URL from your description
+    // Image URL from your description - fallback to the existing image if needed
     $image_url = 'https://portal.pinnacleautofinance.com/wp-content/uploads/2025/03/Submit-Deal.png';
     // Link URL from your description
     $link_url = home_url('/submit-new-deal/'); // Use home_url() for portability
@@ -165,9 +165,15 @@ function paf_render_dashboard_prequal_image_section() {
     ob_start();
     ?>
     <div class="paf-dashboard-prequal-section">
-        <a href="<?php echo esc_url($link_url); ?>">
-            <img src="<?php echo esc_url($image_url); ?>" alt="Get pre-qualified in minutes. Financing is easier than ever. Submit New Deal." class="paf-prequal-image">
-        </a>
+        <div class="paf-prequal-card">
+            <h3>Get pre-qualified in minutes</h3>
+            <p>Financing is easier than ever</p>
+            <a href="<?php echo esc_url($link_url); ?>" class="paf-submit-deal-btn">SUBMIT NEW DEAL</a>
+            
+            <div class="paf-prequal-image-wrapper">
+                <img src="<?php echo esc_url($image_url); ?>" alt="Get pre-qualified in minutes. Financing is easier than ever. Submit New Deal." class="paf-prequal-image">
+            </div>
+        </div>
     </div>
     <?php
     return ob_get_clean();

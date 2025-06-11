@@ -1,0 +1,146 @@
+/* Ultimate Member Form Styling - Dealer Registration Form */
+
+/* Two-column layout for registration forms */
+.um-form-17 .um-col-1,
+.um-form .um-col-1 {
+    width: 48% !important;
+    float: left !important;
+    margin-right: 4% !important;
+    box-sizing: border-box !important;
+}
+
+.um-form-17 .um-col-2,
+.um-form .um-col-2 {
+    width: 48% !important;
+    float: right !important;
+    box-sizing: border-box !important;
+}
+
+/* Clear floats after columns */
+.um-form-17 .um-row:after,
+.um-form .um-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Ensure form fields have proper spacing */
+.um-form-17 .um-field,
+.um-form .um-field {
+    margin-bottom: 20px !important;
+    clear: none !important;
+}
+
+/* Responsive design - stack on mobile */
+@media (max-width: 768px) {
+    .um-form-17 .um-col-1,
+    .um-form-17 .um-col-2,
+    .um-form .um-col-1,
+    .um-form .um-col-2 {
+        width: 100% !important;
+        float: none !important;
+        margin-right: 0 !important;
+    }
+}
+
+/* Full-width fields (like submit button) */
+.um-form-17 .um-col-1.um-field-submit,
+.um-form .um-col-1.um-field-submit {
+    width: 100% !important;
+    float: none !important;
+    margin-right: 0 !important;
+    clear: both !important;
+}
+
+/* Style improvements for dealer fields */
+.um-form-17 .um-field-dealer_legal_name,
+.um-form-17 .um-field-dealer_federal_tax_id,
+.um-form-17 .um-field-dealer_owner_full_name,
+.um-form-17 .um-field-dealer_phone,
+.um-form-17 .um-field-dealer_fax,
+.um-form-17 .um-field-dealer_license_num,
+.um-form-17 .um-field-dealer_address,
+.um-form-17 .um-field-dealer_city,
+.um-form-17 .um-field-dealer_state,
+.um-form-17 .um-field-dealer_zip,
+.um-form-17 .um-field-dealer_contact_for_approval,
+.um-form-17 .um-field-dealer_contact_cell_phone,
+.um-form-17 .um-field-dealer_email_for_approvals {
+    background-color: #f9f9f9;
+    border-left: 3px solid #007cba;
+    padding-left: 10px !important;
+}
+
+/* Input field styling */
+.um-form-17 input[type="text"],
+.um-form-17 input[type="email"],
+.um-form-17 input[type="password"] {
+    border: 1px solid #ddd !important;
+    padding: 12px !important;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Focus styling */
+.um-form-17 input[type="text"]:focus,
+.um-form-17 input[type="email"]:focus,
+.um-form-17 input[type="password"]:focus {
+    border-color: #007cba !important;
+    box-shadow: 0 0 5px rgba(0, 124, 186, 0.3) !important;
+    outline: none !important;
+}
+
+/* Label styling */
+.um-form-17 .um-field-label {
+    font-weight: 600 !important;
+    color: #333 !important;
+    margin-bottom: 8px !important;
+    display: block !important;
+}
+
+/* Required field indicator */
+.um-form-17 .um-field-label.required:after {
+    content: " *";
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* Submit button styling */
+.um-form-17 .um-button {
+    background-color: #007cba !important;
+    color: white !important;
+    padding: 15px 30px !important;
+    border: none !important;
+    border-radius: 4px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s ease !important;
+    width: 100% !important;
+    margin-top: 20px !important;
+}
+
+.um-form-17 .um-button:hover {
+    background-color: #005a8b !important;
+}
+
+/* Form container */
+.um-form-17 {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form title/heading */
+.um-form-17 .um-form-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    color: #333;
+    font-weight: 600;
+}

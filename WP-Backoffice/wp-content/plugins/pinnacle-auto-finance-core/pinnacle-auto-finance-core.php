@@ -25,6 +25,7 @@ require_once PAF_CORE_PLUGIN_DIR . 'includes/frontend-forms.php';
 require_once PAF_CORE_PLUGIN_DIR . 'includes/frontend-views.php';
 require_once PAF_CORE_PLUGIN_DIR . 'includes/dashboard-partials.php';
 require_once PAF_CORE_PLUGIN_DIR . 'includes/dashboard-ajax.php';
+require_once PAF_CORE_PLUGIN_DIR . 'includes/advertising-management.php';
 require_once PAF_CORE_PLUGIN_DIR . 'includes/rest-api-endpoints.php';
 require_once PAF_CORE_PLUGIN_DIR . 'includes/action-scheduler-jobs.php';
 
@@ -101,9 +102,16 @@ function paf_core_enqueue_scripts() {
     // or a specific page template if you create one for the form.
     global $post;
     $is_credit_app_page = false;
+    $is_dashboard_page = false;
+    
     if ( $post && has_shortcode( $post->post_content, 'paf_credit_application_form' ) ) {
         $is_credit_app_page = true;
     }
+    
+    if ( $post && has_shortcode( $post->post_content, 'paf_dealer_dashboard' ) ) {
+        $is_dashboard_page = true;
+    }
+    
     // Add other conditions if the form is loaded in other ways, e.g., via a page template:
     // if (is_page_template('your-credit-app-template.php')) $is_credit_app_page = true;
 
@@ -122,9 +130,46 @@ function paf_core_enqueue_scripts() {
         // ));
     }
 
+    // Register dashboard assets
+    wp_register_style(
+        'paf-dashboard-css',
+        PAF_CORE_PLUGIN_URL . 'assets/css/paf-dashboard.css',
+        array(),
+        '1.0.1' // Cache buster
+    );
+    
+    wp_register_script(
+        'paf-dashboard-js',
+        PAF_CORE_PLUGIN_URL . 'assets/js/paf-dashboard.js',
+        array( 'jquery' ),
+        '1.0.1', // Cache buster
+        true
+    );
+    
+    // Enqueue dashboard assets if needed
+    if ( $is_dashboard_page ) {
+        wp_enqueue_style( 'paf-dashboard-css' );
+        wp_enqueue_script( 'paf-dashboard-js' );
+        wp_enqueue_style( 'dashicons' ); // Ensure dashicons are available
+        
+        // Localize script for AJAX
+        wp_localize_script( 'paf-dashboard-js', 'paf_ajax', array(
+            'ajax_url' => admin_url( 'admin-ajax.php' ),
+            'nonce'    => wp_create_nonce( 'paf_dashboard_nonce' )
+        ));
+    }
+
     wp_enqueue_style(
         'paf-frontend-css',
         PAF_CORE_PLUGIN_URL . 'assets/css/paf-frontend.css',
+        array(),
+        '1.0.1' // Cache buster
+    );
+    
+    // Enqueue UM form styling (for registration forms)
+    wp_enqueue_style(
+        'paf-um-form-styling',
+        PAF_CORE_PLUGIN_URL . 'assets/css/um-form-styling.css',
         array(),
         '1.0.1' // Cache buster
     );

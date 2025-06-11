@@ -10,6 +10,9 @@ function paf_core_register_form_actions_and_shortcodes() {
     add_shortcode( 'paf_credit_application_form', 'paf_render_credit_application_form' );
     add_action( 'admin_post_nopriv_paf_submit_credit_app', 'paf_handle_credit_application_submission' );
     add_action( 'admin_post_paf_submit_credit_app', 'paf_handle_credit_application_submission' );
+    
+    // Add missing action hook for initial dealer profile submission
+    add_action( 'admin_post_paf_submit_initial_dealer_profile', 'paf_handle_initial_dealer_profile_submission' );
 }
 
 /**

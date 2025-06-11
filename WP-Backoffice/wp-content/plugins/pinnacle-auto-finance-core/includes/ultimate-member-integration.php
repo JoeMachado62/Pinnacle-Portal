@@ -14,17 +14,40 @@ function paf_debug_registration_complete($user_id, $args) {
     }
 }
 
-// This function will be hooked to a filter that allows modification of fields.
+// Enhanced function to add dealer fields to appropriate UM forms
 function paf_add_dealer_registration_fields_filter( $fields_array ) {
-    // Check if UM and its form property are available and if it's the correct form ID
-    // IMPORTANT: Replace '17' with the actual ID of your dealer registration form if different.
-    if ( function_exists('UM') && UM()->form() && isset(UM()->form()->form_data['form_id']) && UM()->form()->form_data['form_id'] == 17 ) {
+    // Check if UM and its form property are available
+    if ( ! function_exists('UM') || ! UM()->form() || ! isset(UM()->form()->form_data['form_id']) ) {
+        return $fields_array;
+    }
+
+    $current_form_id = UM()->form()->form_data['form_id'];
+    $current_form_mode = get_post_meta($current_form_id, '_um_mode', true);
+    
+    // Determine if we should add dealer fields
+    $should_add_fields = false;
+    
+    // Add to any registration form
+    if ($current_form_mode === 'register') {
+        $should_add_fields = true;
+        error_log("PAF UM FIELDS: Adding dealer fields to registration form ID: {$current_form_id}");
+    }
+    
+    // Also add to specific profile forms (for editing dealer info)
+    $dealer_profile_forms = [19, 62]; // Include both the default profile and dealer profile forms
+    if (in_array($current_form_id, $dealer_profile_forms) && $current_form_mode === 'profile') {
+        $should_add_fields = true;
+        error_log("PAF UM FIELDS: Adding dealer fields to profile form ID: {$current_form_id}");
+    }
+    
+    if ( $should_add_fields ) {
         
         // DEFINE $paf_dealer_fields HERE, INSIDE THE FUNCTION SCOPE
         $paf_dealer_fields = [
             'dealer_legal_name' => [
                 'title' => 'Dealership Legal Name', 'type' => 'text', 'required' => 1, 'public' => 1, 'editable' => 1,
                 'label' => 'Dealership Legal Name', 'metakey' => 'dealer_legal_name',
+                'help' => 'Must match your dealer license exactly'
             ],
             'dealer_federal_tax_id' => [
                 'title' => 'Federal Tax ID (EIN)', 'type' => 'text', 'required' => 1, 'public' => 1, 'editable' => 1,
@@ -82,12 +105,124 @@ function paf_add_dealer_registration_fields_filter( $fields_array ) {
         foreach ($paf_dealer_fields as $metakey_as_key => $details) {
             if (!isset($fields_array[$details['metakey']])) { // Check if not already defined by UM UI
                 $fields_array[$details['metakey']] = $details;
+                error_log("PAF UM FIELDS: Added field '{$details['metakey']}' to form {$current_form_id}");
             }
         }
+    } else {
+        error_log("PAF UM FIELDS: Skipping field addition for form ID: {$current_form_id}, mode: {$current_form_mode}");
     }
+    
     return $fields_array;
 }
 
+// Force add dealer fields to form during rendering - this ensures shortcode rendering works
+function paf_force_add_dealer_fields_to_form( $args ) {
+    if ( ! function_exists('UM') || ! UM()->form() ) {
+        return;
+    }
+    
+    // Check if we have form data
+    if ( ! isset( $args['form_id'] ) ) {
+        return;
+    }
+    
+    $form_id = $args['form_id'];
+    $form_mode = get_post_meta($form_id, '_um_mode', true);
+    
+    // Only add to registration forms or specific profile forms
+    $should_add_fields = false;
+    
+    if ($form_mode === 'register') {
+        $should_add_fields = true;
+    }
+    
+    $dealer_profile_forms = [19, 62];
+    if (in_array($form_id, $dealer_profile_forms) && $form_mode === 'profile') {
+        $should_add_fields = true;
+    }
+    
+    if ( $should_add_fields ) {
+        // Get current form fields
+        $current_fields = get_post_meta( $form_id, '_um_custom_fields', true );
+        if ( ! is_array( $current_fields ) ) {
+            $current_fields = array();
+        }
+        
+        // Define dealer fields
+        $dealer_fields = [
+            'dealer_legal_name' => [
+                'title' => 'Dealership Legal Name', 'type' => 'text', 'required' => 1, 'public' => 1, 'editable' => 1,
+                'label' => 'Dealership Legal Name', 'metakey' => 'dealer_legal_name',
+                'help' => 'Must match your dealer license exactly'
+            ],
+            'dealer_federal_tax_id' => [
+                'title' => 'Federal Tax ID (EIN)', 'type' => 'text', 'required' => 1, 'public' => 1, 'editable' => 1,
+                'label' => 'Federal Tax ID (EIN)', 'metakey' => 'dealer_federal_tax_id',
+            ],
+            'dealer_owner_full_name' => [
+                'title' => 'Owner Full Name (Principal)', 'type' => 'text', 'required' => 1, 'public' => 1, 'editable' => 1,
+                'label' => 'Owner Full Name (Principal)', 'metakey' => 'dealer_owner_full_name',
+            ],
+            'dealer_phone' => [
+                'title' => 'Dealership Phone', 'type' => 'text', 'required' => 1, 'public' => 1, 'editable' => 1,
+                'label' => 'Dealership Phone', 'metakey' => 'dealer_phone',
+            ],
+            'dealer_fax' => [
+                'title' => 'Fax Number', 'type' => 'text', 'required' => 0, 'public' => 1, 'editable' => 1,
+                'label' => 'Fax Number', 'metakey' => 'dealer_fax',
+            ],
+            'dealer_license_num' => [
+                'title' => 'Dealer License #', 'type' => 'text', 'required' => 1, 'public' => 1, 'editable' => 1,
+                'label' => 'Dealer License #', 'metakey' => 'dealer_license_num',
+            ],
+            'dealer_address' => [
+                'title' => 'Dealership Address', 'type' => 'text', 'required' => 1, 'public' => 1, 'editable' => 1,
+                'label' => 'Dealership Address', 'metakey' => 'dealer_address',
+            ],
+            'dealer_city' => [
+                'title' => 'City', 'type' => 'text', 'required' => 1, 'public' => 1, 'editable' => 1,
+                'label' => 'City', 'metakey' => 'dealer_city',
+            ],
+            'dealer_state' => [
+                'title' => 'State', 'type' => 'text', 'required' => 1, 'public' => 1, 'editable' => 1,
+                'label' => 'State', 'max_length' => 2, 'metakey' => 'dealer_state',
+            ],
+            'dealer_zip' => [
+                'title' => 'Zip Code', 'type' => 'text', 'required' => 1, 'public' => 1, 'editable' => 1,
+                'label' => 'Zip Code', 'metakey' => 'dealer_zip',
+            ],
+            'dealer_contact_for_approval' => [
+                'title' => 'Contact for Approval/Counter', 'type' => 'text', 'required' => 1, 'public' => 1, 'editable' => 1,
+                'label' => 'Contact for Approval/Counter', 'metakey' => 'dealer_contact_for_approval',
+            ],
+            'dealer_contact_cell_phone' => [
+                'title' => 'Contact Cell Phone', 'type' => 'text', 'required' => 1, 'public' => 1, 'editable' => 1,
+                'label' => 'Contact Cell Phone', 'metakey' => 'dealer_contact_cell_phone',
+            ],
+            'dealer_email_for_approvals' => [
+                'title' => 'Email for Approvals', 'type' => 'text', 'required' => 1, 'public' => 1, 'editable' => 1,
+                'validate' => 'email', 'label' => 'Email for Approvals', 'metakey' => 'dealer_email_for_approvals',
+            ],
+        ];
+        
+        // Add dealer fields that don't already exist
+        $added_count = 0;
+        foreach ( $dealer_fields as $field_key => $field_data ) {
+            if ( ! isset( $current_fields[$field_key] ) ) {
+                $current_fields[$field_key] = $field_data;
+                $added_count++;
+            }
+        }
+        
+        if ( $added_count > 0 ) {
+            // Update the form's custom fields
+            update_post_meta( $form_id, '_um_custom_fields', $current_fields );
+            error_log("PAF FORCE ADD FIELDS: Added {$added_count} dealer fields to form {$form_id} during rendering");
+        }
+    }
+}
+
+// Enhanced function to create dealer CPT that handles multiple registration scenarios
 function paf_create_dealer_cpt_on_um_approval( $user_id ) {
     error_log("PAF DEBUG UM HOOK: paf_create_dealer_cpt_on_um_approval called for user ID: {$user_id}");
     $user = get_userdata( $user_id );
@@ -100,8 +235,16 @@ function paf_create_dealer_cpt_on_um_approval( $user_id ) {
     $user_roles_on_hook = implode(', ', (array) $user->roles);
     error_log("PAF DEBUG UM HOOK: User roles on hook: {$user_roles_on_hook}");
 
-    // Check for either 'dealer' or 'um_dealer' role - adjust based on your actual configuration
-    if ( ! in_array( 'dealer', (array) $user->roles ) && ! in_array( 'um_dealer', (array) $user->roles ) ) {
+    // Check for dealer roles - be flexible about role names
+    $is_dealer = false;
+    foreach ((array) $user->roles as $role) {
+        if (strpos($role, 'dealer') !== false) {
+            $is_dealer = true;
+            break;
+        }
+    }
+
+    if ( ! $is_dealer ) {
         error_log("PAF DEBUG UM HOOK: User ID {$user_id} does not have dealer role. Roles: " . $user_roles_on_hook);
         return;
     }
@@ -195,6 +338,20 @@ function paf_create_dealer_cpt_on_um_approval( $user_id ) {
     error_log("PAF DEBUG UM HOOK: Completed dealer CPT creation process for user ID: {$user_id}");
 }
 
+// Also hook into registration complete to catch immediate registrations
+function paf_create_dealer_cpt_on_registration_complete( $user_id, $args ) {
+    error_log("PAF DEBUG: Registration complete hook fired for user ID: {$user_id}");
+    
+    // Small delay to ensure user meta is saved
+    wp_schedule_single_event( time() + 5, 'paf_delayed_dealer_cpt_creation', array( $user_id ) );
+}
+
+// Scheduled event handler for delayed CPT creation
+function paf_delayed_dealer_cpt_creation( $user_id ) {
+    error_log("PAF DEBUG: Delayed dealer CPT creation for user ID: {$user_id}");
+    paf_create_dealer_cpt_on_um_approval( $user_id );
+}
+
 // Helper function (can also be in helper-functions.php)
 if (!function_exists('paf_get_current_user_dealer_id')) {
     function paf_get_current_user_dealer_id() {
@@ -220,8 +377,17 @@ if (!function_exists('paf_force_create_dealer_cpt')) {
         // Call the same function that's used by the hook, but directly
         paf_create_dealer_cpt_on_um_approval($user_id);
         
-        // Check if it worked
+        // Check if it worked by getting the dealer ID
+        $user_id_current = get_current_user_id();
+        $original_user_id = $user_id_current;
+        
+        // Temporarily set current user for the function
+        wp_set_current_user($user_id);
         $dealer_id = paf_get_current_user_dealer_id();
+        
+        // Restore original user
+        wp_set_current_user($original_user_id);
+        
         if ($dealer_id) {
             error_log("PAF DEBUG: Successfully force-created dealer CPT with ID: {$dealer_id}");
             return $dealer_id;
@@ -254,6 +420,8 @@ function paf_handle_dealer_status_change($post_id) {
             $user = new WP_User($user_id);
             $user->add_cap('paf_view_dealer_dashboard', true);
             $user->add_cap('paf_submit_credit_application', true);
+            
+            error_log("PAF STATUS CHANGE: Added capabilities to user {$user_id} for dealer {$post_id}");
             
             // Optional: Send notification to user
             $user_email = $user->user_email;
@@ -317,14 +485,28 @@ function paf_filter_dealers_by_status($query) {
  * Register UM hooks function - this registers all the hooks we've defined above
  */
 function paf_core_register_um_hooks() {
-    // Use a filter to add/modify fields for the registration form
+    // Use multiple filters to ensure fields are added in all contexts
     add_filter('um_prepare_fields_for_register', 'paf_add_dealer_registration_fields_filter', 10, 1);
+    add_filter('um_prepare_fields_for_profile', 'paf_add_dealer_registration_fields_filter', 10, 1);
+    
+    // Add filters for shortcode rendering
+    add_filter('um_form_fields', 'paf_add_dealer_registration_fields_filter', 10, 1);
+    add_filter('um_get_form_fields', 'paf_add_dealer_registration_fields_filter', 10, 1);
+    
+    // Hook before form rendering to ensure fields are included
+    add_action('um_before_form_render', 'paf_force_add_dealer_fields_to_form', 10, 1);
 
     // Hook after UM user is approved by admin
     add_action('um_after_user_is_approved', 'paf_create_dealer_cpt_on_um_approval', 10, 1);
     
+    // Also hook into registration complete for immediate processing
+    add_action('um_registration_complete', 'paf_create_dealer_cpt_on_registration_complete', 10, 2);
+    
     // Add debug hook - optional but useful for troubleshooting
     add_action('um_registration_complete', 'paf_debug_registration_complete', 10, 2);
+    
+    // Register the scheduled event
+    add_action('paf_delayed_dealer_cpt_creation', 'paf_delayed_dealer_cpt_creation');
 }
 
 // Actually register the hooks via init

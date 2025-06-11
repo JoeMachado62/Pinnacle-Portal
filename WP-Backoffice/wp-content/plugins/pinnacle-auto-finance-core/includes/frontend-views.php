@@ -6,6 +6,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 function paf_core_register_view_shortcodes() {
+    // Visible marker to confirm this function runs
+    // echo "<div style='position:fixed; top:0; left:0; background:orange; color:black; padding:5px; z-index:99999;'>PAF_CORE_REGISTER_VIEW_SHORTCODES_EXECUTED</div>";
+    error_log("PAF_CORE_REGISTER_VIEW_SHORTCODES_EXECUTED"); // More reliable for init hook
+
     add_shortcode( 'paf_dealer_dashboard', 'paf_render_dealer_dashboard' );
     add_shortcode( 'paf_deal_jacket_view', 'paf_render_deal_jacket_view' );
     add_shortcode( 'paf_application_confirmation', 'paf_render_application_confirmation_page' );
@@ -22,48 +26,103 @@ function paf_render_dealer_dashboard() {
     $current_user = wp_get_current_user();
     $dealer_cpt_id = paf_get_current_user_dealer_id();
 
-    // --- Logic to show initial profile form if needed ---
+    // --- DEBUGGING START ---
+    $debug_output = "<div style='background: #f0f0f0; border: 1px solid #ccc; padding: 10px; margin-bottom: 15px; text-align: left; font-family: monospace; font-size: 12px;'>";
+    $debug_output .= "<strong>PAF Dashboard Debug Info (Live Page):</strong><br>";
+    $debug_output .= "Current User ID: " . $current_user->ID . " (Login: " . $current_user->user_login . ")<br>";
+    $debug_output .= "Dealer CPT ID (from paf_get_current_user_dealer_id()): " . $dealer_cpt_id . "<br>";
+    // --- DEBUGGING END ---
+
     if (!$dealer_cpt_id) {
-        return paf_render_initial_dealer_profile_form();
+        // --- DEBUGGING ---
+        $debug_output .= "<strong>Condition Met:</strong> No Dealer CPT ID found for current user.<br>";
+        $debug_output .= "<strong>Action:</strong> Rendering initial dealer profile form.<br>";
+        $debug_output .= "</div>";
+        // --- DEBUGGING END ---
+        return $debug_output . paf_render_initial_dealer_profile_form();
     }
     
     $dealer_cpt_status = get_post_meta($dealer_cpt_id, '_status', true);
     $dealership_legal_name = get_post_meta($dealer_cpt_id, '_dealership_legal_name', true);
 
+    // --- DEBUGGING ---
+    $debug_output .= "Dealer CPT Status (meta '_status'): '" . $dealer_cpt_status . "'<br>";
+    $debug_output .= "Dealership Legal Name (meta '_dealership_legal_name'): '" . $dealership_legal_name . "'<br>";
+    // --- DEBUGGING END ---
+
+    // This is the most likely condition causing the issue on live site
     if (empty($dealership_legal_name) && $dealer_cpt_status !== 'approved') {
-        return paf_render_initial_dealer_profile_form();
-    }
-
-    // --- Logic for pending or other non-approved statuses ---
-    if ($dealer_cpt_status === 'pending_approval') {
-        return '<p class="paf-alert paf-alert-info">Your dealer profile has been submitted and is currently pending final approval. You will receive an email once your account has been fully activated.</p>';
-    } elseif ($dealer_cpt_status !== 'approved') {
-        return '<p class="paf-alert paf-alert-warning">Your dealer account status is currently: ' . esc_html(ucfirst(str_replace('_', ' ', $dealer_cpt_status))) . '. Dashboard access requires an approved dealer account. Please contact support.</p>';
-    }
-
-    // --- If status is 'approved', check capability for full dashboard ---
-    if (!current_user_can('paf_view_dealer_dashboard')) {
-         return '<p class="paf-alert paf-alert-warning">Your account is approved but dashboard access is not yet fully enabled. Please contact support or try again shortly.</p>';
+        // --- DEBUGGING ---
+        $debug_output .= "<strong>Condition Met:</strong> (Dealership Legal Name is empty AND Dealer CPT Status is NOT 'approved').<br>";
+        $debug_output .= " - Is Legal Name Empty? " . (empty($dealership_legal_name) ? '<strong>Yes</strong>' : 'No') . "<br>";
+        $debug_output .= " - Is Status NOT 'approved'? " . ($dealer_cpt_status !== 'approved' ? '<strong>Yes</strong> (Actual: \''.$dealer_cpt_status.'\')' : 'No (Actual: \''.$dealer_cpt_status.'\')') . "<br>";
+        $debug_output .= "<strong>Action:</strong> Rendering initial dealer profile form.<br>";
+        $debug_output .= "</div>";
+        // --- DEBUGGING END ---
+        return $debug_output . paf_render_initial_dealer_profile_form();
     }
     
-    // --- All checks passed — Render the full dashboard using partials ---
+    // --- DEBUGGING ---
+    $debug_output .= "Note: Condition (Empty Legal Name AND Status NOT Approved) was FALSE.<br>";
+    // --- DEBUGGING END ---
 
-    // Enqueue dashboard-specific assets (actual enqueueing will be in main plugin file or paf_core_enqueue_scripts)
-    // We ensure they are marked for loading if this shortcode is processed.
+    if ($dealer_cpt_status === 'pending_approval') {
+        // --- DEBUGGING ---
+        $debug_output .= "<strong>Condition Met:</strong> Dealer CPT Status is 'pending_approval'.<br>";
+        $debug_output .= "<strong>Action:</strong> Displaying 'pending approval' message.<br>";
+        $debug_output .= "</div>";
+        // --- DEBUGGING END ---
+        return $debug_output . '<p class="paf-alert paf-alert-info">Your dealer profile has been submitted and is currently pending final approval. You will receive an email once your account has been fully activated.</p>';
+    } elseif ($dealer_cpt_status !== 'approved') {
+        // --- DEBUGGING ---
+        $debug_output .= "<strong>Condition Met:</strong> Dealer CPT Status is NOT 'approved' (and not 'pending_approval'). Actual status: '" . $dealer_cpt_status . "'.<br>";
+        $debug_output .= "<strong>Action:</strong> Displaying 'account status is X' message.<br>";
+        $debug_output .= "</div>";
+        // --- DEBUGGING END ---
+        return $debug_output . '<p class="paf-alert paf-alert-warning">Your dealer account status is currently: ' . esc_html(ucfirst(str_replace('_', ' ', $dealer_cpt_status))) . '. Dashboard access requires an approved dealer account. Please contact support.</p>';
+    }
+
+    // --- DEBUGGING ---
+    $debug_output .= "Note: Dealer CPT Status IS 'approved'.<br>";
+    $can_view_dashboard = current_user_can('paf_view_dealer_dashboard');
+    $debug_output .= "Capability 'paf_view_dealer_dashboard': " . ($can_view_dashboard ? '<strong>Yes</strong>' : '<strong>No</strong>') . "<br>";
+    // --- DEBUGGING END ---
+
+    if (!$can_view_dashboard) {
+        // --- DEBUGGING ---
+        $debug_output .= "<strong>Condition Met:</strong> User does NOT have 'paf_view_dealer_dashboard' capability.<br>";
+        $debug_output .= "<strong>Action:</strong> Displaying 'dashboard access not yet fully enabled' message.<br>";
+        $debug_output .= "</div>";
+        // --- DEBUGGING END ---
+         return $debug_output . '<p class="paf-alert paf-alert-warning">Your account is approved but dashboard access is not yet fully enabled. Please contact support or try again shortly.</p>';
+    }
+    
+    // --- DEBUGGING ---
+    $debug_output .= "<strong>All checks passed!</strong> Attempting to render full dashboard.<br>";
+    $debug_output .= "</div>";
+    // --- DEBUGGING END ---
+
     wp_enqueue_script('paf-dashboard-js');
     wp_enqueue_style('paf-dashboard-css');
-    wp_enqueue_style('dashicons'); // Ensure Dashicons are available for icons
+    wp_enqueue_style('dashicons'); 
 
     ob_start();
+    echo $debug_output; // Display debug information
     ?>
     <div class="paf-dashboard-container">
         <div class="paf-dashboard-grid">
             <div class="paf-dashboard-left-column">
-                <?php 
-                if (function_exists('paf_render_dashboard_profile_section')) {
-                    echo paf_render_dashboard_profile_section($dealer_cpt_id, $current_user);
+                <?php
+                echo paf_render_advertising_sidebar();
+                ?>
+            </div>
+
+            <div class="paf-dashboard-center-column">
+                <?php
+                if (function_exists('paf_render_dashboard_account_manager_section')) {
+                    echo paf_render_dashboard_account_manager_section($dealer_cpt_id);
                 } else {
-                    echo '<div class="paf-dashboard-profile-widget"><p>Profile section unavailable</p></div>';
+                    echo '<div class="paf-dashboard-account-manager-section"><p>Account manager section unavailable (function missing)</p></div>';
                 }
                 ?>
                 
@@ -71,15 +130,7 @@ function paf_render_dealer_dashboard() {
                 if (function_exists('paf_render_dashboard_prequal_image_section')) {
                     echo paf_render_dashboard_prequal_image_section();
                 } else {
-                    echo '<div class="paf-dashboard-prequal-section"><p>Submit New Deal section unavailable</p></div>';
-                }
-                ?>
-                
-                <?php
-                if (function_exists('paf_render_dashboard_account_manager_section')) {
-                    echo paf_render_dashboard_account_manager_section($dealer_cpt_id);
-                } else {
-                    echo '<div class="paf-dashboard-account-manager-section"><p>Account manager section unavailable</p></div>';
+                    echo '<div class="paf-dashboard-prequal-section"><p>Submit New Deal section unavailable (function missing)</p></div>';
                 }
                 ?>
             </div>
@@ -89,7 +140,7 @@ function paf_render_dealer_dashboard() {
                 if (function_exists('paf_render_dashboard_pipeline_section')) {
                     echo paf_render_dashboard_pipeline_section($current_user->ID);
                 } else {
-                    echo '<div class="paf-dashboard-pipeline-section"><h3>Deals Pipeline</h3><p>Pipeline section unavailable</p></div>';
+                    echo '<div class="paf-dashboard-pipeline-section"><h3>Deals Pipeline</h3><p>Pipeline section unavailable (function missing)</p></div>';
                 }
                 ?>
             </div>
@@ -99,9 +150,7 @@ function paf_render_dealer_dashboard() {
     return ob_get_clean();
 }
 
-
 // --- paf_render_initial_dealer_profile_form() function remains unchanged ---
-// --- (Copied from your provided file for completeness of this file's context) ---
 function paf_render_initial_dealer_profile_form() {
     ob_start();
     ?>
@@ -164,7 +213,6 @@ function paf_render_initial_dealer_profile_form() {
 }
 
 // --- paf_handle_initial_dealer_profile_submission() function remains unchanged ---
-// --- (Copied from your provided file for completeness) ---
 function paf_handle_initial_dealer_profile_submission() {
     if ( ! is_user_logged_in() || ! isset( $_POST['paf_initial_profile_nonce_field'] ) || ! wp_verify_nonce( $_POST['paf_initial_profile_nonce_field'], 'paf_initial_profile_nonce' ) ) {
         wp_die('Security check failed or not logged in.');
@@ -227,9 +275,7 @@ function paf_handle_initial_dealer_profile_submission() {
     exit;
 }
 
-
 // --- paf_render_deal_jacket_view() function remains unchanged ---
-// --- (Copied from your provided file for completeness) ---
 function paf_render_deal_jacket_view() {
     if ( ! is_user_logged_in() || ! isset( $_GET['deal_id'] ) ) {
         return '<p class="paf-alert paf-alert-warning">Invalid request or insufficient permissions.</p>';
@@ -400,8 +446,60 @@ function paf_render_deal_documents_shortcode_wrapper($atts){
 }
 
 
-// --- paf_render_application_confirmation_page() function remains unchanged ---
-// --- (Copied from your provided file for completeness) ---
+/**
+ * Render the advertising sidebar for the dashboard
+ */
+function paf_render_advertising_sidebar() {
+    // Sample ads data matching your design
+    $sample_ads = [
+        [
+            'title' => 'CERTIFIED USED 2.4L 2021 ACURA ILX...',
+            'description' => '2.4L ● 2021 ● Manual',
+            'image_url' => 'https://via.placeholder.com/200x150/0073AA/FFFFFF?text=Acura+ILX',
+            'button_text' => '$12,000',
+            'badge' => 'FEATURED CLASSIFIED'
+        ],
+        [
+            'title' => 'USED 2.0L 2020 KIA SPORTAGE',
+            'description' => '2.0L ● 2020 ● Automatic',
+            'image_url' => 'https://via.placeholder.com/200x150/DC3545/FFFFFF?text=Kia+Sportage',
+            'button_text' => '$24,000',
+            'badge' => 'SPECIAL'
+        ],
+        [
+            'title' => 'NEW ELECTRICAL 2022 TESLA ROADSTER...',
+            'description' => 'Electrical ● 2022 ● Automatic',
+            'image_url' => 'https://via.placeholder.com/200x150/28A745/FFFFFF?text=Tesla+Roadster',
+            'button_text' => '$120,000',
+            'badge' => 'NEW'
+        ]
+    ];
+    
+    ob_start();
+    ?>
+    <div class="paf-advertising-sidebar">
+        <h3 class="paf-sidebar-title">Featured Inventory</h3>
+        <div class="paf-ads-container">
+            <?php foreach ($sample_ads as $ad): ?>
+                <div class="paf-ad-card">
+                    <div class="paf-ad-image">
+                        <img src="<?php echo esc_url($ad['image_url']); ?>" alt="<?php echo esc_attr($ad['title']); ?>">
+                        <div class="paf-ad-badge"><?php echo esc_html($ad['badge']); ?></div>
+                    </div>
+                    
+                    <div class="paf-ad-content">
+                        <h4 class="paf-ad-title"><?php echo esc_html($ad['title']); ?></h4>
+                        <p class="paf-ad-description"><?php echo esc_html($ad['description']); ?></p>
+                        <div class="paf-ad-button"><?php echo esc_html($ad['button_text']); ?></div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+
 function paf_render_application_confirmation_page() {
     if ( ! isset( $_GET['app_ref'] ) ) { // Changed from app_id to app_ref to match form handler
         return '<p class="paf-alert paf-alert-warning">No application reference provided.</p>';
